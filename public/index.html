@@ -2,17 +2,68 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
     <title>Royal Market</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/public/index.css" />
+    <link rel="stylesheet" href="/public/header.css" />
   </head>
-
   <body>
+    <header class="header">
+      <div class="topmenu">
+        <div class="topmenu_logo">
+          <img
+            class="animate__animated"
+            src="/img/logo_royal_resorts.png"
+            alt="Logo Royal Resorts"
+          />
+        </div>
+        <div class="topmenu_side">
+          <img class="" src="/img/menu_royal.png" alt="Menu Royal Resorts" />
+        </div>
+      </div>
+      <div class="menu">
+        <div class="menu_hamburger">
+          <img src="/img/hamburger_icon.png" alt="Logo Royal Market" />
+        </div>
+        <div class="menu_searcher"></div>
+        <div class="menu_logo">
+          <a>
+            <img
+              src="/img/logo_market.png"
+              alt="Logo Royal Market"
+              width="122"
+              height="39"
+            />
+          </a>
+        </div>
+
+        <div class="menu_session">
+          <div class="session">
+            <div class="session_data">
+              <small> hello Israel canulsdasdasdasdsadasdasd </small>
+              <a href="#">
+                <small> lokin </small>
+              </a>
+            </div>
+            <div class="session_action">
+              <img src="/img/icon_down.png" alt="Logo Royal Market" />
+            </div>
+          </div>
+        </div>
+        <div class="menu_cart">
+          <span class="numberItems">45</span>
+          <img src="/img/cart_icon.png" alt="Logo Royal Market" />
+        </div>
+      </div>
+    </header>
     <div id="root"></div>
     <noscript> You need to enable JavaScript to run this app. </noscript>
     <script src="/public/index.js"></script>
+    <script src="/public/header.js"></script>
   </body>
 </html>

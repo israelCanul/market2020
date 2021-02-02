@@ -1,0 +1,42 @@
+@import "~animate.css/animate.css";
+$desktop: 1200px; //tamano maximo para escritorio
+$tablet: 767px; //tamano minimo para tablet
+$maxWidth: 1700px;
+
+$naranja: #f04035;
+
+//Colors
+$black: #000000;
+@mixin desktopMax {
+  @media only screen and (min-width: #{$maxWidth}) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media only screen and (min-width: #{$desktop}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (min-width: #{$tablet}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media only screen and (max-width: #{$tablet}) {
+    @content;
+  }
+}
+@mixin flex {
+  display: flex;
+  align-items: center;
+}
+
+@mixin btnAnim {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+}
