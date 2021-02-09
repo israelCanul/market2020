@@ -95,12 +95,17 @@ header {
     .menu_searcher {
       flex: 1;
       width: 100%;
-      // background-color: white;
-      // height: 32px;
+      position: relative;
+      padding: 2px 5px;
+      box-sizing: border-box;
       @include flex();
       display: none;
+      justify-content: center;
+      align-items: center;
       @include desktop() {
         display: flex;
+        padding: 2px 5px;
+        box-sizing: border-box;
       }
     }
     .menu_session {

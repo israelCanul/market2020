@@ -1,0 +1,27 @@
+export function getCookieForm(cname, idiom = null) {
+  if (process.browser) {
+    var name = cname + "=";
+    if (idiom != null) name = name + "-" + idiom;
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+  }
+  return "";
+}
+export function setCookieForm(cname, cvalue, idiom = null) {
+  if (process.browser) {
+    var d = new Date();
+    d.setTime(d.getTime() + 60 * 60 * 1000);
+    var expires = "expires=" + d.toUTCString();
+    if (idiom != null) cname = cname + "-" + idiom;
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+}
