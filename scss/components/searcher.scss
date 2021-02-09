@@ -58,6 +58,7 @@
     display: flex;
     justify-content: stretch;
     align-items: stretch;
+    position: relative;
     input {
       width: 100%;
       border-width: 0px;
@@ -65,6 +66,40 @@
       padding: 2px;
       &:focus {
         outline: none;
+      }
+    }
+    .results {
+      position: absolute;
+      background-color: white;
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      top: calc(100% + 2px);
+      left: 0px;
+      margin: 0px;
+      overflow-y: scroll;
+      &_container {
+        margin: 0px;
+        padding: 0px;
+
+        &_list {
+          padding: 0px;
+          padding-bottom: 5px;
+          margin: 0px;
+          list-style: none;
+          li {
+            padding: 5px 5px;
+            box-sizing: border-box;
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.1);
+            }
+            a {
+              text-transform: capitalize;
+              text-decoration: none;
+              color: black;
+            }
+          }
+        }
       }
     }
   }

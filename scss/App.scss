@@ -4,8 +4,15 @@ body {
   padding: 0px;
   font-family: "Open Sans", sans-serif;
 }
+header {
+  z-index: 2;
+}
+#root {
+  margin-top: $headerpush;
+  z-index: 1;
+}
 .App {
-  margin: 1rem;
+  margin: 0px 1rem;
   // font-family: Arial, Helvetica, sans-serif !important;
   font-family: "Open Sans", sans-serif;
   background-color: blue;
