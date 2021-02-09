@@ -78,19 +78,23 @@
       left: 0px;
       margin: 0px;
       overflow-y: scroll;
+      box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
       &_container {
         margin: 0px;
         padding: 0px;
 
         &_list {
           padding: 0px;
-          padding-bottom: 5px;
+          padding-bottom: 0px;
           margin: 0px;
           list-style: none;
           li {
             padding: 5px 5px;
             box-sizing: border-box;
             &:hover {
+              background-color: rgba(0, 0, 0, 0.1);
+            }
+            &.active {
               background-color: rgba(0, 0, 0, 0.1);
             }
             a {

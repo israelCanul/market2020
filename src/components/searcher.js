@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import _ from "lodash/collection";
 export default function Searcher({ datos = null, filter = null }) {
   const [dtFiltered, setData] = useState([]);
+  const [selected, setSelected] = useState(null);
   let refInput = useRef(null);
   let data =
     datos != null
@@ -1017,10 +1018,9 @@ export default function Searcher({ datos = null, filter = null }) {
           },
         ];
   let dataFiltered = [];
-  let renderData = dtFiltered.map((item) => {
-    // {item.SItemName} <small>{item.SItemMark}</small>
+  let renderData = dtFiltered.map((item, index) => {
     return (
-      <li key={item.IItemID}>
+      <li key={item.IItemID} className={index == selected ? "active" : ""}>
         <a href="#">{item.SItemDesc.toLowerCase()}</a>
       </li>
     );
@@ -1029,32 +1029,46 @@ export default function Searcher({ datos = null, filter = null }) {
   let inputChange = (e) => {
     let filter = e.target.value.toUpperCase();
     let arraySearched = [];
-
     data.map((item, id) => {
       let description = item.SItemDesc;
       let name = item.SItemName;
-      //   name = name.split(" ");
-      //   let encontrado = false;
-      let find = new RegExp("" + filter + "").test(name.toUpperCase());
-      if (filter != "" && find == true) {
+      let encontrado = false;
+      let findByName = new RegExp("" + filter + "").test(name.toUpperCase());
+      let findByDesc = new RegExp("" + filter + "").test(
+        description.toUpperCase()
+      );
+      if (filter != "" && (findByName == true || findByDesc == true)) {
         arraySearched = [...arraySearched, item];
       }
-      // if (id < 6) {
-      //   console.log(name);
-      //   console.log(find);
-      // }
-
-      // _.find(name, function (o) {
-      //   if (o.toUpperCase() == filter && encontrado == false) {
-      //     arraySearched = [...arraySearched, item];
-      //     encontrado = true;
-      //   }
-      // });
     });
     if (arraySearched.length > 0) {
     }
     setData(arraySearched);
-    // dataFiltered = arraySearched;
+  };
+  let inputKeyDown = (event) => {
+    if (event.which == 38 || event.which == 40) {
+      event.preventDefault();
+      if (selected != null) {
+        let newSelected = selected;
+        if (event.which == 38) {
+          newSelected--;
+          newSelected < 0 ? (newSelected = 0) : (newSelected = newSelected);
+          setSelected(newSelected);
+        } else {
+          newSelected++;
+          newSelected >= dtFiltered.length
+            ? (newSelected = dtFiltered.length - 1)
+            : (newSelected = newSelected);
+          setSelected(newSelected);
+        }
+      } else {
+        if (event.which == 38) {
+          setSelected(0);
+        } else {
+          setSelected(1);
+        }
+      }
+    }
   };
   return (
     <React.Fragment>
@@ -1062,13 +1076,16 @@ export default function Searcher({ datos = null, filter = null }) {
         type="text"
         name=""
         ref={refInput}
+        onKeyDown={inputKeyDown}
         onChange={inputChange.bind(this)}
       />
-      <div className="results">
-        <div className="results_container">
-          <ul className="results_container_list">{renderData}</ul>
+      {dtFiltered.length > 0 && (
+        <div className="results">
+          <div className="results_container">
+            <ul className="results_container_list">{renderData}</ul>
+          </div>
         </div>
-      </div>
+      )}
     </React.Fragment>
   );
 }
