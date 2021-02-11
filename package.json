@@ -32,9 +32,11 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "axios": "^0.21.1",
     "lodash": "^4.17.20",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-hot-loader": "^4.13.0"
+    "react-hot-loader": "^4.13.0",
+    "react-router-dom": "^5.2.0"
   }
 }

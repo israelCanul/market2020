@@ -29,11 +29,15 @@
       span {
         font-size: 12px;
         margin-right: 5px;
+        flex: 1;
+        width: 100%;
+        text-align: right;
       }
       img {
         &:hover {
           @include btnAnim;
         }
+        margin: 0px 3px;
       }
     }
     #categories {
