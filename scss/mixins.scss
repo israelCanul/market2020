@@ -5,11 +5,15 @@ $maxWidth: 1700px;
 
 $naranja: #f04035;
 $grisBajo: #f2f2f2;
-
-//Colors
+$verdeSitio: #76bc21;
+$verdeSitioBold: #1a5632;
+$grisTexto: #535353;
 $black: #000000;
 
+//units
 $headerpush: 100px;
+$speedTransition: 0.3s;
+$menuAsideWidth: 300px;
 
 @mixin desktopMax {
   @media only screen and (min-width: #{$maxWidth}) {

@@ -10,6 +10,9 @@ const Avatar = lazy(() =>
 const Searcher = lazy(() =>
   import(/* webpackPrefetch: true */ "./components/searcher")
 );
+const Menu = lazy(() =>
+  import(/* webpackPrefetch: true */ "./components/menumarket")
+);
 const renderLoader = () => <p>Loading</p>;
 
 import { hot } from "react-hot-loader"; //quitar para probar en IE [IEISSUE]
@@ -25,42 +28,81 @@ function Header({ cat }) {
       </option>
     );
   });
-
   return (
     <Suspense fallback={renderLoader()}>
       <React.Fragment>
-        <div className="searcher">
-          <div className="searcher_categories">
-            <div className="searcher_categories_label">
-              <span>
-                {categories != ""
-                  ? categories.SCategoryDesc.toLowerCase()
-                  : getTexto("All Categories")}
-              </span>
-              <img src="/img/icon_down_black.png" alt="Icon Down" />
-            </div>
-            <select
-              onChange={(e) => {
-                console.log("pusheado");
-
-                setCat(cat[e.target.value]);
-              }}
-              name=""
-              id="categories"
-            >
-              <option key="0-cat" value="all">
-                All Store
-              </option>
-              {renderCats}
-            </select>
+        <div className="topmenu">
+          <div className="topmenu_logo">
+            <img
+              className="animate__animated"
+              src="/img/logo_royal_resorts.png"
+              alt="Logo Royal Resorts"
+            />
           </div>
-          <Searcher category={categories} />
+          <div className="topmenu_side">
+            <img
+              className=""
+              src="/img/menu_royal.png"
+              alt="Menu Royal Resorts"
+            />
+          </div>
         </div>
-        {/* Se renderiza el componente en su seccion correspondiente*/}
-        {ReactDOM.createPortal(
-          <Avatar />,
-          document.getElementById("sessionAvatar")
-        )}
+        <div className="menu">
+          <div className="menu_hamburger">
+            <img
+              src="/img/hamburger_icon.png"
+              onClick={(e) => {
+                document.querySelector("body").className = "asideOpen";
+              }}
+              alt="Hamburger Icon"
+            />
+          </div>
+          <div className="menu_searcher">
+            <div className="searcher">
+              <div className="searcher_categories">
+                <div className="searcher_categories_label">
+                  <span>
+                    {categories != ""
+                      ? categories.SCategoryDesc.toLowerCase()
+                      : getTexto("All Categories")}
+                  </span>
+                  <img src="/img/icon_down_black.png" alt="Icon Down" />
+                </div>
+                <select
+                  onChange={(e) => {
+                    setCat(cat[e.target.value]);
+                  }}
+                  name=""
+                  id="categories"
+                >
+                  <option key="0-cat" value="all">
+                    {getTexto("All Categories")}
+                  </option>
+                  {renderCats}
+                </select>
+              </div>
+              <Searcher category={categories} />
+            </div>
+          </div>
+          <div className="menu_logo">
+            <a>
+              <img
+                src="/img/logo_market.png"
+                alt="Logo Royal Market"
+                width="122"
+                height="39"
+              />
+            </a>
+          </div>
+          <div className="menu_session">
+            <Avatar />
+          </div>
+          <div className="menu_cart">
+            <span className="numberItems">45</span>
+            <img src="/img/cart_icon.png" alt="Logo Royal Market" />
+          </div>
+        </div>
+        <Menu cat={cat} />
       </React.Fragment>
     </Suspense>
   );

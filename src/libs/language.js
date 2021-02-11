@@ -3,7 +3,5 @@ export function SetLanguage(idiom) {
   setCookieForm("Language", idiom);
 }
 export function getLanguage() {
-  return getCookieForm("Language") != null
-    ? getCookieForm("Language")
-    : "en-US";
+  return getCookieForm("Language") == "" ? "en-US" : getCookieForm("Language");
 }

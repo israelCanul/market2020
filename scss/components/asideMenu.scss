@@ -1,0 +1,143 @@
+@import "../mixins.scss";
+.asideMenu {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: -100vw;
+  z-index: 2;
+
+  .background {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+  }
+  &_menu {
+    height: 100vh;
+    width: #{$menuAsideWidth - 40};
+    position: absolute;
+    top: 0px;
+    left: -#{$menuAsideWidth - 40};
+    background: white;
+    z-index: 1;
+    overflow: hidden;
+    transition: left #{$speedTransition} ease-in-out;
+    @include tablet {
+      width: $menuAsideWidth;
+      left: -#{$menuAsideWidth};
+    }
+    .session {
+    }
+    .categories {
+      width: #{$menuAsideWidth - 40};
+      position: relative;
+      height: auto;
+      display: block;
+      @include tablet {
+        width: $menuAsideWidth;
+      }
+
+      &_content {
+        position: absolute;
+        left: 0px;
+        width: #{$menuAsideWidth - 40};
+        height: auto;
+        transition: all #{$speedTransition} ease-in-out;
+        float: left;
+        @include tablet {
+          width: $menuAsideWidth;
+        }
+      }
+      &_subcontent {
+        float: left;
+        width: #{$menuAsideWidth - 40};
+        position: absolute;
+        left: #{$menuAsideWidth - 40};
+        height: auto;
+        transition: all #{$speedTransition} ease-in-out;
+        @include tablet {
+          width: $menuAsideWidth;
+          left: $menuAsideWidth;
+        }
+      }
+      .goback {
+        cursor: pointer;
+        border-top: 1px solid rgba($black, 0.3);
+        padding: 10px 15px 10px 15px;
+        box-sizing: border-box;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        span {
+          margin-left: 5px;
+        }
+        img {
+          &:hover {
+            @include btnAnim;
+          }
+        }
+      }
+      .title {
+        border-top: 1px solid rgba($black, 0.3);
+        padding: 10px 15px 5px 15px;
+        box-sizing: border-box;
+        font-weight: bold;
+      }
+      .category {
+        height: 30px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 2px 15px;
+        box-sizing: border-box;
+        cursor: pointer;
+        color: $grisTexto;
+        transition: all #{$speedTransition} ease-in-out;
+        &:hover {
+          background-color: rgba($verdeSitio, 0.3);
+          color: $verdeSitioBold;
+          font-weight: bold;
+        }
+
+        span {
+          flex: 1;
+          width: 100%;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}
+
+body.categorySelected {
+  .asideMenu {
+    .categories {
+      &_content {
+        left: -#{$menuAsideWidth - 40};
+        @include tablet {
+          left: -#{$menuAsideWidth};
+        }
+      }
+      &_subcontent {
+        left: 0px;
+      }
+    }
+  }
+}
+body.asideOpen {
+  .asideMenu {
+    left: 0px;
+    .background {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    &_menu {
+      left: 0;
+    }
+  }
+}
