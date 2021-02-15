@@ -8,13 +8,24 @@
   z-index: 2;
 
   .background {
+    transition: all #{$speedTransition} ease-in-out;
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
     top: 0px;
     left: 0px;
     z-index: 0;
+    .close {
+      position: absolute;
+      top: 20px;
+      left: #{$menuAsideWidth - 30};
+      z-index: 1;
+      cursor: pointer;
+      @include tablet {
+        left: #{$menuAsideWidth + 10};
+      }
+    }
   }
   &_menu {
     height: 100vh;
@@ -30,6 +41,7 @@
       width: $menuAsideWidth;
       left: -#{$menuAsideWidth};
     }
+
     .session {
     }
     .categories {
@@ -37,12 +49,13 @@
       position: relative;
       height: auto;
       display: block;
+      @extend .clearfix;
       @include tablet {
         width: $menuAsideWidth;
       }
 
       &_content {
-        position: absolute;
+        position: relative;
         left: 0px;
         width: #{$menuAsideWidth - 40};
         height: auto;
@@ -86,6 +99,10 @@
         padding: 10px 15px 5px 15px;
         box-sizing: border-box;
         font-weight: bold;
+
+        &.subcategory {
+          text-transform: capitalize;
+        }
       }
       .category {
         height: 30px;
@@ -138,6 +155,19 @@ body.asideOpen {
     }
     &_menu {
       left: 0;
+    }
+  }
+}
+body.closing {
+  .background {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .asideMenu {
+    &_menu {
+      left: -#{$menuAsideWidth - 40};
+      @include tablet {
+        left: -#{$menuAsideWidth};
+      }
     }
   }
 }

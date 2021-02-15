@@ -1,4 +1,4 @@
-@import "mixins";
+@import "../mixins";
 
 header {
   // background-color: green;
@@ -7,6 +7,7 @@ header {
   width: 100%;
   height: auto;
   .topmenu {
+    background-color: white;
     height: 50px;
     padding: 10px 0px;
     display: flex;

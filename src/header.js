@@ -16,7 +16,7 @@ const Menu = lazy(() =>
 const renderLoader = () => <p>Loading</p>;
 
 import { hot } from "react-hot-loader"; //quitar para probar en IE [IEISSUE]
-import "../scss/Layout.module.scss";
+import "../scss/modules/Header.module.scss";
 import "../scss/components/searcher.scss";
 
 function Header({ cat }) {
@@ -34,6 +34,8 @@ function Header({ cat }) {
         <div className="topmenu">
           <div className="topmenu_logo">
             <img
+              width="207"
+              height="34"
               className="animate__animated"
               src="/img/logo_royal_resorts.png"
               alt="Logo Royal Resorts"
@@ -41,6 +43,8 @@ function Header({ cat }) {
           </div>
           <div className="topmenu_side">
             <img
+              width="26"
+              height="24"
               className=""
               src="/img/menu_royal.png"
               alt="Menu Royal Resorts"
@@ -50,6 +54,8 @@ function Header({ cat }) {
         <div className="menu">
           <div className="menu_hamburger">
             <img
+              width="32"
+              height="20"
               src="/img/hamburger_icon.png"
               onClick={(e) => {
                 document.querySelector("body").className = "asideOpen";
@@ -66,7 +72,12 @@ function Header({ cat }) {
                       ? categories.SCategoryDesc.toLowerCase()
                       : getTexto("All Categories")}
                   </span>
-                  <img src="/img/icon_down_black.png" alt="Icon Down" />
+                  <img
+                    width="12"
+                    height="7"
+                    src="/img/icon_down_black.png"
+                    alt="Icon Down"
+                  />
                 </div>
                 <select
                   onChange={(e) => {
@@ -99,7 +110,12 @@ function Header({ cat }) {
           </div>
           <div className="menu_cart">
             <span className="numberItems">45</span>
-            <img src="/img/cart_icon.png" alt="Logo Royal Market" />
+            <img
+              width="35"
+              height="30"
+              src="/img/cart_icon.png"
+              alt="Logo Royal Market"
+            />
           </div>
         </div>
         <Menu cat={cat} />

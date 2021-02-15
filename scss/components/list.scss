@@ -1,0 +1,75 @@
+.list {
+  &.grid {
+    padding: 0px 0px 25px 0px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    row-gap: 20px;
+
+    .item {
+      padding: 0px 10px;
+      box-sizing: border-box;
+      grid-column: auto / span 4;
+      grid-row: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      &_content {
+        background: red;
+        min-width: 30px;
+        min-height: 60px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 0px;
+        box-sizing: border-box;
+        .image {
+          img {
+            max-width: 100%;
+          }
+        }
+        .description {
+          padding: 5px 0px;
+          text-align: center;
+          span {
+            font-size: 1rem;
+          }
+        }
+        .unit {
+          .wrap-units {
+            display: flex;
+            flex-direction: row;
+            background: green;
+            padding: 0px 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            a {
+              text-decoration: none;
+              &.btn {
+                color: $black;
+                background: $grisBajo;
+                border: 1px solid $grisTexto;
+                padding: 5px;
+                box-sizing: border-box;
+                &.add {
+                  border-left: 0px;
+                }
+                &.remove {
+                  border-right: 0px;
+                }
+              }
+            }
+            input {
+              &:focus {
+                outline: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

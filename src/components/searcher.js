@@ -1120,7 +1120,7 @@ export default function Searcher({ datos = null, filter = null, category }) {
         )}
       </div>
       <div className="searcher_icon" onClick={search.bind(this)}>
-        <img src="/img/icon_lupa.png" alt="Lupa Icon" />
+        <img src="/img/icon_lupa.png" width="20" height="20" alt="Lupa Icon" />
       </div>
     </React.Fragment>
   );

@@ -1,13 +1,14 @@
 @import "~animate.css/animate.css";
 $desktop: 1200px; //tamano maximo para escritorio
 $tablet: 767px; //tamano minimo para tablet
-$maxWidth: 1700px;
+$maxWidth: 1500px;
 
 $naranja: #f04035;
 $grisBajo: #f2f2f2;
 $verdeSitio: #76bc21;
 $verdeSitioBold: #1a5632;
 $grisTexto: #535353;
+$grisBajoBG: #f2f2f2;
 $black: #000000;
 
 //units
@@ -47,4 +48,10 @@ $menuAsideWidth: 300px;
   animation-iteration-count: infinite;
   -webkit-animation-name: pulse;
   animation-name: pulse;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }

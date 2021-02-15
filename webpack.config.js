@@ -24,7 +24,8 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           // fallback to style-loader in development
-          MiniCssExtractPlugin.loader,
+          // MiniCssExtractPlugin.loader,
+          "style-loader",
           "css-loader",
           "sass-loader",
         ],
@@ -50,12 +51,12 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
+    // new MiniCssExtractPlugin({
+    //   // Options similar to the same options in webpackOptions.output
+    //   // both options are optional
 
-      filename: "[name].css",
-      chunkFilename: "[id].css",
-    }),
+    //   filename: "[name].css",
+    //   chunkFilename: "[id].css",
+    // }),
   ],
 };

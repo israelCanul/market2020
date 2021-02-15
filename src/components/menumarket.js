@@ -5,6 +5,13 @@ import getTexto from "../libs/messages";
 export default function Menu({ cat }) {
   const [menuCat, setMenuCat] = useState("");
   const [subMenuCat, setSubMenuCat] = useState("");
+  let close = () => {
+    document.querySelector("body").className = " asideOpen closing";
+    setTimeout(() => {
+      document.querySelector("body").className = "";
+    }, 300);
+    setMenuCat("");
+  };
   let renderCats = cat.map((item, index) => {
     return (
       <div
@@ -94,13 +101,26 @@ export default function Menu({ cat }) {
                 />
                 <span>{getTexto("Main Menu")}</span>
               </div>
-              <div className="title">{getTexto("Shop by Category")}</div>
+              <div className="title subcategory">
+                {menuCat != ""
+                  ? menuCat.SCategoryDesc.toLowerCase()
+                  : "No Subcategory"}
+              </div>
               {renderSubCats()}
             </div>
           </div>
         </div>
       </div>
-      <div className="background"></div>
+      <div onClick={close} className="background">
+        <img
+          onClick={close}
+          width="24"
+          height="24"
+          className="close"
+          src="img/icons/icon_cancel_white.png"
+          alt="Close Icon"
+        />
+      </div>
     </div>
   );
 }
