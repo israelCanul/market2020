@@ -1,7 +1,37 @@
 import React, { useState } from "react";
 import getTexto from "../libs/messages";
-export default function Item() {
+export default function Item(props) {
   const [value, setValue] = useState("");
+  const [number, setNumber] = useState(0);
+  const [errorMinSale, setError] = useState("");
+
+  const onChangeInput = (e) => {
+    if (props.item.YnAllowFractionalSale) {
+      let Re = /^([0-9\.])*$/;
+      let myArray = Re.exec(e.target.value);
+      if (myArray != null) {
+        this.setState({ number: e.target.value });
+      } else {
+        //this.setState({number : parseFloat(this.props.count).toFixed(1)});
+        this.setState({ number: "" });
+      }
+    } else {
+      let Re = /^([0-9])*$/;
+      let myArray = Re.exec(e.target.value);
+      if (myArray != null) {
+        if (parseInt(myArray) % parseInt(props.item.MinSell) == 0) {
+          this.setState({ number: parseInt(e.target.value) });
+          this.setState({ errorMinSale: false });
+        } else {
+          this.setState({ number: "" });
+          this.setState({ errorMinSale: true });
+        }
+      } else {
+        this.setState({ number: "" });
+        this.setState({ errorMinSale: true });
+      }
+    }
+  };
   return (
     <div className="item">
       <div className="item_content">
@@ -17,8 +47,8 @@ export default function Item() {
             <a href="#" className="btn remove">
               -
             </a>
-            <input type="text" className="input-field" value={value} />
-            <a href="#" class="btn add">
+            <input type="text" className="input-field" />
+            <a href="#" className="btn add">
               +
             </a>
           </div>

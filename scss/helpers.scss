@@ -1,0 +1,27 @@
+.img {
+  max-width: 100%;
+  width: 100%;
+}
+.BacktoTop {
+  margin-top: 25px;
+  background: $verdeSitio;
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .btnBack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      @include btnAnim;
+    }
+    img {
+    }
+    span {
+      color: $verdeSitioBold;
+      font-weight: bold;
+    }
+  }
+}

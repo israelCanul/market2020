@@ -24,4 +24,6 @@ export let text = {
   "items waiting for you to add them to your cart":
     "items waiting for you to add them to your cart",
   "View details": "View details",
+  "Related Products": "Productos Relacionados",
+  "Back to Top": "Back to Top",
 };

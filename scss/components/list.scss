@@ -3,10 +3,45 @@
     padding: 0px 0px 25px 0px;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     row-gap: 20px;
-
+    @include tablet {
+      grid-template-columns: repeat(16, 1fr);
+      grid-template-rows: repeat(10, 1fr);
+    }
+    &.row {
+      grid-template-rows: repeat(1, 1fr);
+    }
+    &.related {
+      row-gap: 0px;
+      background-color: white;
+      grid-template-rows: repeat(1, 1fr);
+      .title {
+        grid-column: auto / span 4;
+        text-align: center;
+        @include tablet {
+          text-align: left;
+          grid-column: 3 / span 12;
+        }
+      }
+      .item:first-child,
+      :not(.item) + .item {
+        @include tablet {
+          grid-column: 3 / span 4;
+        }
+      }
+      overflow: hidden;
+    }
+    .section {
+      grid-column: auto/span 4;
+      padding: 0px $padding;
+      @for $i from 1 to 16 {
+        &.x#{$i} {
+          grid-column: auto/span #{$i};
+        }
+      }
+    }
     .item {
       padding: 0px 10px;
       box-sizing: border-box;
@@ -16,16 +51,17 @@
       flex-direction: column;
       align-items: stretch;
       &_content {
-        background: red;
+        background: white;
         min-width: 30px;
         min-height: 60px;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 5px 0px;
+        padding: 15px 0px;
         box-sizing: border-box;
         .image {
+          margin-top: 15px;
           img {
             max-width: 100%;
           }
@@ -33,16 +69,20 @@
         .description {
           padding: 5px 0px;
           text-align: center;
+          margin-bottom: 10px;
           span {
             font-size: 1rem;
           }
         }
         .unit {
+          margin: 0px 0px 10px;
+          // background-color: green;
           .wrap-units {
             display: flex;
             flex-direction: row;
-            background: green;
-            padding: 0px 5px;
+            // background: green;
+            padding: 0px 0px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: row;
             align-items: stretch;
@@ -52,21 +92,52 @@
                 color: $black;
                 background: $grisBajo;
                 border: 1px solid $grisTexto;
-                padding: 5px;
+                padding: 5px 10px;
                 box-sizing: border-box;
                 &.add {
                   border-left: 0px;
+                  border-top-right-radius: 5px;
+                  border-bottom-right-radius: 5px;
                 }
                 &.remove {
                   border-right: 0px;
+                  border-bottom-left-radius: 5px;
+                  border-top-left-radius: 5px;
                 }
               }
             }
             input {
+              color: $grisTexto;
+              font-size: 1.2rem;
+              text-align: center;
+              padding: 3px 2px;
+              width: 80px;
               &:focus {
                 outline: none;
               }
             }
+          }
+        }
+        .action {
+          padding: 5px 0px;
+          box-sizing: border-box;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          .btnAdd {
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 8px 20px;
+            background: $naranja;
+            border: 1px solid $naranjaBold;
+          }
+        }
+        .details {
+          margin-top: 10px;
+          a {
+            text-decoration: none;
+            color: $verdeSitio;
+            font-weight: bold;
           }
         }
       }
