@@ -10,7 +10,12 @@ export default function BacktoTop() {
           document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         }}
       >
-        <img width="12" height="7" src="img/icons/arrow_up.png" alt="Icon Up" />
+        <img
+          width="12"
+          height="7"
+          src="/img/icons/arrow_up.png"
+          alt="Icon Up"
+        />
         <span> {getTexto("Back to Top")}</span>
       </div>
     </div>

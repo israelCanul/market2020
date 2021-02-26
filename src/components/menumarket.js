@@ -117,7 +117,7 @@ export default function Menu({ cat }) {
           width="24"
           height="24"
           className="close"
-          src="img/icons/icon_cancel_white.png"
+          src="/img/icons/icon_cancel_white.png"
           alt="Close Icon"
         />
       </div>

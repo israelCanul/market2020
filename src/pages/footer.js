@@ -1,7 +1,7 @@
 import React from "react";
-import GenericSection from "./components/genericsection";
+import GenericSection from "../components/genericsection";
 
-import "../scss/modules/Footer.module.scss";
+import "../../scss/modules/Footer.module.scss";
 
 export default function Footer() {
   return (

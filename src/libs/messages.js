@@ -26,4 +26,5 @@ export let text = {
   "View details": "View details",
   "Related Products": "Productos Relacionados",
   "Back to Top": "Back to Top",
+  "Shop by Category": "Compra por categoría",
 };

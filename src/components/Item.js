@@ -36,7 +36,7 @@ export default function Item(props) {
     <div className="item">
       <div className="item_content">
         <div className="image">
-          <img src="img/home/ejem_recommendations_for_you.jpg" alt="Item" />
+          <img src="/img/home/ejem_recommendations_for_you.jpg" alt="Item" />
         </div>
         <div className="description">
           <span>Whole fresh milk Lala (34 floz.)</span> <br />

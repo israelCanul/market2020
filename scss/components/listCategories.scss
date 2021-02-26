@@ -1,0 +1,48 @@
+@import "../mixins";
+.WrapperCategories {
+  margin: 10px 15px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  .title {
+    padding: 10px 0px;
+    display: block;
+  }
+  .listCategories {
+    margin: 0px;
+    list-style: none;
+    padding: 0px;
+    a {
+      text-decoration: none;
+      color: $grisTexto;
+      line-height: 25px;
+      // background-color: red;
+      display: block;
+    }
+    .category {
+      text-transform: capitalize;
+      a {
+        &::before {
+          content: "\00B7 \0020";
+          font-weight: bold;
+          font-size: 20px;
+        }
+        &.active {
+          font-weight: bold;
+        }
+      }
+      .subCategories {
+        margin: 0px;
+        list-style: none;
+        padding: 0px 15px;
+        .subCategory {
+          a {
+            &::before {
+              content: "";
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
-    header: "./src/header.js",
+    // header: "./src/header.js",
     index: "./src/index.js",
   },
   mode: "development",
@@ -43,6 +43,7 @@ module.exports = {
     port: 3000,
     publicPath: "http://localhost:3000/public/",
     hotOnly: true,
+    historyApiFallback: true,
   },
   optimization: {
     // splitChunks: {

@@ -1,14 +1,14 @@
 import React, { lazy, Suspense, useState } from "react";
-import getTexto from "./libs/messages";
-import Avatar from "./components/SessionAvatarHeader";
-import Searcher from "./components/searcher";
-import Menu from "./components/menumarket";
+import getTexto from "../libs/messages";
+import Avatar from "../components/SessionAvatarHeader";
+import Searcher from "../components/searcher";
+import Menu from "../components/menumarket";
 
 //estilos
-import "../scss/modules/Header.module.scss";
-import "../scss/components/searcher.scss";
+import "../../scss/modules/Header.module.scss";
+import "../../scss/components/searcher.scss";
 
-export default function Header({ cat }) {
+export default function Header({ cat, datos }) {
   const [categories, setCat] = useState("");
   let renderCats = cat.map((item, index) => {
     return (
@@ -80,7 +80,7 @@ export default function Header({ cat }) {
                 {renderCats}
               </select>
             </div>
-            <Searcher category={categories} />
+            <Searcher datos={datos} category={categories} />
           </div>
         </div>
         <div className="menu_logo">
