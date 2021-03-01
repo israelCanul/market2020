@@ -1,50 +1,37 @@
 import React from "react";
 import Item from "./Item";
+import PageNavigation from "./pageNavigation";
 
 export default function ListItems({ category = null, params, state }) {
+  let filterByCategory = "";
   let countRows = Math.trunc(6 / 4);
   let rowAdd = 6 % 4 > 0 ? 1 : 0;
   countRows = parseInt(countRows) + rowAdd;
-
-  console.log(state);
-
-  return category == null ? (
-    <div className="main_container">
+  let items = state.storeItems;
+  if (params.category && category) {
+    items = state.storeItems.map((item) => {
+      if (params.category === item.Category.SCategoryCode) {
+        if (params.subcategory) {
+          if (params.subcategory === item.ItemExt.Group.SGroupCode) {
+            return item;
+          }
+        } else {
+          return item;
+        }
+      }
+    });
+  }
+  items = items.filter((i) => i != undefined);
+  let renderItems = items.map((item) => {
+    return <Item key={item.SItemCode} item={item} />;
+  });
+  return (
+    <div className={category ? "wrapperItemsOnCategories" : "main_container"}>
       <div
-        style={{ gridTemplateRows: `repeat(${countRows},1fr)` }}
+        style={{ gridTemplateRows: `auto repeat(${countRows},1fr)` }}
         className="list grid"
       >
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-      </div>
-    </div>
-  ) : (
-    <div className="wrapperItemsOnCategories">
-      <div
-        style={{ gridTemplateRows: `repeat(${countRows},1fr)` }}
-        className="list grid"
-      >
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
+        {PageNavigation(renderItems)}
       </div>
     </div>
   );

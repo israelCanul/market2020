@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import getTexto from "../libs/messages";
-export default function Item(props) {
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
+export default function Item({ item }) {
   const [value, setValue] = useState("");
   const [number, setNumber] = useState(0);
   const [errorMinSale, setError] = useState("");
+
+  // console.log(item);
 
   const onChangeInput = (e) => {
     if (props.item.YnAllowFractionalSale) {
@@ -36,11 +40,19 @@ export default function Item(props) {
     <div className="item">
       <div className="item_content">
         <div className="image">
-          <img src="/img/home/ejem_recommendations_for_you.jpg" alt="Item" />
+          {/* <img src={item.SPahtImage} alt="Item" /> */}
+          <LazyLoadImage
+            alt={item.SItemName}
+            src={item.SPahtImage} // use normal <img> attributes as props
+          />
         </div>
         <div className="description">
-          <span>Whole fresh milk Lala (34 floz.)</span> <br />
-          <strong>$ 32.00 MXN</strong>
+          <span style={{ textTransform: "capitalize" }}>
+            {item.SItemName.toLowerCase()}
+          </span>{" "}
+          <br />
+          <span>{item.ItemMeasure.toLowerCase()}</span> <br />
+          <strong>$ {parseFloat(item.DPrice).toFixed(2)} MXN</strong>
         </div>
         <div className="unit">
           <div className="wrap-units">
