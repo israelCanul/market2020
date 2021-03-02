@@ -28,7 +28,7 @@ export default function ListItems({ category = null, params, state }) {
   return (
     <div className={category ? "wrapperItemsOnCategories" : "main_container"}>
       <div
-        style={{ gridTemplateRows: `auto repeat(${countRows},1fr)` }}
+        style={{ gridTemplateRows: `auto repeat(${countRows},auto)` }}
         className="list grid"
       >
         {PageNavigation(renderItems)}
