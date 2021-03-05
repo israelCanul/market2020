@@ -12,6 +12,10 @@ import { getCategories } from "./libs/api";
 import ThemeContext from "./context/itemsContext";
 
 const Home = lazy(() => import(/* webpackPrefetch: true */ "./pages/home"));
+const Detail = lazy(() => import(/* webpackPrefetch: true */ "./pages/detail"));
+const Search = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/searchResult")
+);
 const Categories = lazy(() =>
   import(/* webpackPrefetch: true */ "./pages/categories")
 );
@@ -1033,15 +1037,25 @@ function App({ items }) {
     },
   ];
   const [storeItems, setItems] = useState(items);
+  const [queryParams, setQParams] = useState("");
   const value = { storeItems, setItems };
   return (
     <ThemeContext.Provider value={value}>
       <Router>
         <Suspense fallback="Loading">
-          <Header datos={items} cat={getCat} />
+          <Header datos={items} setQP={setQParams} cat={getCat} />
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path="/s">
+              <Search QP={queryParams} items={storeItems} />
+            </Route>
+            <Route exact path="/products">
+              <Categories cat={getCat} />
+            </Route>
+            <Route exact path="/products/:producto">
+              <Detail items={storeItems} />
             </Route>
             <Route exact path="/categories">
               <Categories cat={getCat} />

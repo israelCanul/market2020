@@ -1,34 +1,52 @@
 import React, { useRef, useState } from "react";
 import { Redirect } from "react-router-dom";
-import _ from "lodash/collection";
-export default function Searcher({ datos = null, filter = null, category }) {
+import { useHistory } from "react-router-dom";
+
+export default function Searcher({
+  datos = null,
+  setQP,
+  filter = null,
+  category,
+}) {
+  let history = useHistory();
+
   const [dtFiltered, setData] = useState([]);
   const [selected, setSelected] = useState(null);
   let refInput = useRef(null);
   let data = datos != null ? datos : [];
 
-  let getUrlSearch = function () {
+  let getUrlSearch = function (itemsDesc = null) {
     let url = "/";
-    if (refInput.current.value != "") {
-      url = "/?i=" + refInput.current.value;
+    let valor = itemsDesc != null ? itemsDesc : refInput.current.value;
+    if (valor != "") {
+      url = "/s?i=" + valor;
     }
     if (category != "") {
       url = url + "&cat=" + category.SCategoryCode;
-      if (refInput.current.value == "") {
-        url = "/?cat=" + category.SCategoryCode;
+      if (valor == "") {
+        url = "/s?cat=" + category.SCategoryCode;
       }
     }
     return url;
   };
   let search = function (e) {
     // if (refInput.current.value != "") {
-    window.location.href = getUrlSearch();
+    // window.location.href = getUrlSearch();
+    setUrl();
     // }
   };
   let dataFiltered = [];
   let renderData = dtFiltered.map((item, index) => {
     return (
-      <li key={item.IItemID} className={index == selected ? "active" : ""}>
+      <li
+        onClick={(e) => {
+          e.preventDefault();
+          setUrl(item.SItemDesc.toLowerCase());
+          console.log(item.SItemDesc.toLowerCase());
+        }}
+        key={item.IItemID}
+        className={index == selected ? "active" : ""}
+      >
         <a href="#">{item.SItemDesc.toLowerCase()}</a>
       </li>
     );
@@ -54,7 +72,6 @@ export default function Searcher({ datos = null, filter = null, category }) {
     setData(arraySearched);
   };
   let inputKeyDown = (event) => {
-    console.log(event.which);
     // return;
     // //13 enter
     if (event.which == 38 || event.which == 40) {
@@ -90,9 +107,17 @@ export default function Searcher({ datos = null, filter = null, category }) {
     if (event.which == 13) {
       event.preventDefault();
       if (refInput.current.value != "") {
-        window.location.href = getUrlSearch();
+        // window.location.href = getUrlSearch();
+        setUrl();
       }
     }
+  };
+  let setUrl = (itemsDesc = null) => {
+    setQP(getUrlSearch(itemsDesc));
+    history.push(getUrlSearch(itemsDesc));
+    setData([]);
+    refInput.current.value = "";
+    // dtFiltered = [];
   };
   return (
     <React.Fragment>

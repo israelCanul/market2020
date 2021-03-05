@@ -33,7 +33,9 @@ function App() {
               </div>
             </div>
             <div className="main">
-              <Slide />
+              <div className="main_container">
+                <Slide />
+              </div>
               <Sections />
               <ListItems state={state} params={{}} />
               <GenericSection className="row">

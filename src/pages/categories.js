@@ -7,7 +7,7 @@ import ThemeContext from "../context/itemsContext";
 
 export default function Categories(props) {
   let params = useParams();
-  // console.log(props.cat);
+
   let categorySelected = {};
   if (params.id) {
     let category = props.cat.filter(
@@ -26,7 +26,6 @@ export default function Categories(props) {
       }
     }
   }
-  console.log(categorySelected);
 
   return (
     <ThemeContext.Consumer>

@@ -53,7 +53,9 @@
       @include tablet {
         width: $menuAsideWidth;
       }
-
+      a {
+        text-decoration: none;
+      }
       &_content {
         position: relative;
         left: 0px;

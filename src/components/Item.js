@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import getTexto from "../libs/messages";
+import UnitHandler from "./unitHandler";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 
 export default function Item({ item }) {
   const [value, setValue] = useState("");
@@ -54,24 +56,16 @@ export default function Item({ item }) {
           <span>{item.ItemMeasure.toLowerCase()}</span> <br />
           <strong>$ {parseFloat(item.DPrice).toFixed(2)} MXN</strong>
         </div>
-        <div className="unit">
-          <div className="wrap-units">
-            <a href="#" className="btn remove">
-              -
-            </a>
-            <input type="text" className="input-field" />
-            <a href="#" className="btn add">
-              +
-            </a>
-          </div>
-        </div>
+        <UnitHandler />
         <div className="action">
           <a href="" className="btnAdd">
             {getTexto("Add to cart")}
           </a>
         </div>
         <div className="details">
-          <a href="#">{getTexto("View details")}</a>
+          <Link to={`/products/${item.SItemCode}`}>
+            {getTexto("View details")}
+          </Link>
         </div>
       </div>
     </div>

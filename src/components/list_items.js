@@ -2,7 +2,12 @@ import React from "react";
 import Item from "./Item";
 import PageNavigation from "./pageNavigation";
 
-export default function ListItems({ category = null, params, state }) {
+export default function ListItems({
+  category = null,
+  search = null,
+  params,
+  state,
+}) {
   let filterByCategory = "";
   let countRows = Math.trunc(6 / 4);
   let rowAdd = 6 % 4 > 0 ? 1 : 0;
@@ -21,6 +26,7 @@ export default function ListItems({ category = null, params, state }) {
       }
     });
   }
+
   items = items.filter((i) => i != undefined);
   let renderItems = items.map((item) => {
     return <Item key={item.SItemCode} item={item} />;

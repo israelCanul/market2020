@@ -1,0 +1,84 @@
+.wrapUnit {
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0px 10px;
+    .btn:first-of-type {
+      margin-bottom: 10px;
+    }
+    .btn {
+      width: 100%;
+      max-width: 250px;
+      background-color: $grisBajoBG;
+      text-align: center;
+      line-height: 30px;
+      margin: 0px 0px;
+      border-radius: 7px;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 1px 1px 2px 1px rgba($grisTexto, 0.4);
+      &.addtocart {
+        background-color: rgba($naranja, 0.9);
+        color: white;
+        &:hover {
+          background-color: rgba($naranja, 1);
+        }
+      }
+      &.saveforlater {
+        background-color: rgba($verdeSitio, 0.9);
+        color: $verdeSitioBold;
+        &:hover {
+          background-color: rgba($verdeSitio, 1);
+          //   color: white;
+        }
+      }
+    }
+  }
+}
+// unit section  is out of its container
+.unit {
+  margin: 0px 0px 0px;
+  // background-color: green;
+  .wrap-units {
+    display: flex;
+    flex-direction: row;
+    // background: green;
+    padding: 0px 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    a {
+      text-decoration: none;
+      &.btn {
+        color: $black;
+        background: $grisBajo;
+        border: 1px solid $grisTexto;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        &.add {
+          border-left: 0px;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+        &.remove {
+          border-right: 0px;
+          border-bottom-left-radius: 5px;
+          border-top-left-radius: 5px;
+        }
+      }
+    }
+    input {
+      color: $grisTexto;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 3px 2px;
+      width: 80px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../scss/components/asideMenu.scss";
 import getTexto from "../libs/messages";
+import { Link } from "react-router-dom";
 
 export default function Menu({ cat }) {
   const [menuCat, setMenuCat] = useState("");
@@ -41,32 +42,39 @@ export default function Menu({ cat }) {
     );
   });
 
+  // onClick={(e) => {
+  //   window.location.href =
+  //     "/" +
+  //     "?cat=" +
+  //     menuCat.SCategoryCode +
+  //     "&s=" +
+  //     item.SGroupCode.trim();
+  // }}
+
   let renderSubCats = () => {
     let renderresponse = "";
     if (menuCat != "") {
       renderresponse = menuCat.LsGroup.map((item, index) => {
         return (
-          <div
-            onClick={(e) => {
-              window.location.href =
-                "/" +
-                "?cat=" +
-                menuCat.SCategoryCode +
-                "&s=" +
-                item.SGroupCode.trim();
+          <Link
+            onClick={() => {
+              close();
             }}
-            className="category"
-            key={item.SGroupCode}
-            value={index}
+            to={`/categories/${menuCat.SCategoryDesc.toLowerCase().replaceAll(
+              " ",
+              "-"
+            )}/${item.SGroupDesc.toLowerCase().replaceAll(" ", "-")}`}
           >
-            <span>{item.SGroupDesc.toLowerCase()}</span>
-            <img
-              width="7"
-              height="11"
-              src="\img\icons\arrow_right_black.png"
-              alt="Arrow Right Black"
-            />
-          </div>
+            <div className="category" key={item.SGroupCode} value={index}>
+              <span>{item.SGroupDesc.toLowerCase()}</span>
+              <img
+                width="7"
+                height="11"
+                src="\img\icons\arrow_right_black.png"
+                alt="Arrow Right Black"
+              />
+            </div>
+          </Link>
         );
       });
     }

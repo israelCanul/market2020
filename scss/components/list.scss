@@ -5,8 +5,14 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(1, auto);
-    row-gap: 20px;
+    row-gap: 10px;
     @include tablet {
+      row-gap: 15px;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(10, auto);
+    }
+    @include desktop {
+      row-gap: 20px;
       grid-template-columns: repeat(16, 1fr);
       grid-template-rows: repeat(10, auto);
     }
@@ -39,7 +45,10 @@
       padding: 0px $padding;
       @for $i from 1 to 16 {
         &.x#{$i} {
-          grid-column: auto/span #{$i};
+          grid-column: auto/span 4;
+          @include tablet {
+            grid-column: auto/span #{$i};
+          }
         }
       }
     }
@@ -64,7 +73,13 @@
         .image {
           margin-top: 15px;
           img {
-            max-width: 100%;
+            max-width: 120px;
+            @include tablet {
+              max-width: 200px;
+            }
+            @include desktop {
+              max-width: 200px;
+            }
           }
         }
         .description {
@@ -75,50 +90,7 @@
             font-size: 1rem;
           }
         }
-        .unit {
-          margin: 0px 0px 10px;
-          // background-color: green;
-          .wrap-units {
-            display: flex;
-            flex-direction: row;
-            // background: green;
-            padding: 0px 0px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: row;
-            align-items: stretch;
-            a {
-              text-decoration: none;
-              &.btn {
-                color: $black;
-                background: $grisBajo;
-                border: 1px solid $grisTexto;
-                padding: 5px 10px;
-                box-sizing: border-box;
-                &.add {
-                  border-left: 0px;
-                  border-top-right-radius: 5px;
-                  border-bottom-right-radius: 5px;
-                }
-                &.remove {
-                  border-right: 0px;
-                  border-bottom-left-radius: 5px;
-                  border-top-left-radius: 5px;
-                }
-              }
-            }
-            input {
-              color: $grisTexto;
-              font-size: 1.2rem;
-              text-align: center;
-              padding: 3px 2px;
-              width: 80px;
-              &:focus {
-                outline: none;
-              }
-            }
-          }
-        }
+
         .action {
           padding: 5px 0px;
           box-sizing: border-box;

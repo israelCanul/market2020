@@ -9,9 +9,9 @@ export default function RelatedSection(props) {
         <div className="title">
           <h3>{getTexto("Related Products")}</h3>
         </div>
-        <Item />
-        <Item />
-        <Item />
+        <Item item={props.items[0]} />
+        <Item item={props.items[1]} />
+        <Item item={props.items[2]} />
       </div>
     </div>
   );

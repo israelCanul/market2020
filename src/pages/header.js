@@ -8,7 +8,7 @@ import Menu from "../components/menumarket";
 import "../../scss/modules/Header.module.scss";
 import "../../scss/components/searcher.scss";
 
-export default function Header({ cat, datos }) {
+export default function Header({ cat, setQP, datos }) {
   const [categories, setCat] = useState("");
   let renderCats = cat.map((item, index) => {
     return (
@@ -80,7 +80,7 @@ export default function Header({ cat, datos }) {
                 {renderCats}
               </select>
             </div>
-            <Searcher datos={datos} category={categories} />
+            <Searcher setQP={setQP} datos={datos} category={categories} />
           </div>
         </div>
         <div className="menu_logo">
