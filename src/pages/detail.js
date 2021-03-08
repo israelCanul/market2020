@@ -7,6 +7,7 @@ import Slide from "../components/slide";
 import getTexto from "../libs/messages";
 import UnitHandler from "../components/unitHandler";
 import Related from "../components/relatedproducts";
+import { getCurrency } from "../libs/language";
 import "../../scss/components/itemDetail.scss";
 
 export default function Detail({ items }) {
@@ -37,7 +38,11 @@ export default function Detail({ items }) {
                 <GenericSection className="row">
                   <div className="section x8">
                     <div className="slidecontainer">
-                      <Slide showTumbs={true} />
+                      <Slide
+                        slides={[{ img: itemSelected.SPahtImage }]}
+                        width="200px"
+                        showTumbs={true}
+                      />
                     </div>
                   </div>
                   <div className="section x4">
@@ -55,7 +60,9 @@ export default function Detail({ items }) {
                             <td>
                               <strong>{getTexto("Unit Price")}:</strong>{" "}
                             </td>
-                            <td>$ {itemSelected.DPrice} MX</td>
+                            <td>
+                              $ {itemSelected.DPrice} {getCurrency()}
+                            </td>
                           </tr>
                           <tr>
                             <td>
@@ -69,6 +76,12 @@ export default function Detail({ items }) {
                             </td>
                             <td>{itemSelected.SItemMark}</td>
                           </tr>
+                          <tr>
+                            <td>
+                              <strong>{getTexto("Min. for sale")}:</strong>
+                            </td>
+                            <td>{itemSelected.MinSell}</td>
+                          </tr>
                         </tbody>
                       </table>
                       <hr />
@@ -81,7 +94,7 @@ export default function Detail({ items }) {
                   </div>
                   <div className="section x4">
                     <div className="item_container">
-                      <UnitHandler detail />
+                      <UnitHandler item={itemSelected} detail />
                     </div>
                     <div className="promo_container">sd</div>
                   </div>

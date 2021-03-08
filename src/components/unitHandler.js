@@ -1,58 +1,252 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import getTexto from "../libs/messages";
+import { getCurrency } from "../libs/language";
+import CartContext from "../context/cartContext";
 
 export default function HandlerItem({ item, detail = null }) {
-  let [subtotal, setSubtotal] = useState(parseFloat(0).toFixed(2));
+  let [subtotal, setSubtotal] = useState(
+    (item.YnAllowFractionalSale
+      ? parseFloat(item.MinSell).toFixed(1)
+      : parseInt(item.MinSell)) * item.DPrice
+  );
+  let [unit, setUnit] = useState(
+    item.YnAllowFractionalSale
+      ? parseFloat(item.MinSell).toFixed(1)
+      : parseInt(item.MinSell)
+  );
+  useEffect(() => {
+    getSubTotal();
+  });
+  let [error, setError] = useState(false);
+
+  let addRemoveUnit = (operation) => {
+    let addNumber, removeNumber;
+    let value = unit;
+    if (item.YnAllowFractionalSale) {
+      addNumber = parseFloat(unit) + parseFloat(item.MinSell);
+      addNumber = parseFloat(addNumber).toFixed(1);
+    } else {
+      addNumber = unit + parseInt(item.MinSell);
+    }
+    if (parseFloat(unit) > 0) {
+      if (item.YnAllowFractionalSale == 1) {
+        removeNumber =
+          parseFloat(unit).toFixed(1) - parseFloat(item.MinSell).toFixed(1);
+        removeNumber = parseFloat(removeNumber).toFixed(1);
+        if (removeNumber < 0) {
+          removeNumber = parseFloat(0).toFixed(1);
+        }
+      } else {
+        removeNumber = unit - parseInt(item.MinSell);
+      }
+    } else {
+      removeNumber = 0;
+    }
+    if (operation == "+") {
+      setUnit(addNumber);
+    } else if (operation == "-") {
+      removeNumber == 0 ? setUnit(item.MinSell) : setUnit(removeNumber);
+    }
+  };
+  let addUnit = (unit) => {
+    let newValor;
+    if (item.YnAllowFractionalSale) {
+      newValor = parseFloat(unit.target.value).toFixed(1);
+    } else {
+      newValor = parseInt(unit.target.value);
+    }
+    let that = this;
+    if (
+      unit.target.value == null ||
+      unit.target.value == "" ||
+      parseFloat(unit.target.value) <= 0
+    ) {
+      setUnit(parseInt(item.MinSell));
+      if (item.YnAllowFractionalSale) {
+        setUnit(parseFloat(item.MinSell).toFixed(2));
+      }
+    } else {
+      setUnit(newValor);
+    }
+    setError(false);
+  };
+  let onChangeInput = (e) => {
+    if (item.YnAllowFractionalSale) {
+      let Re = /^([0-9\.])*$/;
+      let myArray = Re.exec(e.target.value);
+      if (myArray != null) {
+        setUnit(e.target.value);
+      } else {
+        setUnit("");
+      }
+    } else {
+      let Re = /^([0-9])*$/;
+      let myArray = Re.exec(e.target.value);
+      if (myArray != null) {
+        if (parseInt(myArray) % parseInt(item.MinSell) == 0) {
+          setUnit(parseInt(e.target.value));
+          setError(false);
+        } else {
+          setUnit("");
+          setError(true);
+        }
+      } else {
+        setUnit("");
+        setError(true);
+      }
+    }
+  };
+
+  let getSubTotal = () => {
+    let newSubtotal =
+      (item.YnAllowFractionalSale
+        ? parseFloat(item.MinSell).toFixed(2)
+        : parseInt(item.MinSell)) * item.DPrice;
+    if (item.YnAllowFractionalSale) {
+      newSubtotal = parseFloat(unit * item.DPrice).toFixed(2);
+    } else {
+      newSubtotal = parseFloat(unit * item.DPrice).toFixed(2);
+    }
+    setSubtotal(newSubtotal);
+  };
+  let renderInput = (
+    <div className="wrap-units">
+      <a
+        onClick={(e) => {
+          e.preventDefault();
+          addRemoveUnit("-");
+        }}
+        href="#"
+        className="btn remove"
+      >
+        -
+      </a>
+      <input
+        onChange={onChangeInput.bind(this)}
+        type="text"
+        value={unit}
+        className="input-field"
+        onFocus={(i) => {
+          i.target.value = "";
+          setUnit("");
+        }}
+        onBlur={addUnit.bind(this)}
+      />
+      <a
+        onClick={(e) => {
+          e.preventDefault();
+          addRemoveUnit("+");
+        }}
+        href="#"
+        className="btn add"
+        value=""
+      >
+        +
+      </a>
+    </div>
+  );
+
+  let addToCart = (cart, o) => {
+    // console.log(e, o);
+    o.preventDefault();
+    let itemObject = {
+      totalItems: unit,
+      item: item,
+      onList: true,
+    };
+    cart.setCart({ itemsCart: [itemObject], itemsCount: 0, totalPrice: 2 });
+    // console.log(cart);
+    // console.log(cart.setCart);
+  };
+
   return (
-    <React.Fragment>
-      {detail ? (
-        <div className="wrapUnit">
-          <table width="100%">
-            <tbody>
-              <tr>
-                <td>{getTexto("Subtotal")}:</td>
-                <td style={{ textAlign: "center" }}>{subtotal}</td>
-              </tr>
-              <tr>
-                <td>{getTexto("Quantity")}:</td>
-                <td>
-                  <div className="unit">
-                    <div className="wrap-units">
-                      <a href="#" className="btn remove">
-                        -
-                      </a>
-                      <input type="text" className="input-field" />
-                      <a href="#" className="btn add">
-                        +
-                      </a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div className="actions">
-            <a className="btn addtocart" href="">
-              {getTexto("Add to Cart")}
-            </a>
-            <a className="btn saveforlater" href="">
-              {getTexto("Save for Later")}
-            </a>
-          </div>
-        </div>
-      ) : (
-        <div className="unit">
-          <div className="wrap-units">
-            <a href="#" className="btn remove">
-              -
-            </a>
-            <input type="text" className="input-field" />
-            <a href="#" className="btn add">
-              +
-            </a>
-          </div>
-        </div>
+    <CartContext.Consumer>
+      {(cart) => (
+        <React.Fragment>
+          {detail ? (
+            <div className="wrapUnit">
+              <table width="100%">
+                <tbody>
+                  <tr>
+                    <td>{getTexto("Subtotal")}:</td>
+                    <td style={{ textAlign: "center" }}>
+                      $ {subtotal} {getCurrency()}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{getTexto("Quantity")}:</td>
+                    <td>
+                      <div className="unit">
+                        {renderInput}
+                        <small
+                          style={{
+                            display: "block",
+                            textAlign: "center",
+                            color: "rgba(255, 68, 56, 0.9)",
+                          }}
+                        >
+                          {error
+                            ? `${getTexto("Minimum purchase of")} ${
+                                item.MinSell
+                              } ${getTexto("items or in groups of")} ${
+                                item.MinSell
+                              }`
+                            : ""}
+                        </small>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="actions">
+                <a
+                  onClick={addToCart.bind(this, cart)}
+                  className="btn addtocart"
+                  href=""
+                >
+                  {getTexto("Add to Cart")}
+                </a>
+                <a className="btn saveforlater" href="">
+                  {getTexto("Save for Later")}
+                </a>
+              </div>
+            </div>
+          ) : (
+            <React.Fragment>
+              <div className="unit">
+                {renderInput}
+                <small
+                  style={{
+                    display: "block",
+                    textAlign: "center",
+                    color: "rgba(255, 68, 56, 0.9)",
+                  }}
+                >
+                  {error
+                    ? `${getTexto("Minimum purchase of")} ${
+                        item.MinSell
+                      } ${getTexto("items or in groups of")} ${item.MinSell}`
+                    : ""}
+                  {cart.cart.i ? "si hay " : "no hay"}
+                </small>
+              </div>
+              {!error ? (
+                <div className="action">
+                  <a
+                    onClick={addToCart.bind(this, cart)}
+                    href=""
+                    className="btnAdd"
+                  >
+                    {getTexto("Add to cart")}
+                  </a>
+                </div>
+              ) : (
+                ""
+              )}
+            </React.Fragment>
+          )}{" "}
+        </React.Fragment>
       )}
-    </React.Fragment>
+    </CartContext.Consumer>
   );
 }

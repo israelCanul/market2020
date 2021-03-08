@@ -12,6 +12,12 @@
         justify-content: center;
       }
     }
+    .carousel .slide > div {
+      background-color: white;
+    }
+    .carousel .slide img {
+      max-width: 200px;
+    }
   }
   .section {
     display: flex;

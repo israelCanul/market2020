@@ -11,33 +11,6 @@ export default function Item({ item }) {
 
   // console.log(item);
 
-  const onChangeInput = (e) => {
-    if (props.item.YnAllowFractionalSale) {
-      let Re = /^([0-9\.])*$/;
-      let myArray = Re.exec(e.target.value);
-      if (myArray != null) {
-        this.setState({ number: e.target.value });
-      } else {
-        //this.setState({number : parseFloat(this.props.count).toFixed(1)});
-        this.setState({ number: "" });
-      }
-    } else {
-      let Re = /^([0-9])*$/;
-      let myArray = Re.exec(e.target.value);
-      if (myArray != null) {
-        if (parseInt(myArray) % parseInt(props.item.MinSell) == 0) {
-          this.setState({ number: parseInt(e.target.value) });
-          this.setState({ errorMinSale: false });
-        } else {
-          this.setState({ number: "" });
-          this.setState({ errorMinSale: true });
-        }
-      } else {
-        this.setState({ number: "" });
-        this.setState({ errorMinSale: true });
-      }
-    }
-  };
   return (
     <div className="item">
       <div className="item_content">
@@ -56,12 +29,8 @@ export default function Item({ item }) {
           <span>{item.ItemMeasure.toLowerCase()}</span> <br />
           <strong>$ {parseFloat(item.DPrice).toFixed(2)} MXN</strong>
         </div>
-        <UnitHandler />
-        <div className="action">
-          <a href="" className="btnAdd">
-            {getTexto("Add to cart")}
-          </a>
-        </div>
+        <UnitHandler item={item} />
+
         <div className="details">
           <Link to={`/products/${item.SItemCode}`}>
             {getTexto("View details")}

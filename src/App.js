@@ -10,6 +10,7 @@ import { hot } from "react-hot-loader";
 import "../scss/App.scss";
 import { getCategories } from "./libs/api";
 import ThemeContext from "./context/itemsContext";
+import CartContext from "./context/itemsContext";
 
 const Home = lazy(() => import(/* webpackPrefetch: true */ "./pages/home"));
 const Detail = lazy(() => import(/* webpackPrefetch: true */ "./pages/detail"));
@@ -24,7 +25,7 @@ const BacktoTop = lazy(() =>
 );
 const Header = lazy(() => import(/* webpackPrefetch: true */ "./pages/header"));
 const Footer = lazy(() => import(/* webpackPrefetch: true */ "./pages/footer"));
-function App({ items }) {
+function App({ items, initCart = {} }) {
   let getCat = getCategories();
   let datos = [
     {
@@ -1038,40 +1039,55 @@ function App({ items }) {
   ];
   const [storeItems, setItems] = useState(items);
   const [queryParams, setQParams] = useState("");
+  const [cart, setCartS] = useState({
+    itemsCart: [],
+    itemsCount: 0,
+    totalPrice: 0.042,
+  });
+  let updateCart = (items) => {
+    setCartS(items);
+  };
+
+  const initialCart = {
+    cart: cart,
+    setCart: updateCart,
+  };
   const value = { storeItems, setItems };
   return (
-    <ThemeContext.Provider value={value}>
-      <Router>
-        <Suspense fallback="Loading">
-          <Header datos={items} setQP={setQParams} cat={getCat} />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/s">
-              <Search QP={queryParams} items={storeItems} />
-            </Route>
-            <Route exact path="/products">
-              <Categories cat={getCat} />
-            </Route>
-            <Route exact path="/products/:producto">
-              <Detail items={storeItems} />
-            </Route>
-            <Route exact path="/categories">
-              <Categories cat={getCat} />
-            </Route>
-            <Route exact path="/categories/:id">
-              <Categories cat={getCat} />
-            </Route>
-            <Route exact path="/categories/:id/:subid">
-              <Categories cat={getCat} />
-            </Route>
-          </Switch>
-          <BacktoTop />
-          <Footer />
-        </Suspense>
-      </Router>
-    </ThemeContext.Provider>
+    <CartContext.Provider value={initialCart}>
+      <ThemeContext.Provider value={value}>
+        <Router>
+          <Suspense fallback="Loading">
+            <Header datos={items} setQP={setQParams} cat={getCat} />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/s">
+                <Search QP={queryParams} items={storeItems} />
+              </Route>
+              <Route exact path="/products">
+                <Categories cat={getCat} />
+              </Route>
+              <Route exact path="/products/:producto">
+                <Detail items={storeItems} />
+              </Route>
+              <Route exact path="/categories">
+                <Categories cat={getCat} />
+              </Route>
+              <Route exact path="/categories/:id">
+                <Categories cat={getCat} />
+              </Route>
+              <Route exact path="/categories/:id/:subid">
+                <Categories cat={getCat} />
+              </Route>
+            </Switch>
+            <BacktoTop />
+            <Footer />
+          </Suspense>
+        </Router>
+      </ThemeContext.Provider>
+    </CartContext.Provider>
   );
 }
 
