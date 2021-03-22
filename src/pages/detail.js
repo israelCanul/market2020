@@ -58,7 +58,7 @@ export default function Detail({ items }) {
                         <tbody>
                           <tr>
                             <td>
-                              <strong>{getTexto("Unit Price")}:</strong>{" "}
+                              <strong>{getTexto("Unit price")}:</strong>{" "}
                             </td>
                             <td>
                               $ {itemSelected.DPrice} {getCurrency()}

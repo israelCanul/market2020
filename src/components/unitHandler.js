@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import getTexto from "../libs/messages";
 import { getCurrency } from "../libs/language";
-import CartContext from "../context/cartContext";
+import { fetchCartItems, setItemToCart } from "../actions/cartActions";
+import { NotificationManager } from "react-notifications";
 
-export default function HandlerItem({ item, detail = null }) {
+function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
   let [subtotal, setSubtotal] = useState(
     (item.YnAllowFractionalSale
       ? parseFloat(item.MinSell).toFixed(1)
@@ -146,107 +148,124 @@ export default function HandlerItem({ item, detail = null }) {
     </div>
   );
 
-  let addToCart = (cart, o) => {
-    // console.log(e, o);
+  let addToCart = (o) => {
     o.preventDefault();
     let itemObject = {
       totalItems: unit,
       item: item,
       onList: true,
     };
-    cart.setCart({ itemsCart: [itemObject], itemsCount: 0, totalPrice: 2 });
-    // console.log(cart);
-    // console.log(cart.setCart);
+    setItemToCart(itemObject);
+    NotificationManager.info(item.SItemName, "item added to cart", 6000);
+    setUnit(
+      item.YnAllowFractionalSale
+        ? parseFloat(item.MinSell).toFixed(1)
+        : parseInt(item.MinSell)
+    );
   };
 
   return (
-    <CartContext.Consumer>
-      {(cart) => (
+    <React.Fragment>
+      {detail ? (
+        <div className="wrapUnit">
+          <table width="100%">
+            <tbody>
+              <tr>
+                <td>{getTexto("Subtotal")}:</td>
+                <td style={{ textAlign: "center" }}>
+                  $ {subtotal} {getCurrency()}
+                </td>
+              </tr>
+              <tr>
+                <td>{getTexto("Quantity")}:</td>
+                <td>
+                  <div className="unit">
+                    {renderInput}
+                    <small
+                      style={{
+                        display: "block",
+                        textAlign: "center",
+                        color: "rgba(255, 68, 56, 0.9)",
+                      }}
+                    >
+                      {error
+                        ? `${getTexto("Minimum purchase of")} ${
+                            item.MinSell
+                          } ${getTexto("items or in groups of")} ${
+                            item.MinSell
+                          }`
+                        : ""}
+                    </small>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="actions">
+            <a onClick={addToCart.bind(this)} className="btn addtocart" href="">
+              {getTexto("Add to Cart")}
+            </a>
+            <a className="btn saveforlater" href="">
+              {getTexto("Save for Later")}
+            </a>
+          </div>
+        </div>
+      ) : cartItem ? (
+        <div className="unit">
+          {renderInput}
+          <small
+            style={{
+              display: "block",
+              textAlign: "center",
+              color: "rgba(255, 68, 56, 0.9)",
+            }}
+          >
+            {error
+              ? `${getTexto("Minimum purchase of")} ${item.MinSell} ${getTexto(
+                  "items or in groups of"
+                )} ${item.MinSell}`
+              : ""}
+          </small>
+        </div>
+      ) : (
         <React.Fragment>
-          {detail ? (
-            <div className="wrapUnit">
-              <table width="100%">
-                <tbody>
-                  <tr>
-                    <td>{getTexto("Subtotal")}:</td>
-                    <td style={{ textAlign: "center" }}>
-                      $ {subtotal} {getCurrency()}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>{getTexto("Quantity")}:</td>
-                    <td>
-                      <div className="unit">
-                        {renderInput}
-                        <small
-                          style={{
-                            display: "block",
-                            textAlign: "center",
-                            color: "rgba(255, 68, 56, 0.9)",
-                          }}
-                        >
-                          {error
-                            ? `${getTexto("Minimum purchase of")} ${
-                                item.MinSell
-                              } ${getTexto("items or in groups of")} ${
-                                item.MinSell
-                              }`
-                            : ""}
-                        </small>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="actions">
-                <a
-                  onClick={addToCart.bind(this, cart)}
-                  className="btn addtocart"
-                  href=""
-                >
-                  {getTexto("Add to Cart")}
-                </a>
-                <a className="btn saveforlater" href="">
-                  {getTexto("Save for Later")}
-                </a>
-              </div>
+          <div className="unit">
+            {renderInput}
+            <small
+              style={{
+                display: "block",
+                textAlign: "center",
+                color: "rgba(255, 68, 56, 0.9)",
+              }}
+            >
+              {error
+                ? `${getTexto("Minimum purchase of")} ${
+                    item.MinSell
+                  } ${getTexto("items or in groups of")} ${item.MinSell}`
+                : ""}
+            </small>
+          </div>
+          {!error ? (
+            <div className="action">
+              <a onClick={addToCart.bind(this)} href="" className="btnAdd">
+                {getTexto("Add to cart")}
+              </a>
             </div>
           ) : (
-            <React.Fragment>
-              <div className="unit">
-                {renderInput}
-                <small
-                  style={{
-                    display: "block",
-                    textAlign: "center",
-                    color: "rgba(255, 68, 56, 0.9)",
-                  }}
-                >
-                  {error
-                    ? `${getTexto("Minimum purchase of")} ${
-                        item.MinSell
-                      } ${getTexto("items or in groups of")} ${item.MinSell}`
-                    : ""}
-                  {cart.cart.i ? "si hay " : "no hay"}
-                </small>
-              </div>
-              {!error ? (
-                <div className="action">
-                  <a
-                    onClick={addToCart.bind(this, cart)}
-                    href=""
-                    className="btnAdd"
-                  >
-                    {getTexto("Add to cart")}
-                  </a>
-                </div>
-              ) : (
-                ""
-              )}
-            </React.Fragment>
-          )}{" "}
+            ""
+          )}
         </React.Fragment>
-      )}
-    </CartContext.Consumer>
+      )}{" "}
+    </React.Fragment>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart,
+    site: state.site,
+  };
+};
+export default connect(mapStateToProps, { fetchCartItems, setItemToCart })(
+  HandlerItem
+);

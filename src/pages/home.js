@@ -6,7 +6,6 @@ import Slide from "../components/slide";
 import Sections from "../components/sections";
 import GenericSection from "../components/genericsection";
 import ListItems from "../components/list_items";
-import Related from "../components/relatedproducts";
 
 function App() {
   return (

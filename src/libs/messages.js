@@ -33,7 +33,7 @@ export let text = {
   Subtotal: "Subtotal",
   "Add to Cart": "Agregar al carro",
   "Save for Later": "Guardar para más tarde",
-  "Unit Price": "Precio Unitario",
+  "Unit price": "Precio Unitario",
   Code: "Código",
   Brand: "Marca",
   "About this Item": "Acerca este producto",

@@ -1,14 +1,17 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { useState } from "react";
 import getTexto from "../libs/messages";
 import Avatar from "../components/SessionAvatarHeader";
 import Searcher from "../components/searcher";
 import Menu from "../components/menumarket";
+import { Link } from "react-router-dom";
+import { fetchCartItems } from "../actions/cartActions";
+import { connect } from "react-redux";
 
 //estilos
 import "../../scss/modules/Header.module.scss";
 import "../../scss/components/searcher.scss";
 
-export default function Header({ cat, setQP, datos }) {
+function Header({ cat, setQP, datos, cart }) {
   const [categories, setCat] = useState("");
   let renderCats = cat.map((item, index) => {
     return (
@@ -97,31 +100,25 @@ export default function Header({ cat, setQP, datos }) {
           <Avatar />
         </div>
         <div className="menu_cart">
-          <span className="numberItems">45</span>
-          <img
-            width="35"
-            height="30"
-            src="/img/cart_icon.png"
-            alt="Logo Royal Market"
-          />
+          <Link to="/cart-items">
+            <span className="numberItems">{cart.itemsCount}</span>
+            <img
+              width="35"
+              height="30"
+              src="/img/cart_icon.png"
+              alt="Logo Royal Market"
+            />
+          </Link>
         </div>
       </div>
       <Menu cat={cat} />
     </header>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart,
+  };
+};
 
-// hot(module)(Header); //quitar para probar en IE [IEISSUE]
-
-// function gettingInfo() {
-//   let getCat = getCategories();
-
-//   // if (getCookieForm("perro") != "" && getCookieForm("perro") != "") {
-//   ReactDOM.render(<Header cat={getCat} />, document.getElementById("Header"));
-//   // } else {
-//   //   setTimeout(function () {
-//   //     gettingInfo();
-//   //   }, 500);
-//   // }
-// }
-// gettingInfo();
+export default connect(mapStateToProps, {})(Header);
