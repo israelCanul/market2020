@@ -55,14 +55,18 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: repeat(4, auto);
+    row-gap: 10px;
     @include desktop {
-      grid-template-columns: 150px auto auto auto;
+      grid-template-columns: 150px 1fr 1fr 1fr 1fr;
       grid-template-rows: auto;
     }
   }
   &_image {
     grid-column: auto / span 1;
     grid-row: auto / span 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @include desktop {
       grid-column: auto / span 1;
       grid-row: auto;
@@ -76,7 +80,7 @@
     grid-column: auto / span 1;
     grid-row: auto / span 1;
     @include desktop {
-      grid-column: auto / span 1;
+      grid-column: auto / span 2;
       grid-row: auto;
     }
     &_actions {
@@ -92,9 +96,43 @@
   &_handler {
     grid-column: auto / span 1;
     grid-row: auto / span 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include desktop {
+      grid-column: auto / span 2;
+      grid-row: auto;
+    }
+  }
+  .unit {
+    flex-direction: column;
+  }
+  .total,
+  .unit {
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @include desktop {
       grid-column: auto / span 1;
       grid-row: auto;
     }
   }
+  // &_total {
+  //   grid-column: auto / span 1;
+  //   grid-row: auto / span 1;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   @include desktop {
+  //     grid-column: auto / span 1;
+  //     grid-row: auto;
+  //   }
+  //   p {
+  //     margin: 0px;
+  //     padding: 0px;
+  //     font-weight: bold;
+  //   }
+  // }
 }

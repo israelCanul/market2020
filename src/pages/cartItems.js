@@ -11,9 +11,10 @@ class CartItems extends React.Component {
   }
   getItemsCart() {
     if (this.props.cart) {
+      console.log(this.props.cart);
       if (this.props.cart.itemsCart.length > 0) {
         return this.props.cart.itemsCart.map((item) => {
-          return <ItemCart key={item.item.SItemCode} item={item.item} />;
+          return <ItemCart key={item.item.SItemCode} data={item} />;
         });
       }
     }
@@ -47,7 +48,10 @@ class CartItems extends React.Component {
               <div className="section x4 descriptionSale">
                 <div className="section descriptionSale_total">
                   <div className="subtotal ">
-                    <span>Subtotal():</span>
+                    <span>
+                      Subtotal (
+                      {this.props.cart ? this.props.cart.itemsCount : 0} items):
+                    </span>
                     <strong>$1448.00 MX</strong>
                   </div>
                   <div className="discount">

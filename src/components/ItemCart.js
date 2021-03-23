@@ -2,8 +2,9 @@ import React from "react";
 import getTexto from "../libs/messages";
 import UnitHandler from "./unitHandler";
 
-const ItemCart = ({ item }) => {
-  console.log(item);
+const ItemCart = ({ data }) => {
+  let item = data.item;
+  // let total = parseFloat(data.totalItems * item.DPrice).toFixed(1);
   return (
     <div className="itemCart">
       <div className="itemCart_container">
@@ -23,9 +24,12 @@ const ItemCart = ({ item }) => {
             <a href="#">{getTexto("Delete")}</a>
           </div>
         </div>
-        <div className="itemCart_handler">
-          <UnitHandler cartItem item={item} />
-        </div>
+        {/* <div className="itemCart_handler"> */}
+        <UnitHandler cartItem={data} item={item} />
+        {/* </div> */}
+        {/* <div className="itemCart_total">
+          <p>$ {total} MX</p>
+        </div> */}
       </div>
     </div>
   );

@@ -6,13 +6,25 @@ import { fetchCartItems, setItemToCart } from "../actions/cartActions";
 import { NotificationManager } from "react-notifications";
 
 function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
-  let [subtotal, setSubtotal] = useState(
-    (item.YnAllowFractionalSale
-      ? parseFloat(item.MinSell).toFixed(1)
-      : parseInt(item.MinSell)) * item.DPrice
-  );
+  let cartSubtotal = cartItem
+    ? parseFloat(cartItem.totalItems * item.DPrice).toFixed(1)
+    : (item.YnAllowFractionalSale
+        ? parseFloat(item.MinSell).toFixed(1)
+        : parseFloat(item.MinSell).toFixed(1)) * item.DPrice;
+  let [subtotal, setSubtotal] = useState(cartSubtotal);
+  useEffect(() => {
+    if (cartItem) {
+      if (
+        parseFloat(cartSubtotal).toFixed(1) !== parseFloat(subtotal).toFixed(1)
+      ) {
+        updateItemToCart();
+      }
+    }
+  });
   let [unit, setUnit] = useState(
-    item.YnAllowFractionalSale
+    cartItem
+      ? cartItem.totalItems
+      : item.YnAllowFractionalSale
       ? parseFloat(item.MinSell).toFixed(1)
       : parseInt(item.MinSell)
   );
@@ -20,7 +32,6 @@ function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
     getSubTotal();
   });
   let [error, setError] = useState(false);
-
   let addRemoveUnit = (operation) => {
     let addNumber, removeNumber;
     let value = unit;
@@ -77,6 +88,7 @@ function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
       let Re = /^([0-9\.])*$/;
       let myArray = Re.exec(e.target.value);
       if (myArray != null) {
+        // setUnit(parseFloat(e.target.value ));
         setUnit(e.target.value);
       } else {
         setUnit("");
@@ -151,7 +163,7 @@ function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
   let addToCart = (o) => {
     o.preventDefault();
     let itemObject = {
-      totalItems: unit,
+      totalItems: item.YnAllowFractionalSale ? parseFloat(unit) : unit,
       item: item,
       onList: true,
     };
@@ -162,6 +174,30 @@ function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
         ? parseFloat(item.MinSell).toFixed(1)
         : parseInt(item.MinSell)
     );
+  };
+  let updateItemToCart = () => {
+    // o.preventDefault();
+    // console.log(parseFloat(unit).toFixed(1));
+    // console.log(typeof parseFloat(unit).toFixed(1));
+    if (typeof unit === "number" || (!Number.isNaN(unit) && unit != "")) {
+      console.log("actualizando");
+      console.log(unit);
+      let itemObject = {
+        totalItems: item.YnAllowFractionalSale ? parseFloat(unit) : unit,
+        item: item,
+        onList: false,
+      };
+      setItemToCart(itemObject);
+      NotificationManager.info(item.SItemName, "item updated in cart", 1000);
+    }
+
+    // let itemObject = {
+    //   totalItems: item.YnAllowFractionalSale ? parseFloat(unit) : unit,
+    //   item: item,
+    //   onList: false,
+    // };
+    // setItemToCart(itemObject);
+    // NotificationManager.info(item.SItemName, "item updated in cart", 6000);
   };
 
   return (
@@ -211,22 +247,27 @@ function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
           </div>
         </div>
       ) : cartItem ? (
-        <div className="unit">
-          {renderInput}
-          <small
-            style={{
-              display: "block",
-              textAlign: "center",
-              color: "rgba(255, 68, 56, 0.9)",
-            }}
-          >
-            {error
-              ? `${getTexto("Minimum purchase of")} ${item.MinSell} ${getTexto(
-                  "items or in groups of"
-                )} ${item.MinSell}`
-              : ""}
-          </small>
-        </div>
+        <React.Fragment>
+          <div className="unit">
+            {renderInput}
+            <small
+              style={{
+                display: "block",
+                textAlign: "center",
+                color: "rgba(255, 68, 56, 0.9)",
+              }}
+            >
+              {error
+                ? `${getTexto("Minimum purchase of")} ${
+                    item.MinSell
+                  } ${getTexto("items or in groups of")} ${item.MinSell}`
+                : ""}
+            </small>
+          </div>
+          <div className="total">
+            $ {subtotal} {getCurrency()}
+          </div>
+        </React.Fragment>
       ) : (
         <React.Fragment>
           <div className="unit">
