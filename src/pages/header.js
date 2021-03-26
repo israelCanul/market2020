@@ -4,15 +4,16 @@ import Avatar from "../components/SessionAvatarHeader";
 import Searcher from "../components/searcher";
 import Menu from "../components/menumarket";
 import { Link } from "react-router-dom";
-import { fetchCartItems } from "../actions/cartActions";
 import { connect } from "react-redux";
+import { SetUserFromGenesis } from "../actions/index";
 
 //estilos
 import "../../scss/modules/Header.module.scss";
 import "../../scss/components/searcher.scss";
 
-function Header({ cat, setQP, datos, cart }) {
+function Header({ cat, setQP, datos, cart, SetUserFromGenesis }) {
   const [categories, setCat] = useState("");
+
   let renderCats = cat.map((item, index) => {
     return (
       <option key={item.SCategoryCode} value={index}>
@@ -97,7 +98,7 @@ function Header({ cat, setQP, datos, cart }) {
           </a>
         </div>
         <div className="menu_session">
-          <Avatar />
+          <Avatar toLoginUser={SetUserFromGenesis} />
         </div>
         <div className="menu_cart">
           <Link to="/cart-items">
@@ -121,4 +122,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(Header);
+export default connect(mapStateToProps, { SetUserFromGenesis })(Header);

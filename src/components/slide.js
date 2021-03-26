@@ -1,5 +1,7 @@
 import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Carousel } from "react-responsive-carousel";
+
 export default function Slide({
   slides = [],
   width = null,
@@ -8,7 +10,7 @@ export default function Slide({
   let renderSlides = slides.map((slide, id) => {
     return (
       <div key={id}>
-        <img
+        <LazyLoadImage
           height="auto"
           alt="slide"
           src={slide.img}
@@ -23,7 +25,7 @@ export default function Slide({
       showIndicators={true}
       showStatus={false}
       showThumbs={showTumbs}
-      interval={3000}
+      interval={10000}
       autoPlay={true}
       infiniteLoop={true}
     >

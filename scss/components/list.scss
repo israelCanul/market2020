@@ -39,6 +39,24 @@
         }
       }
       overflow: hidden;
+
+      &.incart {
+        grid-template-columns: repeat(4, 1fr);
+        .title {
+          grid-column: auto / span 4;
+          text-align: center;
+          @include tablet {
+            text-align: left;
+            grid-column: 1 / span 4;
+          }
+        }
+        .item:first-child,
+        :not(.item) + .item {
+          @include tablet {
+            grid-column: auto / span 4;
+          }
+        }
+      }
     }
     .section {
       grid-column: auto/span 4;

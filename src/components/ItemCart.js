@@ -2,9 +2,13 @@ import React from "react";
 import getTexto from "../libs/messages";
 import UnitHandler from "./unitHandler";
 
-const ItemCart = ({ data }) => {
+const ItemCart = ({ data, deleteItem }) => {
   let item = data.item;
-  // let total = parseFloat(data.totalItems * item.DPrice).toFixed(1);
+
+  let deleteItemFunction = (itemCode) => {
+    deleteItem(itemCode);
+  };
+
   return (
     <div className="itemCart">
       <div className="itemCart_container">
@@ -21,31 +25,21 @@ const ItemCart = ({ data }) => {
               {getTexto("Unit price")}: $ {parseFloat(item.DPrice).toFixed(2)}{" "}
               MXN
             </small>
-            <a href="#">{getTexto("Delete")}</a>
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+                deleteItemFunction(item.SItemCode);
+              }}
+              href="#"
+            >
+              {getTexto("Delete")}
+            </a>
           </div>
         </div>
-        {/* <div className="itemCart_handler"> */}
         <UnitHandler cartItem={data} item={item} />
-        {/* </div> */}
-        {/* <div className="itemCart_total">
-          <p>$ {total} MX</p>
-        </div> */}
       </div>
     </div>
   );
 };
 
 export default ItemCart;
-
-// DPrice: 26
-// IItemID: 7081
-// IRankingSales: 8
-// ItemExt: {Group: {…}}
-// ItemMeasure: "12 FLOZ each bottle"
-// MinSell: 6
-// SItemCode: "195044"
-// SItemDesc: "CERVEZA BOHEMIA OBSC BOT N/R 355ML5.5%GL"
-// SItemMark: "Bohemia"
-// SItemName: "Bohemia obscura beer"
-// SPahtImage: "https://www.royalresorts.com/wp-content/uploads/2019/market/CERVEZA-BOHEMIA-OSCURA-BOTELLA-SIX-PACK.jpg"
-// YnAllowFractionalSale: 0

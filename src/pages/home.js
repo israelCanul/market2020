@@ -7,6 +7,8 @@ import Sections from "../components/sections";
 import GenericSection from "../components/genericsection";
 import ListItems from "../components/list_items";
 
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 function App() {
   return (
     <ThemeContext.Consumer>
@@ -33,36 +35,9 @@ function App() {
             </div>
             <div className="main">
               <div className="main_container">
-                <Slide
-                  slides={[
-                    {
-                      img: "/img/home/slide_home_500_x_133.jpg",
-                      srcSet:
-                        "/img/home/slide_home_500_x_133.jpg 767w,/img/home/slide_home_768_x_205.jpg 1200w,/img/home/slide_home.jpg 1900w ",
-                    },
-                  ]}
-                />
-
-                {/* <div>
-                  <img
-                    width="100%"
-                    height="auto"
-                    alt="slide"
-                    src="/img/home/slide_home_500_x_133.jpg"
-                    srcSet="/img/home/slide_home_500_x_133.jpg 767w,/img/home/slide_home_768_x_205.jpg 1200w,/img/home/slide_home.jpg 1900w"
-                  />
-                </div>
-                <div>
-                  <img
-                    width="100%"
-                    height="auto"
-                    alt="slide"
-                    src="/img/home/slide_home_500_x_133.jpg"
-                    srcSet="/img/home/slide_home_500_x_133.jpg 767w,/img/home/slide_home_768_x_205.jpg 1200w,/img/home/slide_home.jpg 1900w"
-                  />
-                </div> */}
+                <Slide slides={state.configuration.contenido.bannerHeader} />
               </div>
-              <Sections />
+              <Sections dataSite={state.configuration} />
               <ListItems state={state} params={{}} />
               <GenericSection className="row">
                 <div className="section x12">
@@ -75,11 +50,16 @@ function App() {
                 </div>
                 <div className="section x4">
                   <a href="#">
-                    <img
+                    <LazyLoadImage
                       className="img"
                       src="/img/home/Golf-Rent.jpg"
                       alt="Section Image"
                     />
+                    {/* <img
+                      className="img"
+                      src="/img/home/Golf-Rent.jpg"
+                      alt="Section Image"
+                    /> */}
                   </a>
                 </div>
               </GenericSection>

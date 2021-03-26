@@ -10,7 +10,7 @@ import {
 import { connect } from "react-redux";
 import { getCategories } from "./libs/api";
 import ThemeContext from "./context/itemsContext";
-import { initConfig } from "./actions/index";
+import { initConfig, fetchConfiguration } from "./actions/index";
 import { fetchCartItems } from "./actions/cartActions";
 import { NotificationContainer } from "react-notifications";
 
@@ -56,14 +56,16 @@ class App extends React.Component {
   }
   componentDidMount() {
     this.props.initConfig(this.state.config);
+    this.props.fetchConfiguration(this.state.config.WebSection);
     this.props.fetchCartItems(this.state.config);
   }
   render() {
     let value = {
       storeItems: this.state.storeItems,
+      configuration: this.props.site.configuration,
       setItems: this.state.setItems,
     };
-    if (this.props.site.initialConfig) {
+    if (this.props.site.initialConfig && this.props.site.configuration) {
       return (
         <ThemeContext.Provider value={value}>
           <Router>
@@ -84,7 +86,7 @@ class App extends React.Component {
                   />
                 </Route>
                 <Route exact path="/cart-items">
-                  <CartItems />
+                  <CartItems items={this.state.storeItems} />
                 </Route>
                 <Route exact path="/products">
                   <Categories cat={this.state.getCat} />
@@ -124,5 +126,7 @@ const mapStateToProps = (state) => {
   };
 };
 export default hot(module)(
-  connect(mapStateToProps, { initConfig, fetchCartItems })(App)
+  connect(mapStateToProps, { initConfig, fetchCartItems, fetchConfiguration })(
+    App
+  )
 );

@@ -1,5 +1,8 @@
 {
   "WebSection": "RENTAL",
   "Lan": "En",
-  "urlAPI": "https://wdev.rrgapps.com/RoyalMarket/ksk/"
+  "urlAPI": "https://wdev.rrgapps.com/RoyalMarket/ksk/",
+  "urlLogin": "https://wqasweb.royalresorts.com/LoginService/wsLoginService.asmx/WmGetTokenInformation",
+  "loginUser": "2leJvJJFkiQ=",
+  "loginPassword": "nlzufEFcsxzn5xsb6HFtGA=="
 }

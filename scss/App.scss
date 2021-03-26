@@ -31,6 +31,25 @@ header {
     max-width: $maxWidth;
     margin-left: calc(50% - #{$maxWidth/2});
   }
+  &.incartRelated {
+    @include desktopMax() {
+      margin-left: 0px !important;
+    }
+  }
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  z-index: 10;
+  box-sizing: border-box;
+  .ReactModal__Content {
+    padding: 20px;
+    width: 300px;
+    height: 400px;
+    margin-left: calc(50% - 150px);
+    top: 10px;
+    inset: 10px 0px 0px !important;
+    box-sizing: border-box;
+  }
 }
 
 .wrappersteps {

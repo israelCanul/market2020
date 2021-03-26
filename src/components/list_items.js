@@ -8,6 +8,7 @@ export default function ListItems({
   params,
   state,
 }) {
+  console.log(state);
   let filterByCategory = "";
   let countRows = Math.trunc(6 / 4);
   let rowAdd = 6 % 4 > 0 ? 1 : 0;

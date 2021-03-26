@@ -4,29 +4,40 @@ import {
   FETCHITEMSCATEGORIESFIREBASE,
   FETCHITEMSFIREBASE,
   GETINICONFIG,
+  SETUSERGENESIS,
 } from "../actions/index";
-const INITIAL_STATE = { perrito: "wow" };
+const INITIAL_STATE = {};
 export default function (state = INITIAL_STATE, action) {
+  console.log(action);
   let newState = state;
   switch (action.type) {
+    case SETUSERGENESIS:
+      console.log(action.payload);
+      newState = {
+        ...state,
+        user: action.payload,
+      };
+      break;
     case GETINICONFIG:
-      newState = { ...state, initialConfig: action.payload };
+      newState = {
+        ...state,
+        initialConfig: action.payload.data,
+        user: action.payload.user,
+      };
       break;
     case FETCHCONFIGURATION:
       //console.log(action.payload.val());
-      let config = action.payload.val();
+      let config = action.payload;
       let lan = state.initialConfig.Lan;
       let textos;
       if (lan == "En") {
-        config.textos = config.textos.en;
-        textos = textosPage.en;
+        config.contenido = config.contenido.en;
       } else {
-        config.textos = config.textos.es;
-        textos = textosPage.es;
+        config.contenido = config.contenido.es;
       }
       newState = {
         ...state,
-        configuration: { ...config, language: lan, textosData: textos },
+        configuration: { ...config, language: lan },
       };
       break;
 

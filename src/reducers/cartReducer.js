@@ -1,4 +1,9 @@
-import { SETLOADCART, FETCHCART, SETCARTITEM } from "../actions/cartActions";
+import {
+  SETLOADCART,
+  FETCHCART,
+  SETCARTITEM,
+  DELETECARTITEM,
+} from "../actions/cartActions";
 const INITIAL_STATE = { itemsCart: [], isShowed: false };
 
 export default function (state = INITIAL_STATE, action) {
@@ -60,6 +65,29 @@ export default function (state = INITIAL_STATE, action) {
         itemsCart: newListItemsCart,
         itemsCount: cantidad,
         totalPrice: parseFloat(priceFetch).toFixed(2),
+      };
+      break;
+
+    case DELETECARTITEM:
+      let codeItem = action.payload;
+      let newArray = [];
+      let cant = 0;
+      let price = 0;
+      state.itemsCart.map((item) => {
+        if (item.item.SItemCode != codeItem) {
+          newArray.push(item);
+          cant = cant + 1;
+          price +=
+            parseFloat(item.totalItems) *
+            parseFloat(item.item.DPrice).toFixed(1);
+        }
+      });
+      localStorage.setItem("cart", window.btoa(JSON.stringify(newArray)));
+      newState = {
+        ...state,
+        itemsCart: newArray,
+        itemsCount: cant,
+        totalPrice: price,
       };
       break;
     case FETCHCART:

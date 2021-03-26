@@ -31,6 +31,7 @@ export let text = {
   "items or in groups of": "artículos o en grupos de",
   Quantity: "Cantidad",
   Subtotal: "Subtotal",
+  Total: "Total",
   "Add to Cart": "Agregar al carro",
   "Save for Later": "Guardar para más tarde",
   "Unit price": "Precio Unitario",
@@ -38,4 +39,7 @@ export let text = {
   Brand: "Marca",
   "About this Item": "Acerca este producto",
   "This Item doesn´t exist": "Este producto no existe",
+  "Proceed to checkout": "Proceed to checkout",
+  "Schedule delivery to villa": "Schedule delivery to villa",
+  "Shopping cart": "Shopping cart",
 };

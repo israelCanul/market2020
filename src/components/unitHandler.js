@@ -23,7 +23,9 @@ function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
   });
   let [unit, setUnit] = useState(
     cartItem
-      ? cartItem.totalItems
+      ? item.YnAllowFractionalSale
+        ? parseFloat(cartItem.totalItems).toFixed(1)
+        : cartItem.totalItems
       : item.YnAllowFractionalSale
       ? parseFloat(item.MinSell).toFixed(1)
       : parseInt(item.MinSell)
