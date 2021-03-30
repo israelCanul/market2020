@@ -52,14 +52,6 @@ export default function (state = INITIAL_STATE, action) {
         "cart",
         window.btoa(JSON.stringify(newListItemsCart))
       );
-
-      console.log({
-        ...state,
-        itemsCart: newListItemsCart,
-        itemsCount: cantidad,
-        totalPrice: parseFloat(priceFetch).toFixed(2),
-      });
-
       newState = {
         ...state,
         itemsCart: newListItemsCart,

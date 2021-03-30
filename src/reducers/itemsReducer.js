@@ -6,13 +6,19 @@ import {
   GETINICONFIG,
   SETUSERGENESIS,
 } from "../actions/index";
+
+import { getLanguage } from "../libs/language";
+import { setCookieForm } from "../libs/cookieManager";
 const INITIAL_STATE = {};
 export default function (state = INITIAL_STATE, action) {
-  console.log(action);
   let newState = state;
   switch (action.type) {
     case SETUSERGENESIS:
-      console.log(action.payload);
+      //guardamos el token en un cookie
+      setCookieForm("user", action.payload.userToken, getLanguage());
+      //guardamos el user con el token en localstorage para evitar la llamada en cada recarga
+      localStorage.setItem("user", window.btoa(JSON.stringify(action.payload)));
+      //seteamos el nuevo state de la aplicacion
       newState = {
         ...state,
         user: action.payload,

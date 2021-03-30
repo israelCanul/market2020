@@ -10,6 +10,8 @@ export default function getTexto(textoInput) {
 }
 export let text = {
   "Log-out": "Cerrar Sesion",
+  "Log out": "Cerrar Sesion",
+  "log In": "log In",
   "All Categories": "Todas las Categorias",
   "Shop by Category": "Compra por Categoría",
   "Order Now": "Ordene Ahora",
@@ -42,4 +44,8 @@ export let text = {
   "Proceed to checkout": "Proceed to checkout",
   "Schedule delivery to villa": "Schedule delivery to villa",
   "Shopping cart": "Shopping cart",
+  "Your Account": "Tu Cuenta",
+  "Items in your cart": "Items in your cart",
+  History: "History",
+  "Log out": "Log out",
 };

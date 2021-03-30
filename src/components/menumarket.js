@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../../scss/components/asideMenu.scss";
 import getTexto from "../libs/messages";
+import AvatarNoLogged from "../components/SessionMenuNoLogged";
+import AvatarLogged from "../components/SessionMenuLogged";
 import { Link } from "react-router-dom";
 
-export default function Menu({ cat }) {
+export default function Menu({ cat, config, user, toLoginUser }) {
   const [menuCat, setMenuCat] = useState("");
   const [subMenuCat, setSubMenuCat] = useState("");
   let close = () => {
@@ -41,16 +43,6 @@ export default function Menu({ cat }) {
       </div>
     );
   });
-
-  // onClick={(e) => {
-  //   window.location.href =
-  //     "/" +
-  //     "?cat=" +
-  //     menuCat.SCategoryCode +
-  //     "&s=" +
-  //     item.SGroupCode.trim();
-  // }}
-
   let renderSubCats = () => {
     let renderresponse = "";
     if (menuCat != "") {
@@ -81,11 +73,45 @@ export default function Menu({ cat }) {
     return renderresponse;
   };
 
+  function openModal() {
+    window.output = document.getElementById("output");
+    var left = screen.width / 2 - 400 / 2;
+    var top = screen.height / 2 - 600 / 2;
+    var strWindowFeatures =
+      "menubar=no,location=no,resizable=no,scrollbars=yes,status=no,width=400,innerHeight=600,centerscreen=yes,chrome=yes, top=" +
+      top +
+      ", left=" +
+      left +
+      "";
+    window["output"] = function (userToken) {
+      // props.toLoginUser(userToken);
+    };
+    window.open(
+      config.urlToGetTokenToLogin +
+        "?Code=" +
+        config.codeToGetTokenToLogin +
+        "&ReturnUrl=" +
+        window.location.protocol +
+        "//" +
+        window.location.hostname +
+        ":3000/redirect.html",
+      "CNN_WindowName",
+      strWindowFeatures
+    );
+  }
+
   return (
     <div className="asideMenu">
       <div className="asideMenu_menu">
         <div className="container">
-          <div className="session"></div>
+          <div className="session">
+            {/* {user ? console.log(user) : ""} */}
+            {user ? (
+              <AvatarLogged user={user} />
+            ) : (
+              <AvatarNoLogged toLoginUser={toLoginUser} config={config} />
+            )}
+          </div>
           <div className="categories">
             <div className="categories_content">
               <div className="title">{getTexto("Shop by Category")}</div>

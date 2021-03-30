@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import getTexto from "../libs/messages";
-import Avatar from "../components/SessionAvatarHeader";
+import AvatarNoLogged from "../components/SessionAvatarNoLoggedHeader";
+import Avatar from "../components/SessionAvatarLoggedHeader";
 import Searcher from "../components/searcher";
 import Menu from "../components/menumarket";
 import { Link } from "react-router-dom";
@@ -11,7 +12,7 @@ import { SetUserFromGenesis } from "../actions/index";
 import "../../scss/modules/Header.module.scss";
 import "../../scss/components/searcher.scss";
 
-function Header({ cat, setQP, datos, cart, SetUserFromGenesis }) {
+function Header({ cat, setQP, datos, cart, SetUserFromGenesis, site }) {
   const [categories, setCat] = useState("");
 
   let renderCats = cat.map((item, index) => {
@@ -98,7 +99,16 @@ function Header({ cat, setQP, datos, cart, SetUserFromGenesis }) {
           </a>
         </div>
         <div className="menu_session">
-          <Avatar toLoginUser={SetUserFromGenesis} />
+          {site.user ? (
+            <Avatar user={site.user} />
+          ) : site.initialConfig ? (
+            <AvatarNoLogged
+              config={site.initialConfig}
+              toLoginUser={SetUserFromGenesis}
+            />
+          ) : (
+            ""
+          )}
         </div>
         <div className="menu_cart">
           <Link to="/cart-items">
@@ -112,13 +122,19 @@ function Header({ cat, setQP, datos, cart, SetUserFromGenesis }) {
           </Link>
         </div>
       </div>
-      <Menu cat={cat} />
+      <Menu
+        cat={cat}
+        toLoginUser={SetUserFromGenesis}
+        config={site.initialConfig}
+        user={site.user}
+      />
     </header>
   );
 }
 const mapStateToProps = (state) => {
   return {
     cart: state.cart,
+    site: state.site,
   };
 };
 

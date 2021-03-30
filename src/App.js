@@ -10,9 +10,16 @@ import {
 import { connect } from "react-redux";
 import { getCategories } from "./libs/api";
 import ThemeContext from "./context/itemsContext";
-import { initConfig, fetchConfiguration } from "./actions/index";
+import {
+  initConfig,
+  fetchConfiguration,
+  SetUserFromGenesis,
+} from "./actions/index";
 import { fetchCartItems } from "./actions/cartActions";
 import { NotificationContainer } from "react-notifications";
+
+import { getLanguage } from "./libs/language";
+import { getCookieForm } from "./libs/cookieManager";
 
 import "../scss/App.scss";
 import "react-notifications/lib/notifications.css";
@@ -58,6 +65,10 @@ class App extends React.Component {
     this.props.initConfig(this.state.config);
     this.props.fetchConfiguration(this.state.config.WebSection);
     this.props.fetchCartItems(this.state.config);
+    // console.log("user", getLanguage());
+    if (getCookieForm("user", getLanguage()) != "") {
+      this.props.SetUserFromGenesis(getCookieForm("user", getLanguage()));
+    }
   }
   render() {
     let value = {
@@ -126,7 +137,10 @@ const mapStateToProps = (state) => {
   };
 };
 export default hot(module)(
-  connect(mapStateToProps, { initConfig, fetchCartItems, fetchConfiguration })(
-    App
-  )
+  connect(mapStateToProps, {
+    initConfig,
+    fetchCartItems,
+    fetchConfiguration,
+    SetUserFromGenesis,
+  })(App)
 );

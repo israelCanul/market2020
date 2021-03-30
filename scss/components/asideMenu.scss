@@ -43,6 +43,38 @@
     }
 
     .session {
+      p {
+        width: 100%;
+        margin: 0px;
+      }
+      .Avatar .Avatar {
+        &-noLogged {
+          padding: 10px;
+          box-sizing: border-box;
+        }
+        &-Logged {
+          padding: 10px;
+          box-sizing: border-box;
+          background: black;
+          color: white;
+        }
+        &-info {
+          padding: 10px;
+          box-sizing: border-box;
+          ul,
+          h3 {
+            padding: 0px;
+            box-sizing: border-box;
+            margin: 0px;
+          }
+          ul {
+            list-style: none;
+            li {
+              margin-bottom: 7px;
+            }
+          }
+        }
+      }
     }
     .categories {
       width: #{$menuAsideWidth - 40};

@@ -2,6 +2,7 @@ import { getAuth, getDBConection } from "../libs/firebaseApi";
 import axios from "axios";
 import txml from "txml";
 import _ from "lodash";
+
 export const FETCHIMGGALLERY = "FETCHIMGGALLERY";
 export const FETCHITEMSCATEGORIESFIREBASE = "FETCHITEMSCATEGORIESFIREBASE";
 export const FETCHITEMSFIREBASE = "FETCHITEMSFIREBASE";
@@ -11,7 +12,18 @@ export const SETUSERGENESIS = "SETUSERGENESIS";
 
 export function SetUserFromGenesis(user) {
   return (dispatch, getState) => {
-    console.log(getState());
+    if (localStorage.getItem("user")) {
+      let User = JSON.parse(window.atob(localStorage.getItem("user")));
+      if (User.userToken === user) {
+        // llamamos a genesis si el usario no esta en localstorage
+        dispatch({
+          type: SETUSERGENESIS,
+          payload: { ...User, userToken: user },
+        });
+        return;
+      }
+    }
+    // llamamos a genesis si el usario no esta en localstorage
     let url = `${getState().site.initialConfig.urlLogin}?strUserName=${
       getState().site.initialConfig.loginUser
     }&strPassword=${
@@ -26,36 +38,55 @@ export function SetUserFromGenesis(user) {
         let result = response.data;
         let xmlDoc = parser.parseFromString(result, "text/xml");
         window.xmlDoc = xmlDoc;
-        console.log(response.data);
-        // let result = txml.parse(response.data);
-        console.log(
-          xmlDoc.getElementsByTagName("intResult")[0].childNodes[0].nodeValue
-        );
-        console.dir(xmlDoc);
-
-        //   <tblTable diffgr:id="tblTable1" msdata:rowOrder="0" diffgr:hasChanges="inserted">
-        //   <intResult>1</intResult>
-        //   <strResult>successfull operation</strResult>
-        // </tblTable>
-        // <Table diffgr:id="Table1" msdata:rowOrder="0">
-        //   <pkPeopleID>2197774</pkPeopleID>
-        //   <FName>JIBAR</FName>
-        //   <MName>SAID</MName>
-        //   <LName1>LOPEZ</LName1>
-        //   <LName2>MOLINA</LName2>
-        //   <fullName>JIBAR LOPEZMOLINA</fullName>
-        //   <GuestType>NON-MEMBER</GuestType>
-        //   <Email>jslopez@royalresorts.com</Email>
+        if (xmlDoc.getElementsByTagName("intResult")[0]) {
+          if (xmlDoc.getElementsByTagName("intResult")[0].childNodes[0]) {
+            if (
+              parseInt(
+                xmlDoc.getElementsByTagName("intResult")[0].childNodes[0]
+                  .nodeValue
+              ) == 1
+            ) {
+              let pkPeopleID = xmlDoc.getElementsByTagName("pkPeopleID")[0]
+                .childNodes[0].nodeValue;
+              let FName = xmlDoc.getElementsByTagName("FName")[0].childNodes[0]
+                .nodeValue;
+              let MName = xmlDoc.getElementsByTagName("MName")[0].childNodes[0]
+                .nodeValue;
+              let LName1 = xmlDoc.getElementsByTagName("LName1")[0]
+                .childNodes[0].nodeValue;
+              let LName2 = xmlDoc.getElementsByTagName("LName2")[0]
+                .childNodes[0].nodeValue;
+              let fullName = xmlDoc.getElementsByTagName("fullName")[0]
+                .childNodes[0].nodeValue;
+              let GuestType = xmlDoc.getElementsByTagName("GuestType")[0]
+                .childNodes[0].nodeValue;
+              let Email = xmlDoc.getElementsByTagName("Email")[0].childNodes[0]
+                .nodeValue;
+              let UserObject = {
+                pkPeopleID,
+                FName,
+                MName,
+                LName1,
+                LName2,
+                fullName,
+                GuestType,
+                Email,
+              };
+              dispatch({
+                type: SETUSERGENESIS,
+                payload: { ...UserObject, userToken: user },
+              });
+            }
+          }
+        }
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
+        dispatch({
+          type: SETUSERGENESIS,
+          payload: { data: error, user: user },
+        });
       });
-
-    return {
-      type: SETUSERGENESIS,
-      payload: user,
-    };
   };
 }
 export function initConfig(data) {

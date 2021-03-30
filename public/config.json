@@ -4,5 +4,7 @@
   "urlAPI": "https://wdev.rrgapps.com/RoyalMarket/ksk/",
   "urlLogin": "https://wqasweb.royalresorts.com/LoginService/wsLoginService.asmx/WmGetTokenInformation",
   "loginUser": "2leJvJJFkiQ=",
-  "loginPassword": "nlzufEFcsxzn5xsb6HFtGA=="
+  "loginPassword": "nlzufEFcsxzn5xsb6HFtGA==",
+  "urlToGetTokenToLogin": "https://wqasweb.royalresorts.com/RRLogin/frmLogin.aspx",
+  "codeToGetTokenToLogin": "RRKSK"
 }
