@@ -6,15 +6,22 @@ import Searcher from "../components/searcher";
 import Menu from "../components/menumarket";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { SetUserFromGenesis } from "../actions/index";
+import { SetUserFromGenesis, logoutUser } from "../actions/index";
 
 //estilos
 import "../../scss/modules/Header.module.scss";
 import "../../scss/components/searcher.scss";
 
-function Header({ cat, setQP, datos, cart, SetUserFromGenesis, site }) {
+function Header({
+  cat,
+  setQP,
+  datos,
+  cart,
+  SetUserFromGenesis,
+  logoutUser,
+  site,
+}) {
   const [categories, setCat] = useState("");
-
   let renderCats = cat.map((item, index) => {
     return (
       <option key={item.SCategoryCode} value={index}>
@@ -89,14 +96,14 @@ function Header({ cat, setQP, datos, cart, SetUserFromGenesis, site }) {
           </div>
         </div>
         <div className="menu_logo">
-          <a>
+          <Link to="/">
             <img
               src="/img/logo_market.png"
               alt="Logo Royal Market"
               width="122"
               height="39"
             />
-          </a>
+          </Link>
         </div>
         <div className="menu_session">
           {site.user ? (
@@ -123,6 +130,8 @@ function Header({ cat, setQP, datos, cart, SetUserFromGenesis, site }) {
         </div>
       </div>
       <Menu
+        logoutUser={logoutUser}
+        cart={cart}
         cat={cat}
         toLoginUser={SetUserFromGenesis}
         config={site.initialConfig}
@@ -138,4 +147,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { SetUserFromGenesis })(Header);
+export default connect(mapStateToProps, { SetUserFromGenesis, logoutUser })(
+  Header
+);

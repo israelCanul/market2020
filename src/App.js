@@ -6,7 +6,6 @@ import {
   useParams,
   useRouteMatch,
 } from "react-router-dom";
-
 import { connect } from "react-redux";
 import { getCategories } from "./libs/api";
 import ThemeContext from "./context/itemsContext";
@@ -17,9 +16,10 @@ import {
 } from "./actions/index";
 import { fetchCartItems } from "./actions/cartActions";
 import { NotificationContainer } from "react-notifications";
-
 import { getLanguage } from "./libs/language";
 import { getCookieForm } from "./libs/cookieManager";
+
+import getURL from "./libs/Routes";
 
 import "../scss/App.scss";
 import "react-notifications/lib/notifications.css";
@@ -48,9 +48,9 @@ const Footer = lazy(() => import(/* webpackPrefetch: true */ "./pages/footer"));
 class App extends React.Component {
   constructor(props) {
     super(props);
-    let { items, config, initConfig, site } = props;
+    let { items, config, categories } = props;
     this.state = {
-      getCat: getCategories(),
+      getCat: categories,
       datos: [],
       storeItems: items.length == 0 ? datos : items,
       queryParams: "",
@@ -80,38 +80,38 @@ class App extends React.Component {
       return (
         <ThemeContext.Provider value={value}>
           <Router>
-            <Suspense fallback="Loading">
+            <Suspense fallback={<IsLoading />}>
               <Header
                 datos={this.state.storeItems}
-                setQP={this.state.setQParams}
+                setQP={this.setQParams}
                 cat={this.state.getCat}
               />
               <Switch>
-                <Route exact path="/">
+                <Route exact path={getURL("/")}>
                   <Home />
                 </Route>
-                <Route exact path="/s">
+                <Route exact path={getURL("/s")}>
                   <Search
                     QP={this.state.queryParams}
                     items={this.state.storeItems}
                   />
                 </Route>
-                <Route exact path="/cart-items">
+                <Route exact path={getURL("/cart-items")}>
                   <CartItems items={this.state.storeItems} />
                 </Route>
-                <Route exact path="/products">
+                <Route exact path={getURL("/products")}>
                   <Categories cat={this.state.getCat} />
                 </Route>
-                <Route exact path="/products/:producto">
+                <Route exact path={getURL("/products/:producto")}>
                   <Detail items={this.state.storeItems} />
                 </Route>
-                <Route exact path="/categories">
+                <Route exact path={getURL("/categories")}>
                   <Categories cat={this.state.getCat} />
                 </Route>
-                <Route exact path="/categories/:id">
+                <Route exact path={getURL("/categories/:id")}>
                   <Categories cat={this.state.getCat} />
                 </Route>
-                <Route exact path="/categories/:id/:subid">
+                <Route exact path={getURL("/categories/:id/:subid")}>
                   <Categories cat={this.state.getCat} />
                 </Route>
               </Switch>
@@ -128,7 +128,11 @@ class App extends React.Component {
   }
 }
 const IsLoading = () => {
-  return <div>Is Loading</div>;
+  return (
+    <div className="loadingSite">
+      <img src="/img/logo_market.png" alt="Logo market" />
+    </div>
+  );
 };
 const mapStateToProps = (state) => {
   return {

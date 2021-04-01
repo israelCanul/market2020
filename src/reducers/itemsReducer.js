@@ -5,14 +5,29 @@ import {
   FETCHITEMSFIREBASE,
   GETINICONFIG,
   SETUSERGENESIS,
+  LOGOUTUSER,
 } from "../actions/index";
 
 import { getLanguage } from "../libs/language";
-import { setCookieForm } from "../libs/cookieManager";
+import { setCookieForm, deleteCookieForm } from "../libs/cookieManager";
 const INITIAL_STATE = {};
 export default function (state = INITIAL_STATE, action) {
+  console.log(action);
   let newState = state;
   switch (action.type) {
+    case "PRUEBA":
+      newState = { ...state, valorPrueba: action.payload };
+      break;
+    case LOGOUTUSER:
+      deleteCookieForm("user", getLanguage());
+      localStorage.setItem("user", null);
+      console.log(action);
+      // action.asyncDispatch({ type: "PRUEBA", payload: "valor prueba" });
+      newState = {
+        ...state,
+        user: undefined,
+      };
+      break;
     case SETUSERGENESIS:
       //guardamos el token en un cookie
       setCookieForm("user", action.payload.userToken, getLanguage());

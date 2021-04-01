@@ -9,10 +9,22 @@ export const FETCHITEMSFIREBASE = "FETCHITEMSFIREBASE";
 export const GETINICONFIG = "GETINICONFIG";
 export const FETCHCONFIGURATION = "FETCHCONFIGURATION";
 export const SETUSERGENESIS = "SETUSERGENESIS";
+export const LOGOUTUSER = "LOGOUTUSER";
 
+export function logoutUser() {
+  return {
+    type: LOGOUTUSER,
+    payload: 0,
+  };
+}
 export function SetUserFromGenesis(user) {
   return (dispatch, getState) => {
-    if (localStorage.getItem("user")) {
+    if (
+      localStorage.getItem("user") &&
+      localStorage.getItem("user") != "" &&
+      localStorage.getItem("user") != null &&
+      localStorage.getItem("user") != "null"
+    ) {
       let User = JSON.parse(window.atob(localStorage.getItem("user")));
       if (User.userToken === user) {
         // llamamos a genesis si el usario no esta en localstorage
@@ -76,6 +88,25 @@ export function SetUserFromGenesis(user) {
                 type: SETUSERGENESIS,
                 payload: { ...UserObject, userToken: user },
               });
+
+              //Fetichng the user´s last purchases [START]
+              let urlShoppingHistory = `${
+                getState().site.initialConfig.urlAPI
+              }Shopping/getItemRelated?iPeopleID=${pkPeopleID}`;
+              axios
+                .get(urlShoppingHistory)
+                .then((response) => {
+                  console.log(response);
+                  let newUser = { ...UserObject, itemsHistory: response.data };
+                  dispatch({
+                    type: SETUSERGENESIS,
+                    payload: { ...newUser, userToken: user },
+                  });
+                })
+                .catch((errors) => {
+                  // react on errors.
+                });
+              //Fetichng the user´s last purchases [FINAL]
             }
           }
         }

@@ -51,5 +51,14 @@
     @include desktop {
       grid-column: 5 / span 12;
     }
+    i {
+      border-color: $grisTexto !important;
+      // background: $grisTexto !important;
+    }
+    a {
+      text-decoration: none;
+      padding: 5px;
+      color: $grisTexto;
+    }
   }
 }

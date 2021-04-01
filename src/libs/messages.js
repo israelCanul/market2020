@@ -9,6 +9,7 @@ export default function getTexto(textoInput) {
   }
 }
 export let text = {
+  Hello: "Hola",
   "Log-out": "Cerrar Sesion",
   "Log out": "Cerrar Sesion",
   "log In": "log In",
@@ -46,6 +47,6 @@ export let text = {
   "Shopping cart": "Shopping cart",
   "Your Account": "Tu Cuenta",
   "Items in your cart": "Items in your cart",
-  History: "History",
+  "Shopping history": "Shopping history",
   "Log out": "Log out",
 };

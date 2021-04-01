@@ -5,7 +5,14 @@ import AvatarNoLogged from "../components/SessionMenuNoLogged";
 import AvatarLogged from "../components/SessionMenuLogged";
 import { Link } from "react-router-dom";
 
-export default function Menu({ cat, config, user, toLoginUser }) {
+export default function Menu({
+  cat,
+  config,
+  user,
+  toLoginUser,
+  logoutUser,
+  cart,
+}) {
   const [menuCat, setMenuCat] = useState("");
   const [subMenuCat, setSubMenuCat] = useState("");
   let close = () => {
@@ -107,9 +114,19 @@ export default function Menu({ cat, config, user, toLoginUser }) {
           <div className="session">
             {/* {user ? console.log(user) : ""} */}
             {user ? (
-              <AvatarLogged user={user} />
+              <AvatarLogged
+                closeAside={close}
+                cart={cart}
+                user={user}
+                logoutUser={logoutUser}
+              />
             ) : (
-              <AvatarNoLogged toLoginUser={toLoginUser} config={config} />
+              <AvatarNoLogged
+                closeAside={close}
+                cart={cart}
+                toLoginUser={toLoginUser}
+                config={config}
+              />
             )}
           </div>
           <div className="categories">

@@ -20,6 +20,21 @@ header {
   margin-top: $headerpush;
   z-index: 1;
 }
+.loadingSite {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 145px;
+    height: 45px;
+    @include btnAnim;
+  }
+}
 .App {
   margin: 0px 0rem;
   font-family: "Open Sans", sans-serif;

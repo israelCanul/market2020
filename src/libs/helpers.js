@@ -33,7 +33,6 @@ function getCookie(cname) {
 }
 
 export function openModalForLogin(config, reduxLogin) {
-  //window.output = document.getElementById("output");
   var left = screen.width / 2 - 400 / 2;
   var top = screen.height / 2 - 600 / 2;
   var strWindowFeatures =

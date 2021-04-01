@@ -4,6 +4,7 @@ import ListItems from "../components/list_items";
 import ListCategories from "../components/listcategoriesmenu";
 import { useParams } from "react-router-dom";
 import ThemeContext from "../context/itemsContext";
+import { Link } from "react-router-dom";
 
 export default function Categories(props) {
   let params = useParams();
@@ -21,7 +22,9 @@ export default function Categories(props) {
             s.SGroupDesc.toLowerCase().replaceAll(" ", "-") === params.subid
         );
         if (subCategory.length > 0) {
+          console.log(subCategory[0]);
           categorySelected.subcategory = subCategory[0].SGroupCode;
+          categorySelected.subcategoryDesc = subCategory[0].SGroupDesc;
         }
       }
     }
@@ -35,10 +38,20 @@ export default function Categories(props) {
             <div className="main">
               <GenericSection className="categories">
                 <div className="menuCategory">
+                  {console.log(categorySelected)}
                   <ListCategories cat={props.cat} />
                 </div>
                 <div className="path">
-                  <a href="/">Home</a> {` -> `} <a href="/groceries">All</a>
+                  <Link to="/">Home</Link> <i className="arrow right"></i>{" "}
+                  <a
+                    style={{ textTransform: "Capitalize" }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
+                    href=""
+                  >
+                    {categorySelected.subcategoryDesc.toLowerCase()}
+                  </a>
                 </div>
                 <ListItems state={state} params={categorySelected} category />
               </GenericSection>

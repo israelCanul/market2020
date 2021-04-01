@@ -6,7 +6,6 @@
   top: 0;
   left: -100vw;
   z-index: 2;
-
   .background {
     transition: all #{$speedTransition} ease-in-out;
     position: absolute;
@@ -51,26 +50,73 @@
         &-noLogged {
           padding: 10px;
           box-sizing: border-box;
+          // padding-bottom: 0px;
+          background: black;
+          color: white;
+          display: flex;
+          align-items: center;
+          text-transform: capitalize;
+          a {
+            flex: 1;
+            display: block;
+            text-decoration: none;
+            p {
+              padding: 5px 0px;
+              box-sizing: border-box;
+              // background: red;
+              color: white;
+              // text-decoration: none;
+            }
+          }
         }
         &-Logged {
           padding: 10px;
           box-sizing: border-box;
           background: black;
           color: white;
+          display: flex;
+          align-items: center;
+          text-transform: capitalize;
+          img {
+            width: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+          }
         }
         &-info {
-          padding: 10px;
+          padding: 10px 10px 10px;
           box-sizing: border-box;
+
           ul,
           h3 {
-            padding: 0px;
+            padding: 0px 0px 5px;
             box-sizing: border-box;
             margin: 0px;
           }
           ul {
             list-style: none;
+            padding: 0px;
+            box-sizing: border-box;
             li {
-              margin-bottom: 7px;
+              // margin-bottom: 7px;
+              // background: green;
+              color: $grisTexto;
+              display: flex;
+              // justify-content: center;
+              // align-items: center;
+              a {
+                padding: 5px 0px;
+                box-sizing: border-box;
+                // background: red;
+                flex: 1;
+                font-style: none;
+                text-decoration: none;
+                color: $grisTexto;
+              }
             }
           }
         }
