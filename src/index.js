@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-//reducers
 import reducers from "./reducers";
-
 import App from "./App.js";
 import axios from "axios";
+
+import { getCategories } from "./libs/api";
 
 const asyncDispatchMiddleware = (store) => (next) => (action) => {
   let syncActivityFinished = false;
@@ -28,36 +28,43 @@ const asyncDispatchMiddleware = (store) => (next) => (action) => {
   flushQueue();
   return res;
 };
-
 const createStoreWithMiddleware = applyMiddleware(
   thunk,
   asyncDispatchMiddleware
 )(createStore);
-
 axios
   .get("/config.json")
   .then((response) => {
     if (response.data) {
-      let one = response.data.urlAPI + "/Shopping/getCatalogItemsJson";
-      let two = response.data.urlAPI + "/Shopping/getCategories";
+      let one =
+        response.data.urlAPI +
+        `/${response.data.WebSection}` +
+        "/Shopping/getCatalogItemsJson"; //webservices
+      // let one = "/items.json";
+      let two =
+        response.data.urlAPI +
+        `/${response.data.WebSection}` +
+        "/Shopping/getCategories"; //webservices
 
       const requestOne = axios.get(one);
-      const requestTwo = axios.get(two);
+      const requestTwo = axios.get(two); //webservices
 
       axios
-        .all([requestOne, requestTwo])
+        .all([requestOne, requestTwo]) //webservices
+        // .all([requestOne])
         .then(
           axios.spread((...responses) => {
             const responseOne = responses[0];
-            const responseTwo = responses[1];
-            console.log(responseOne, responseTwo);
-            console.log(responseOne.data.length);
+            const responseTwo = responses[1]; //webservices
             if (responseOne.data && responseTwo.data) {
+              //webservices
+              // if (responseOne.data) {
               ReactDOM.render(
                 <Provider store={createStoreWithMiddleware(reducers)}>
                   <App
                     config={response.data}
-                    categories={responseTwo.data}
+                    categories={responseTwo.data} //Webservices
+                    // categories={getCategories()}
                     items={responseOne.data}
                   />
                 </Provider>,
@@ -69,26 +76,8 @@ axios
         .catch((errors) => {
           // react on errors.
         });
-
-      // axios
-      //   .get(response.data.urlAPI + "/Shopping/getCatalogItemsJson")
-      //   .then((resp) => {
-      //     if (resp.data) {
-      //       ReactDOM.render(
-      //         <Provider store={createStoreWithMiddleware(reducers)}>
-      //           <App config={response.data} items={resp.data} />
-      //         </Provider>,
-      //         document.getElementById("App")
-      //       );
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.error(err);
-      //   });
     }
   })
   .catch((err) => {
     console.error(err);
   });
-
-// ReactDOM.render(<App />, document.getElementById("App"));

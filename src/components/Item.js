@@ -4,17 +4,15 @@ import UnitHandler from "./unitHandler";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 
-export default function Item({ item }) {
+export default function Item({ item, recommendations = null }) {
   const [value, setValue] = useState("");
   const [number, setNumber] = useState(0);
   const [errorMinSale, setError] = useState("");
 
-  // console.log(item);
-
   return (
     <div className="item">
       <div className="item_content">
-        <div className="image">
+        <div className={`image  ${recommendations ? "recomendationsImg" : ""}`}>
           {/* <img src={item.SPahtImage} alt="Item" /> */}
           <LazyLoadImage
             alt={item.SItemName}
@@ -29,13 +27,20 @@ export default function Item({ item }) {
           <span>{item.ItemMeasure.toLowerCase()}</span> <br />
           <strong>$ {parseFloat(item.DPrice).toFixed(2)} MXN</strong>
         </div>
-        <UnitHandler item={item} />
-
-        <div className="details">
-          <Link to={`/products/${item.SItemCode}`}>
-            {getTexto("View details")}
-          </Link>
-        </div>
+        {!recommendations ? <UnitHandler item={item} /> : ""}
+        {!recommendations ? (
+          <div className="details">
+            <Link to={`/products/${item.SItemCode}`}>
+              {getTexto("View details")}
+            </Link>
+          </div>
+        ) : (
+          <div className="details">
+            <Link to={`/products/${item.SItemCode}`}>
+              {getTexto("View details")}
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

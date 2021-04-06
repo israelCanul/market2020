@@ -3,8 +3,10 @@ import {
   FETCHCART,
   SETCARTITEM,
   DELETECARTITEM,
+  SETITEMTOSESSION,
+  OPENLOADER,
 } from "../actions/cartActions";
-const INITIAL_STATE = { itemsCart: [], isShowed: false };
+const INITIAL_STATE = { itemsCart: [], isShowed: false, loader: false };
 
 export default function (state = INITIAL_STATE, action) {
   let newState = state;
@@ -105,6 +107,25 @@ export default function (state = INITIAL_STATE, action) {
         itemsCount: count,
         totalPrice: parseFloat(priceFetch).toFixed(2),
       };
+      break;
+    case OPENLOADER:
+      newState = { ...state, loader: true };
+      break;
+    case SETITEMTOSESSION:
+      let error = "";
+      if (parseInt(action.payload) == 1) {
+        // window.location = action.apiServer + "Shopping/InformationPay";
+        newState = { ...state, errorOnCheckout: false, loader: false };
+      } else {
+        error = "There was an Error, Try Later";
+        newState = {
+          ...state,
+          errorOnCheckout: true,
+          errorMessage: error,
+          loader: true,
+        };
+      }
+      // newState = { ...state, errorOnCheckout: error, loader: false };
       break;
     default:
       newState = state;

@@ -10,9 +10,8 @@ import {
 
 import { getLanguage } from "../libs/language";
 import { setCookieForm, deleteCookieForm } from "../libs/cookieManager";
-const INITIAL_STATE = {};
+const INITIAL_STATE = { user: undefined };
 export default function (state = INITIAL_STATE, action) {
-  console.log(action);
   let newState = state;
   switch (action.type) {
     case "PRUEBA":
@@ -21,7 +20,6 @@ export default function (state = INITIAL_STATE, action) {
     case LOGOUTUSER:
       deleteCookieForm("user", getLanguage());
       localStorage.setItem("user", null);
-      console.log(action);
       // action.asyncDispatch({ type: "PRUEBA", payload: "valor prueba" });
       newState = {
         ...state,

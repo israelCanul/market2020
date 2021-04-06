@@ -92,7 +92,11 @@ export function SetUserFromGenesis(user) {
               //Fetichng the user´s last purchases [START]
               let urlShoppingHistory = `${
                 getState().site.initialConfig.urlAPI
-              }Shopping/getItemRelated?iPeopleID=${pkPeopleID}`;
+              }/${
+                getState().site.initialConfig.WebSection
+              }/Shopping/getItemRelated?iPeopleID=${pkPeopleID}`;
+
+              console.log(urlShoppingHistory);
               axios
                 .get(urlShoppingHistory)
                 .then((response) => {

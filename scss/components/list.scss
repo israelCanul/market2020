@@ -90,6 +90,15 @@
         box-sizing: border-box;
         .image {
           margin-top: 15px;
+          &.recomendationsImg {
+            margin-top: 0px !important;
+            img {
+              max-width: 120px;
+              @include tablet {
+                max-width: 150px !important;
+              }
+            }
+          }
           img {
             max-width: 120px;
             @include tablet {

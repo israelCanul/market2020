@@ -9,7 +9,8 @@ import ListItems from "../components/list_items";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-function App() {
+function App(props) {
+  let { site, cart } = props;
   return (
     <ThemeContext.Consumer>
       {(state) => (
@@ -30,14 +31,19 @@ function App() {
                   </span>{" "}
                   <span className="verde">{getTexto("get 10% off")}</span>
                 </p>
-                <a href="#">{getTexto("Order Now")}</a>
+                {/* <a href="#">{getTexto("Order Now")}</a> */}
               </div>
             </div>
             <div className="main">
               <div className="main_container">
                 <Slide slides={state.configuration.contenido.bannerHeader} />
               </div>
-              <Sections dataSite={state.configuration} />
+              <Sections
+                site={site}
+                cart={cart}
+                state={state}
+                dataSite={state.configuration}
+              />
               <ListItems state={state} params={{}} />
               <GenericSection className="row">
                 <div className="section x12">
@@ -55,11 +61,6 @@ function App() {
                       src="/img/home/Golf-Rent.jpg"
                       alt="Section Image"
                     />
-                    {/* <img
-                      className="img"
-                      src="/img/home/Golf-Rent.jpg"
-                      alt="Section Image"
-                    /> */}
                   </a>
                 </div>
               </GenericSection>

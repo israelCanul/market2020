@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import ItemCart from "../components/ItemCart";
 import { getCurrency } from "../libs/language";
 import getTexto from "../libs/messages";
-import { deleteItemToCart } from "../actions/cartActions";
+import { deleteItemToCart, setCartToSession } from "../actions/cartActions";
 import Related from "../components/relatedproducts";
 import "../../scss/components/cart-items.scss";
 
@@ -12,6 +12,31 @@ class CartItems extends React.Component {
     super(props);
     this.state = {};
     this.getItemsCart = this.getItemsCart.bind(this);
+    this.setItemsToGenesis = this.setItemsToGenesis.bind(this);
+    console.log(props.cart.loader);
+    if (props.cart.loader == true) {
+      document.querySelector("body").classList.add("loaderCart");
+    } else {
+      document.querySelector("body").classList.remove("loaderCart");
+    }
+  }
+  setItemsToGenesis(e) {
+    e.preventDefault();
+    let listItems = this.props.cart.itemsCart;
+    let listaItemsToSession = [];
+    listItems.map((item) => {
+      //console.log(parseFloat(item.totalItems).toFixed(1));
+      listaItemsToSession.push({
+        ...item.item,
+        ITotalItems: parseFloat(item.totalItems),
+      });
+      //console.dir(item);
+    });
+    let objToSession = {
+      totalItems: this.props.cart.itemsCount,
+      ListItems: listaItemsToSession,
+    };
+    this.props.setCartToSession(objToSession);
   }
   getItemsCart() {
     let that = this;
@@ -114,12 +139,16 @@ class CartItems extends React.Component {
                     </strong>
                   </div>
                   <div className="action">
-                    <a href="#" className="btn">
+                    <a
+                      href="#"
+                      onClick={this.setItemsToGenesis}
+                      className="btn"
+                    >
                       {getTexto("Proceed to checkout")}
                     </a>
-                    <a className="link" href="#">
+                    {/* <a className="link" href="#">
                       {getTexto("Schedule delivery to villa")}
-                    </a>
+                    </a> */}
                   </div>
                 </div>
                 <div className=" descriptionSale_related">
@@ -136,6 +165,26 @@ class CartItems extends React.Component {
             </div>
           </div>
         </div>
+        <div
+          className={`modalwrapper ${
+            this.props.cart.loader == true ? "loaderCart" : ""
+          }`}
+        >
+          <div className="background"></div>
+          <div className="content">
+            <div className="loader">
+              <div className="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <div className="message">
+              {this.props.cart.errorMessage ? this.props.cart.errorMessage : ""}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -143,6 +192,9 @@ class CartItems extends React.Component {
 const mapStateToProps = (state) => {
   return {
     cart: state.cart,
+    site: state.site,
   };
 };
-export default connect(mapStateToProps, { deleteItemToCart })(CartItems);
+export default connect(mapStateToProps, { deleteItemToCart, setCartToSession })(
+  CartItems
+);

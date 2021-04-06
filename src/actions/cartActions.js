@@ -3,8 +3,10 @@ export const SETCARTITEM = "SETCARTITEM";
 export const DELETECARTITEM = "DELETECARTITEM";
 export const SETITEMTOSESSION = "SETITEMTOSESSION";
 export const SETLOADCART = "SETLOADCART";
+export const OPENLOADER = "OPENLOADER";
 
 import axios from "axios";
+import qs from "qs";
 
 export function fetchCartItems(ini) {
   return {
@@ -33,24 +35,34 @@ export function setLoadingCart(ItemCode) {
 
 export function setCartToSession(obj) {
   return (dispatch, getState) => {
-    let params = { jsonData: JSON.stringify(obj) };
+    dispatch({
+      type: OPENLOADER,
+      payload: [],
+    });
 
-    // let setItemToCart = axios
-    //   .post(
-    //     getState().data.initialConfig.urlAPI + "Shopping/setShoppingCart",
-    //     qs.stringify(params)
-    //   )
-    //   .then((response) => {
-    //     if (parseInt(response.data) == 1) {
-    //       dispatch({
-    //         type: SETITEMTOSESSION,
-    //         apiServer: getState().data.initialConfig.urlAPI,
-    //         payload: response,
-    //       });
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    let params = { jsonData: JSON.stringify(obj) };
+    axios
+      .post(
+        getState().site.initialConfig.urlAPI +
+          `/${getState().site.initialConfig.WebSection}` +
+          "/Shopping/setShoppingCart",
+        qs.stringify(params)
+      )
+      .then((response) => {
+        if (parseInt(response.data) == 1) {
+          dispatch({
+            type: SETITEMTOSESSION,
+            apiServer:
+              getState().site.initialConfig.urlAPI +
+              "/" +
+              getState().site.initialConfig.WebSection +
+              "/",
+            payload: 0,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 }

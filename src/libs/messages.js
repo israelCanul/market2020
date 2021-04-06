@@ -49,4 +49,5 @@ export let text = {
   "Items in your cart": "Items in your cart",
   "Shopping history": "Shopping history",
   "Log out": "Log out",
+  "Categories of the day": "Categories of the day",
 };

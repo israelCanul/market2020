@@ -13,13 +13,22 @@ import "../../scss/components/itemDetail.scss";
 export default function Detail({ items }) {
   let params = useParams();
   let itemSelected = null;
-
+  let gallery = [];
   items.map((item) => {
     if (parseInt(item.SItemCode) == parseInt(params.producto)) {
       itemSelected = item;
     }
   });
-
+  if (itemSelected) {
+    if (itemSelected.imageGallery != "") {
+      let itemsGallery = itemSelected.imageGallery.split(",");
+      itemsGallery.map((gal) => {
+        gallery.push({ img: gal });
+      });
+    } else {
+      gallery = [{ img: itemSelected.SPahtImage }];
+    }
+  }
   return (
     <DocumentTitle
       title={
@@ -38,11 +47,7 @@ export default function Detail({ items }) {
                 <GenericSection className="row">
                   <div className="section x8">
                     <div className="slidecontainer">
-                      <Slide
-                        slides={[{ img: itemSelected.SPahtImage }]}
-                        width="200px"
-                        showTumbs={true}
-                      />
+                      <Slide slides={gallery} width="200px" showTumbs={true} />
                     </div>
                   </div>
                   <div className="section x4">
@@ -88,7 +93,9 @@ export default function Detail({ items }) {
                       <p>
                         <strong>{getTexto("About this Item")}:</strong>
                         <br />
-                        {itemSelected.SItemDesc.toLowerCase()}
+                        {itemSelected.sLongDescription != ""
+                          ? itemSelected.sLongDescription
+                          : itemSelected.SItemDesc.toLowerCase()}
                       </p>
                     </div>
                   </div>

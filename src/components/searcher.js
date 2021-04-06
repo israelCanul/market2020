@@ -58,12 +58,20 @@ export default function Searcher({
     data.map((item, id) => {
       let description = item.SItemDesc;
       let name = item.SItemName;
+      let Keywords = item.sKeyWords;
       let encontrado = false;
+      //TODO: i need to add the keywords field as part of the Search Logic
+      let findByKeywords = new RegExp("" + filter + "").test(
+        Keywords.toUpperCase()
+      );
       let findByName = new RegExp("" + filter + "").test(name.toUpperCase());
       let findByDesc = new RegExp("" + filter + "").test(
         description.toUpperCase()
       );
-      if (filter != "" && (findByName == true || findByDesc == true)) {
+      if (
+        filter != "" &&
+        (findByName == true || findByDesc == true || findByKeywords == true)
+      ) {
         arraySearched = [...arraySearched, item];
       }
     });

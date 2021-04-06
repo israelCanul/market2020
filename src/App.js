@@ -7,7 +7,6 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 import { connect } from "react-redux";
-import { getCategories } from "./libs/api";
 import ThemeContext from "./context/itemsContext";
 import {
   initConfig,
@@ -16,9 +15,9 @@ import {
 } from "./actions/index";
 import { fetchCartItems } from "./actions/cartActions";
 import { NotificationContainer } from "react-notifications";
+
 import { getLanguage } from "./libs/language";
 import { getCookieForm } from "./libs/cookieManager";
-
 import getURL from "./libs/Routes";
 
 import "../scss/App.scss";
@@ -75,7 +74,9 @@ class App extends React.Component {
       storeItems: this.state.storeItems,
       configuration: this.props.site.configuration,
       setItems: this.state.setItems,
+      categories: this.state.getCat,
     };
+
     if (this.props.site.initialConfig && this.props.site.configuration) {
       return (
         <ThemeContext.Provider value={value}>
@@ -88,7 +89,7 @@ class App extends React.Component {
               />
               <Switch>
                 <Route exact path={getURL("/")}>
-                  <Home />
+                  <Home site={this.props.site} cart={this.props.cart} />
                 </Route>
                 <Route exact path={getURL("/s")}>
                   <Search
