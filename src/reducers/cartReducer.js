@@ -115,9 +115,10 @@ export default function (state = INITIAL_STATE, action) {
       let error = "";
       if (parseInt(action.payload) == 1) {
         // window.location = action.apiServer + "Shopping/InformationPay";
+        console.log(action.apiServer + "Shopping/InformationPay");
         newState = { ...state, errorOnCheckout: false, loader: false };
       } else {
-        error = "There was an Error, Try Later";
+        error = action.apiServer;
         newState = {
           ...state,
           errorOnCheckout: true,

@@ -57,12 +57,31 @@ export function setCartToSession(obj) {
               "/" +
               getState().site.initialConfig.WebSection +
               "/",
+            payload: response.data,
+          });
+        } else {
+          dispatch({
+            type: SETITEMTOSESSION,
+            apiServer: "There was an Error, Try Later",
             payload: 0,
           });
         }
       })
       .catch((err) => {
         console.log(err);
+        try {
+          dispatch({
+            type: SETITEMTOSESSION,
+            apiServer: err.response,
+            payload: 0,
+          });
+        } catch (error) {
+          dispatch({
+            type: SETITEMTOSESSION,
+            apiServer: "There was an Error, Try Later",
+            payload: 0,
+          });
+        }
       });
   };
 }
