@@ -131,7 +131,7 @@ class App extends React.Component {
 const IsLoading = () => {
   return (
     <div className="loadingSite">
-      <img src="/img/logo_market.png" alt="Logo market" />
+      <img src="/img/logo_market.png" alt="Logo Royal Market" />
     </div>
   );
 };
