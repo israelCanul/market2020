@@ -55,13 +55,17 @@ function App(props) {
                   />
                 </div>
                 <div className="section x4">
-                  <a href="#">
-                    <LazyLoadImage
-                      className="img"
-                      src="/img/home/Golf-Rent.jpg"
-                      alt="Section Image"
-                    />
-                  </a>
+                  {site.configuration.contenido.imgBeforeFooter ? (
+                    <a href={site.configuration.contenido.imgBeforeFooter.url}>
+                      <LazyLoadImage
+                        className="img"
+                        src={site.configuration.contenido.imgBeforeFooter.img}
+                        alt="Image Before Footer"
+                      />
+                    </a>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </GenericSection>
               {/* <Related /> */}

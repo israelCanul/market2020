@@ -10,7 +10,7 @@ export default function Slide({
   let renderSlides = slides.map((slide, id) => {
     return (
       <div key={id}>
-        <LazyLoadImage
+        <img
           height="auto"
           alt="slide"
           src={slide.img}
@@ -24,7 +24,7 @@ export default function Slide({
       showArrows={true}
       showIndicators={true}
       showStatus={false}
-      showThumbs={showTumbs}
+      showThumbs={true}
       interval={10000}
       autoPlay={true}
       infiniteLoop={true}

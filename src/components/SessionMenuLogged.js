@@ -5,6 +5,7 @@ import getURL from "../libs/Routes";
 
 function MenuLogged(props) {
   let { user, cart, logoutUser, closeAside } = props;
+
   return (
     <div className="Avatar">
       <div className="Avatar-Logged">

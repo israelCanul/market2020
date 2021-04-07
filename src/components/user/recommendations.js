@@ -35,7 +35,7 @@ function Recommendations(props) {
   let itemRandom = () => {
     return <Item recommendations item={newArray[0]} />;
   };
-  console.log(newArray);
+
   return (
     <div className="section">
       <div className="section_content">

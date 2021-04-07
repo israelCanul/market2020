@@ -104,7 +104,10 @@ class App extends React.Component {
                   <Categories cat={this.state.getCat} />
                 </Route>
                 <Route exact path={getURL("/products/:producto")}>
-                  <Detail items={this.state.storeItems} />
+                  <Detail
+                    site={this.props.site}
+                    items={this.state.storeItems}
+                  />
                 </Route>
                 <Route exact path={getURL("/categories")}>
                   <Categories cat={this.state.getCat} />

@@ -8,9 +8,10 @@ import getTexto from "../libs/messages";
 import UnitHandler from "../components/unitHandler";
 import Related from "../components/relatedproducts";
 import { getCurrency } from "../libs/language";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "../../scss/components/itemDetail.scss";
 
-export default function Detail({ items }) {
+export default function Detail({ items, site }) {
   let params = useParams();
   let itemSelected = null;
   let gallery = [];
@@ -45,7 +46,7 @@ export default function Detail({ items }) {
             <div className="main itemDetail">
               <div className="main_container">
                 <GenericSection className="row">
-                  <div className="section x8">
+                  <div className="section x8" style={{ display: "block" }}>
                     <div className="slidecontainer">
                       <Slide slides={gallery} width="200px" showTumbs={true} />
                     </div>
@@ -103,7 +104,17 @@ export default function Detail({ items }) {
                     <div className="item_container">
                       <UnitHandler item={itemSelected} detail />
                     </div>
-                    <div className="promo_container">sd</div>
+                    <div className="promo_container">
+                      <a
+                        href={site.configuration.contenido.imgOnItemDetail.url}
+                      >
+                        <LazyLoadImage
+                          className="img"
+                          src={site.configuration.contenido.imgOnItemDetail.img}
+                          alt="Image Before Footer"
+                        />
+                      </a>
+                    </div>
                   </div>
                 </GenericSection>
                 <Related items={[items[0], items[1], items[2]]} />

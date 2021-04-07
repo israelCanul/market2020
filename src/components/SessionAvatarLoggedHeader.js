@@ -2,16 +2,16 @@ import React from "react";
 import getTexto from "../libs/messages";
 
 function Avatar(props) {
-  let { user } = props;
+  let { user, toLogOut } = props;
+
   return (
     <div className="session" id="sessionAvatar">
       <div className="session_data">
-        <small> Hello {user.fullName} </small>
+        <small>{user.fullName} </small>
         <a
           onClick={(e) => {
             e.preventDefault();
-
-            console.log("aqui va el intento de cierre de session");
+            toLogOut();
           }}
           href="#"
         >

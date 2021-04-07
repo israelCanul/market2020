@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import ItemCart from "../components/ItemCart";
 import { getCurrency } from "../libs/language";
 import getTexto from "../libs/messages";
-import { deleteItemToCart, setCartToSession } from "../actions/cartActions";
+import {
+  deleteItemToCart,
+  setCartToSession,
+  setLoader,
+} from "../actions/cartActions";
 import Related from "../components/relatedproducts";
 import "../../scss/components/cart-items.scss";
 
@@ -170,7 +174,12 @@ class CartItems extends React.Component {
             this.props.cart.loader == true ? "loaderCart" : ""
           }`}
         >
-          <div className="background"></div>
+          <div
+            className="background"
+            onClick={(e) => {
+              this.props.setLoader(false);
+            }}
+          ></div>
           <div className="content">
             <div className="loader">
               <div className="lds-ring">
@@ -195,6 +204,8 @@ const mapStateToProps = (state) => {
     site: state.site,
   };
 };
-export default connect(mapStateToProps, { deleteItemToCart, setCartToSession })(
-  CartItems
-);
+export default connect(mapStateToProps, {
+  deleteItemToCart,
+  setCartToSession,
+  setLoader,
+})(CartItems);

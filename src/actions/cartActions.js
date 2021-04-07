@@ -4,10 +4,8 @@ export const DELETECARTITEM = "DELETECARTITEM";
 export const SETITEMTOSESSION = "SETITEMTOSESSION";
 export const SETLOADCART = "SETLOADCART";
 export const OPENLOADER = "OPENLOADER";
-
 import axios from "axios";
 import qs from "qs";
-
 export function fetchCartItems(ini) {
   return {
     type: FETCHCART,
@@ -32,14 +30,18 @@ export function setLoadingCart(ItemCode) {
     payload: ItemCode,
   };
 }
-
+export function setLoader(value) {
+  return {
+    type: OPENLOADER,
+    payload: value,
+  };
+}
 export function setCartToSession(obj) {
   return (dispatch, getState) => {
     dispatch({
       type: OPENLOADER,
-      payload: [],
+      payload: true,
     });
-
     let params = { jsonData: JSON.stringify(obj) };
     axios
       .post(

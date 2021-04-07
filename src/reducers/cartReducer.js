@@ -109,7 +109,7 @@ export default function (state = INITIAL_STATE, action) {
       };
       break;
     case OPENLOADER:
-      newState = { ...state, loader: true };
+      newState = { ...state, loader: action.payload };
       break;
     case SETITEMTOSESSION:
       let error = "";

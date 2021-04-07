@@ -41,7 +41,7 @@ export function SetUserFromGenesis(user) {
     }&strPassword=${
       getState().site.initialConfig.loginPassword
     }&strToken=${user}`;
-    // ?strUserName=2leJvJJFkiQ=&strPassword=nlzufEFcsxzn5xsb6HFtGA==&strToken="+readCookie('Token')
+
     axios
       .get(url)
       .then(function (response) {
@@ -58,22 +58,46 @@ export function SetUserFromGenesis(user) {
                   .nodeValue
               ) == 1
             ) {
-              let pkPeopleID = xmlDoc.getElementsByTagName("pkPeopleID")[0]
-                .childNodes[0].nodeValue;
+              let pkPeopleID =
+                xmlDoc.getElementsByTagName("pkPeopleID")[0].childNodes.length >
+                0
+                  ? xmlDoc.getElementsByTagName("pkPeopleID")[0].childNodes[0]
+                      .nodeValue
+                  : "";
               let FName = xmlDoc.getElementsByTagName("FName")[0].childNodes[0]
                 .nodeValue;
-              let MName = xmlDoc.getElementsByTagName("MName")[0].childNodes[0]
-                .nodeValue;
-              let LName1 = xmlDoc.getElementsByTagName("LName1")[0]
-                .childNodes[0].nodeValue;
-              let LName2 = xmlDoc.getElementsByTagName("LName2")[0]
-                .childNodes[0].nodeValue;
-              let fullName = xmlDoc.getElementsByTagName("fullName")[0]
-                .childNodes[0].nodeValue;
-              let GuestType = xmlDoc.getElementsByTagName("GuestType")[0]
-                .childNodes[0].nodeValue;
-              let Email = xmlDoc.getElementsByTagName("Email")[0].childNodes[0]
-                .nodeValue;
+              let MName =
+                xmlDoc.getElementsByTagName("MName")[0].childNodes.length > 0
+                  ? xmlDoc.getElementsByTagName("MName")[0].childNodes[0]
+                      .nodeValue
+                  : "";
+              let LName1 =
+                xmlDoc.getElementsByTagName("LName1")[0].childNodes.length > 0
+                  ? xmlDoc.getElementsByTagName("LName1")[0].childNodes[0]
+                      .nodeValue
+                  : "";
+              let LName2 =
+                xmlDoc.getElementsByTagName("LName2")[0].childNodes.length > 0
+                  ? xmlDoc.getElementsByTagName("LName2")[0].childNodes[0]
+                      .nodeValue
+                  : "";
+
+              let fullName =
+                xmlDoc.getElementsByTagName("fullName")[0].childNodes.length > 0
+                  ? xmlDoc.getElementsByTagName("fullName")[0].childNodes[0]
+                      .nodeValue
+                  : "";
+              let GuestType =
+                xmlDoc.getElementsByTagName("GuestType")[0].childNodes.length >
+                0
+                  ? xmlDoc.getElementsByTagName("GuestType")[0].childNodes[0]
+                      .nodeValue
+                  : "";
+              let Email =
+                xmlDoc.getElementsByTagName("Email")[0].childNodes.length > 0
+                  ? xmlDoc.getElementsByTagName("Email")[0].childNodes[0]
+                      .nodeValue
+                  : "";
               let UserObject = {
                 pkPeopleID,
                 FName,
@@ -84,6 +108,7 @@ export function SetUserFromGenesis(user) {
                 GuestType,
                 Email,
               };
+
               dispatch({
                 type: SETUSERGENESIS,
                 payload: { ...UserObject, userToken: user },

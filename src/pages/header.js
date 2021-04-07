@@ -107,7 +107,7 @@ function Header({
         </div>
         <div className="menu_session">
           {site.user ? (
-            <Avatar user={site.user} />
+            <Avatar toLogOut={logoutUser} user={site.user} />
           ) : site.initialConfig ? (
             <AvatarNoLogged
               config={site.initialConfig}
