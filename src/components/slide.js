@@ -24,7 +24,7 @@ export default function Slide({
       showArrows={true}
       showIndicators={true}
       showStatus={false}
-      showThumbs={true}
+      showThumbs={showTumbs}
       interval={10000}
       autoPlay={true}
       infiniteLoop={true}

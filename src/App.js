@@ -41,6 +41,9 @@ const BacktoTop = lazy(() =>
 const CartItems = lazy(() =>
   import(/* webpackPrefetch: true */ "./pages/cartItems")
 );
+const HistorialShopping = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/shoppingHistory")
+);
 const Header = lazy(() => import(/* webpackPrefetch: true */ "./pages/header"));
 const Footer = lazy(() => import(/* webpackPrefetch: true */ "./pages/footer"));
 
@@ -96,6 +99,9 @@ class App extends React.Component {
                     QP={this.state.queryParams}
                     items={this.state.storeItems}
                   />
+                </Route>
+                <Route exact path={getURL("/shopping-history")}>
+                  <HistorialShopping site={this.props.site} />
                 </Route>
                 <Route exact path={getURL("/cart-items")}>
                   <CartItems items={this.state.storeItems} />

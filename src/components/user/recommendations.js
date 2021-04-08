@@ -17,8 +17,8 @@ function Recommendations(props) {
         let itemsFromCat = new Array();
         itemsFromCat = _.filter(props.state.storeItems, function (o) {
           return (
-            o.Category.SCategoryCode ==
-            itemRandomFromHistory.Category.SCategoryCode
+            o.ItemExt.Group.SGroupCode ==
+            itemRandomFromHistory.ItemExt.Group.SGroupCode
           );
         });
         return (

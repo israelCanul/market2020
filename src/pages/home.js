@@ -68,7 +68,6 @@ function App(props) {
                   )}
                 </div>
               </GenericSection>
-              {/* <Related /> */}
             </div>
           </div>
         </div>

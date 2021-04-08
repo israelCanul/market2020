@@ -8,19 +8,32 @@ import getTexto from "../libs/messages";
 import UnitHandler from "../components/unitHandler";
 import Related from "../components/relatedproducts";
 import { getCurrency } from "../libs/language";
+import { RetrieveRandomObjByCat } from "../libs/helpers";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import _ from "lodash";
 import "../../scss/components/itemDetail.scss";
 
 export default function Detail({ items, site }) {
   let params = useParams();
   let itemSelected = null;
   let gallery = [];
-  items.map((item) => {
+  let itemsRandomByCat = new Array();
+  // let count = 0;
+
+  //this code is optimized to do not iterate across all of items
+  for (var i = 0; i < items.length; i++) {
+    let item = items[i];
     if (parseInt(item.SItemCode) == parseInt(params.producto)) {
       itemSelected = item;
+      break;
     }
-  });
+  }
   if (itemSelected) {
+    itemsRandomByCat = RetrieveRandomObjByCat(
+      items,
+      itemSelected.ItemExt.Group.SGroupCode,
+      3
+    );
     if (itemSelected.imageGallery != "") {
       let itemsGallery = itemSelected.imageGallery.split(",");
       itemsGallery.map((gal) => {
@@ -117,7 +130,11 @@ export default function Detail({ items, site }) {
                     </div>
                   </div>
                 </GenericSection>
-                <Related items={[items[0], items[1], items[2]]} />
+                {itemsRandomByCat.length > 0 && itemsRandomByCat.length == 3 ? (
+                  <Related items={itemsRandomByCat} />
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>

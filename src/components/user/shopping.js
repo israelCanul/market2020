@@ -2,6 +2,8 @@ import React from "react";
 import getTexto from "../../libs/messages";
 import { Link } from "react-router-dom";
 import { backToTop } from "../../libs/helpers";
+import getURL from "../../libs/Routes";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import _ from "lodash";
 
 function ShoppingHistory(props) {
@@ -20,13 +22,16 @@ function ShoppingHistory(props) {
                 </p>
               </div>
               <div className="img">
-                <img
-                  src="img/home/ejem_inpired_by_your.jpg"
+                <LazyLoadImage
+                  src={props.site.user.itemsHistory[0].SPahtImage}
+                  style={{ maxHeight: "150px" }}
                   alt="Ejemplo Item"
                 />
               </div>
               <div className="action_link">
-                <a href="#">{getTexto("View More")}</a>
+                <Link to={getURL("/shopping-history")}>
+                  {getTexto("View More")}
+                </Link>
               </div>
             </div>
           </div>

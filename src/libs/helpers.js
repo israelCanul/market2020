@@ -1,3 +1,4 @@
+import _ from "lodash";
 export function backToTop() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -60,4 +61,26 @@ export function openModalForLogin(config, reduxLogin) {
     "CNN_WindowName",
     strWindowFeatures
   );
+}
+export function RetrieveRandomObjByCat(objects, cat, numberToRetrieve) {
+  let arrayItems = [];
+  let itents = 0;
+  let itemsFilteredByCat = _.filter(objects, function (o) {
+    return o.ItemExt.Group.SGroupCode == cat;
+  });
+  while (arrayItems.length < numberToRetrieve && itents < 1000) {
+    let number = _.random(0, Object.keys(itemsFilteredByCat).length);
+    let newArray = itemsFilteredByCat.slice(number, number + 1);
+    if (newArray.length > 0) {
+      if (
+        _.findIndex(arrayItems, function (o) {
+          return o.IItemID == newArray[0].IItemID;
+        }) == -1
+      ) {
+        arrayItems.push(...newArray);
+      }
+    }
+    itents++;
+  }
+  return arrayItems;
 }
