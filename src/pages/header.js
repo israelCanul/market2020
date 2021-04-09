@@ -4,6 +4,7 @@ import AvatarNoLogged from "../components/SessionAvatarNoLoggedHeader";
 import Avatar from "../components/SessionAvatarLoggedHeader";
 import Searcher from "../components/searcher";
 import Menu from "../components/menumarket";
+import RoyalMenu from "../components/royalresortsHeader";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { SetUserFromGenesis, logoutUser } from "../actions/index";
@@ -43,6 +44,19 @@ function Header({
         </div>
         <div className="topmenu_side">
           <img
+            onClick={(e) => {
+              if (
+                document
+                  .querySelector("body")
+                  .classList.contains("menuroyalOpen")
+              ) {
+                document
+                  .querySelector("body")
+                  .classList.remove("menuroyalOpen");
+              } else {
+                document.querySelector("body").classList.add("menuroyalOpen");
+              }
+            }}
             width="26"
             height="24"
             className=""
@@ -51,6 +65,7 @@ function Header({
           />
         </div>
       </div>
+      <RoyalMenu />
       <div className="menu">
         <div className="menu_hamburger">
           <img

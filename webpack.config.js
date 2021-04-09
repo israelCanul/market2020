@@ -35,7 +35,8 @@ module.exports = {
   resolve: { extensions: ["*", ".js", ".jsx", ".css", ".scss"] },
   output: {
     path: path.resolve(__dirname, "public/"),
-    publicPath: "/public/",
+    // publicPath: "public/", //prod
+    publicPath: "/public/", //dev
     filename: "[name].js",
   },
   devServer: {

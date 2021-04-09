@@ -20,6 +20,13 @@ header {
   margin-top: $headerpush;
   z-index: 1;
 }
+body.menuroyalOpen {
+  #root {
+    margin-top: #{$headerpush + 50px};
+    z-index: 1;
+  }
+}
+
 .loadingSite {
   position: fixed;
   width: 100vw;

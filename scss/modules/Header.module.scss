@@ -61,6 +61,83 @@ header {
       }
     }
   }
+  .wrapperMenu {
+    height: 0px;
+    overflow-y: hidden;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+    z-index: 10;
+    transition: all 0.5 ease-in-out;
+    -webkit-transition: all 0.5 ease-in-out;
+    -moz-transition: all 0.5 ease-in-out;
+    -ms-transition: all 0.5 ease-in-out;
+    -o-transition: all 0.5 ease-in-out;
+    @include desktopMax {
+      width: 100%;
+      max-width: $maxWidth;
+      margin-left: calc(50% - #{$maxWidth/2});
+    }
+
+    &_menu {
+      padding: 0px 0px;
+      box-sizing: border-box;
+      flex: 1;
+      @include desktop {
+      }
+      a.wrapperMenu_menu_title {
+        height: 50px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 20px;
+        box-sizing: border-box;
+        text-decoration: none;
+        background-color: rgba(#00467f, 0.8);
+        &:hover {
+          background-color: rgba(#00467f, 1);
+        }
+      }
+      &.submenu {
+        z-index: 1;
+        &:hover {
+          ul {
+            background-color: #00467f;
+            display: block;
+            list-style: none;
+            li {
+              &.divider {
+                color: white;
+                padding: 5px 10px;
+              }
+              a {
+                height: 30px;
+                color: white;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 0px 20px;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+      ul {
+        display: none;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        li {
+        }
+      }
+    }
+  }
+
   .menu {
     height: 50px;
     width: 100%;
@@ -68,6 +145,7 @@ header {
     display: flex;
     align-items: stretch;
     box-sizing: border-box;
+    z-index: 9;
     @include desktop() {
       padding: 0px 20px;
     }
@@ -107,6 +185,7 @@ header {
       display: none;
       justify-content: center;
       align-items: center;
+      z-index: 0;
       @include desktop() {
         display: flex;
         padding: 2px 5px;
@@ -147,6 +226,15 @@ header {
         left: 3px;
         font-weight: bold;
       }
+    }
+  }
+}
+
+body.menuroyalOpen {
+  .wrapperMenu.Royal {
+    height: 50px;
+    overflow-y: visible;
+    a.wrapperMenu_menu_title {
     }
   }
 }
