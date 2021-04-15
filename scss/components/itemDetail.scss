@@ -14,6 +14,15 @@
     }
     .carousel .slide > div {
       background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+    }
+    .carousel .slide {
+      display: flex;
+      justify-content: stretch;
+      align-items: stretch;
     }
     .carousel .slide img {
       max-width: 200px;

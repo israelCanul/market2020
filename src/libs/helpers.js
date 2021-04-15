@@ -57,7 +57,8 @@ export function openModalForLogin(config, reduxLogin) {
       window.location.protocol +
       "//" +
       window.location.hostname +
-      ":3000/redirect.html",
+      (window.location.hostname == "localhost" ? ":3000" : "") +
+      "/redirect.html",
     "CNN_WindowName",
     strWindowFeatures
   );

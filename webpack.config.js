@@ -47,6 +47,7 @@ module.exports = {
     historyApiFallback: true,
   },
   optimization: {
+    minimize: true,
     // splitChunks: {
     //   chunks: "all",
     // },
@@ -60,5 +61,8 @@ module.exports = {
     //   filename: "[name].css",
     //   chunkFilename: "[id].css",
     // }),
+    new webpack.DllReferencePlugin({
+      manifest: require("./modules-manifest.json"),
+    }),
   ],
 };
