@@ -33,8 +33,10 @@ export let text = {
   "Minimum purchase of": "Compra mínima de",
   "items or in groups of": "artículos o en grupos de",
   Quantity: "Cantidad",
+  discount: "discount",
   Subtotal: "Subtotal",
   Total: "Total",
+  items: "items",
   "Add to Cart": "Agregar al carro",
   "Save for Later": "Guardar para más tarde",
   "Unit price": "Precio Unitario",
@@ -50,4 +52,6 @@ export let text = {
   "Shopping history": "Shopping history",
   "Log out": "Log out",
   "Categories of the day": "Categories of the day",
+  "Summary & Delivery": "Summary & Delivery",
+  Confirmation: "Confirmation",
 };

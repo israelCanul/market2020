@@ -75,9 +75,13 @@ class CartItems extends React.Component {
                   <div className="last line "></div>
                 </div>
                 <div className="wrappersteps_texts">
-                  <div className="first text active">Shopping Cart</div>
-                  <div className="medium text">Summary & Delivery</div>
-                  <div className="last text ">Confirmation</div>
+                  <div className="first text active">
+                    {getTexto("Shopping cart")}
+                  </div>
+                  <div className="medium text">
+                    {getTexto("Summary & Delivery")}
+                  </div>
+                  <div className="last text ">{getTexto("Confirmation")}</div>
                 </div>
               </div>
             </div>
@@ -97,22 +101,41 @@ class CartItems extends React.Component {
                         <td>
                           {getTexto("Subtotal")} (
                           {this.props.cart ? this.props.cart.itemsCount : 0}{" "}
-                          items):{" "}
+                          {getTexto("items")}):{" "}
                         </td>
                         <td style={{ fontWeight: "bold" }}>
                           $ {`${this.props.cart.totalPrice} ${getCurrency()}`}
                         </td>
                       </tr>
                       <tr>
-                        <td></td>
-                        <td></td>
+                        <td>
+                          {this.props.site.configuration.discount}%{" "}
+                          {getTexto("discount")}:
+                        </td>
+                        <td>
+                          {`$ ${parseFloat(
+                            parseFloat(this.props.cart.totalPrice) *
+                              (parseFloat(0.01) *
+                                parseFloat(
+                                  this.props.site.configuration.discount
+                                ))
+                          ).toFixed(2)}`}{" "}
+                          {getCurrency()}
+                        </td>
                       </tr>
                       <tr>
                         <td style={{ fontWeight: "bold", color: "black" }}>
                           {getTexto("Total")}:
                         </td>
                         <td style={{ fontWeight: "bold", color: "black" }}>
-                          $ {`${this.props.cart.totalPrice} ${getCurrency()}`}
+                          {`$ ${parseFloat(
+                            parseFloat(this.props.cart.totalPrice) -
+                              parseFloat(this.props.cart.totalPrice) *
+                                (parseFloat(0.01) *
+                                  parseFloat(
+                                    this.props.site.configuration.discount
+                                  ))
+                          ).toFixed(2)} ${getCurrency()}`}
                         </td>
                       </tr>
                     </tbody>
@@ -124,22 +147,40 @@ class CartItems extends React.Component {
                   <div className="subtotal ">
                     <span>
                       {getTexto("Subtotal")} (
-                      {this.props.cart ? this.props.cart.itemsCount : 0} items):
+                      {this.props.cart ? this.props.cart.itemsCount : 0}{" "}
+                      {getTexto("items")}):
                     </span>
                     <strong>
                       $ {`${this.props.cart.totalPrice} ${getCurrency()}`}
                     </strong>
                   </div>
                   <div className="discount">
-                    <span>10% discount:</span>
-                    <strong>$144.80 MX</strong>
+                    <span>
+                      {this.props.site.configuration.discount}%{" "}
+                      {getTexto("discount")}:
+                    </span>
+                    <strong>
+                      {`$ ${parseFloat(
+                        parseFloat(this.props.cart.totalPrice) *
+                          (parseFloat(0.01) *
+                            parseFloat(this.props.site.configuration.discount))
+                      ).toFixed(2)}`}{" "}
+                      {getCurrency()}
+                    </strong>
                   </div>
                   <div className="total">
                     <span style={{ fontWeight: "bold" }}>
                       {getTexto("Total")}:
                     </span>
                     <strong>
-                      $ {`${this.props.cart.totalPrice} ${getCurrency()}`}
+                      {`$ ${parseFloat(
+                        parseFloat(this.props.cart.totalPrice) -
+                          parseFloat(this.props.cart.totalPrice) *
+                            (parseFloat(0.01) *
+                              parseFloat(
+                                this.props.site.configuration.discount
+                              ))
+                      ).toFixed(2)} ${getCurrency()}`}
                     </strong>
                   </div>
                   <div className="action">
