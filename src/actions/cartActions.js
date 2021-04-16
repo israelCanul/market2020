@@ -43,47 +43,48 @@ export function setCartToSession(obj) {
       payload: true,
     });
     let params = { jsonData: JSON.stringify(obj) };
-    axios
-      .post(
-        getState().site.initialConfig.urlAPI +
-          `/${getState().site.initialConfig.WebSection}` +
-          "/Shopping/setShoppingCart",
-        qs.stringify(params)
-      )
-      .then((response) => {
-        if (parseInt(response.data) == 1) {
-          dispatch({
-            type: SETITEMTOSESSION,
-            apiServer:
-              getState().site.initialConfig.urlAPI +
-              "/" +
-              getState().site.initialConfig.WebSection +
-              "/",
-            payload: response.data,
-          });
-        } else {
-          dispatch({
-            type: SETITEMTOSESSION,
-            apiServer: "There was an Error, Try Later",
-            payload: 0,
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        try {
-          dispatch({
-            type: SETITEMTOSESSION,
-            apiServer: err.response,
-            payload: 0,
-          });
-        } catch (error) {
-          dispatch({
-            type: SETITEMTOSESSION,
-            apiServer: "There was an Error, Try Later",
-            payload: 0,
-          });
-        }
-      });
+    console.log(JSON.stringify(obj));
+    // axios
+    //   .post(
+    //     getState().site.initialConfig.urlAPI +
+    //       `/${getState().site.initialConfig.WebSection}` +
+    //       "/Shopping/setShoppingCart",
+    //     qs.stringify(params)
+    //   )
+    //   .then((response) => {
+    //     if (parseInt(response.data) == 1) {
+    //       dispatch({
+    //         type: SETITEMTOSESSION,
+    //         apiServer:
+    //           getState().site.initialConfig.urlAPI +
+    //           "/" +
+    //           getState().site.initialConfig.WebSection +
+    //           "/",
+    //         payload: response.data,
+    //       });
+    //     } else {
+    //       dispatch({
+    //         type: SETITEMTOSESSION,
+    //         apiServer: "There was an Error, Try Later",
+    //         payload: 0,
+    //       });
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     try {
+    //       dispatch({
+    //         type: SETITEMTOSESSION,
+    //         apiServer: err.response,
+    //         payload: 0,
+    //       });
+    //     } catch (error) {
+    //       dispatch({
+    //         type: SETITEMTOSESSION,
+    //         apiServer: "There was an Error, Try Later",
+    //         payload: 0,
+    //       });
+    //     }
+    //   });
   };
 }
