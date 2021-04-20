@@ -54,4 +54,6 @@ export let text = {
   "Categories of the day": "Categories of the day",
   "Summary & Delivery": "Summary & Delivery",
   Confirmation: "Confirmation",
+  "Item updated in cart": "Item updated in cart",
+  "Item added to cart": "item added to cart",
 };

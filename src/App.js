@@ -14,14 +14,14 @@ import {
   SetUserFromGenesis,
 } from "./actions/index";
 import { fetchCartItems } from "./actions/cartActions";
-import { NotificationContainer } from "react-notifications";
+// import { NotificationContainer } from "react-notifications";
 
 import { getLanguage } from "./libs/language";
 import { getCookieForm } from "./libs/cookieManager";
 import getURL from "./libs/Routes";
 
 import "../scss/App.scss";
-import "react-notifications/lib/notifications.css";
+// import "react-notifications/lib/notifications.css";
 
 //hot loader
 import { hot } from "react-hot-loader";
@@ -40,6 +40,9 @@ const BacktoTop = lazy(() =>
 );
 const CartItems = lazy(() =>
   import(/* webpackPrefetch: true */ "./pages/cartItems")
+);
+const Notifications = lazy(() =>
+  import(/* webpackPrefetch: true */ "./components/notifications")
 );
 const HistorialShopping = lazy(() =>
   import(/* webpackPrefetch: true */ "./pages/shoppingHistory")
@@ -126,7 +129,7 @@ class App extends React.Component {
                 </Route>
               </Switch>
               <BacktoTop />
-              <NotificationContainer />
+              {/* <NotificationContainer /> */}
               <Footer />
             </Suspense>
           </Router>

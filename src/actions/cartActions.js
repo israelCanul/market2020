@@ -43,7 +43,28 @@ export function setCartToSession(obj) {
       payload: true,
     });
     let params = { jsonData: JSON.stringify(obj) };
+    let paramForForm = JSON.stringify(obj);
     console.log(JSON.stringify(obj));
+
+    var form = document.createElement("form");
+    document.body.appendChild(form);
+    var element1 = document.createElement("input");
+    form.method = "POST";
+    form.action = `${getState().site.initialConfig.urlAPI}/${
+      getState().site.initialConfig.WebSection
+    }/Shopping/InformationPayV2`;
+    // wdev.rrgapps.com;
+    // form.action = `http://wdev.rrgapps.com/RoyalMarket/${
+    //   getState().site.initialConfig.WebSection
+    // }/Shopping/InformationPayV2`;
+    // form.action = "http://api.dominioprueba.com//index.php";
+
+    element1.value = paramForForm;
+    element1.name = "Data";
+    element1.type = "hidden";
+    form.appendChild(element1);
+    form.submit();
+
     // axios
     //   .post(
     //     getState().site.initialConfig.urlAPI +

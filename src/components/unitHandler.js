@@ -3,9 +3,12 @@ import { connect } from "react-redux";
 import getTexto from "../libs/messages";
 import { getCurrency } from "../libs/language";
 import { fetchCartItems, setItemToCart } from "../actions/cartActions";
-import { NotificationManager } from "react-notifications";
+import Notification from "./notifications";
+// import { NotificationManager } from "react-notifications";
 
 function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
+  let [notificationAdd, setNotification] = useState(false);
+  let [notificationUpdate, setNotificationUpdate] = useState(false);
   let cartSubtotal = cartItem
     ? parseFloat(cartItem.totalItems * item.DPrice).toFixed(1)
     : (item.YnAllowFractionalSale
@@ -170,7 +173,8 @@ function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
       onList: true,
     };
     setItemToCart(itemObject);
-    NotificationManager.info(item.SItemName, "item added to cart", 6000);
+    setNotification(true);
+    // NotificationManager.info(item.SItemName, "item added to cart", 6000);
     setUnit(
       item.YnAllowFractionalSale
         ? parseFloat(item.MinSell).toFixed(1)
@@ -178,28 +182,17 @@ function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
     );
   };
   let updateItemToCart = () => {
-    // o.preventDefault();
-    // console.log(parseFloat(unit).toFixed(1));
-    // console.log(typeof parseFloat(unit).toFixed(1));
     if (typeof unit === "number" || (!Number.isNaN(unit) && unit != "")) {
-      console.log("actualizando");
-      console.log(unit);
       let itemObject = {
         totalItems: item.YnAllowFractionalSale ? parseFloat(unit) : unit,
         item: item,
         onList: false,
       };
       setItemToCart(itemObject);
-      NotificationManager.info(item.SItemName, "item updated in cart", 1000);
+      setNotification(true);
+      setNotificationUpdate(true);
+      // NotificationManager.info(item.SItemName, "item updated in cart", 1000);
     }
-
-    // let itemObject = {
-    //   totalItems: item.YnAllowFractionalSale ? parseFloat(unit) : unit,
-    //   item: item,
-    //   onList: false,
-    // };
-    // setItemToCart(itemObject);
-    // NotificationManager.info(item.SItemName, "item updated in cart", 6000);
   };
 
   return (
@@ -299,6 +292,15 @@ function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
           )}
         </React.Fragment>
       )}{" "}
+      {notificationAdd == true ? (
+        <Notification
+          isUpdate={notificationUpdate}
+          item={item}
+          toClose={setNotification}
+        />
+      ) : (
+        ""
+      )}
     </React.Fragment>
   );
 }

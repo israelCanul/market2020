@@ -112,7 +112,6 @@ export default function Menu({
       <div className="asideMenu_menu">
         <div className="container">
           <div className="session">
-            {/* {user ? console.log(user) : ""} */}
             {user ? (
               <AvatarLogged
                 closeAside={close}

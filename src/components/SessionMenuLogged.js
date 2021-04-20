@@ -26,16 +26,25 @@ function MenuLogged(props) {
               <strong>({cart.itemsCount})</strong>
             </Link>
           </li>
-          <li>
-            <Link
-              onClick={(e) => {
-                closeAside();
-              }}
-              to={getURL("/shopping-history")}
-            >
-              {getTexto("Shopping history")}
-            </Link>
-          </li>
+          {user.itemsHistory ? (
+            user.itemsHistory.length > 0 ? (
+              <li>
+                <Link
+                  onClick={(e) => {
+                    closeAside();
+                  }}
+                  to={getURL("/shopping-history")}
+                >
+                  {getTexto("Shopping history")}
+                </Link>
+              </li>
+            ) : (
+              ""
+            )
+          ) : (
+            ""
+          )}
+
           <li>
             <a
               href="#"
