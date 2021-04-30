@@ -85,3 +85,30 @@ export function RetrieveRandomObjByCat(objects, cat, numberToRetrieve) {
   }
   return arrayItems;
 }
+
+export function openModalForRetrieveUser(config, reduxLogin) {
+  var left = screen.width / 2 - 400 / 2;
+  var top = screen.height / 2 - 600 / 2;
+  var strWindowFeatures =
+    "menubar=no,location=no,resizable=no,scrollbars=yes,status=no,width=400,innerHeight=600,centerscreen=yes,chrome=yes, top=" +
+    top +
+    ", left=" +
+    left +
+    "";
+  window["output"] = function (userToken) {
+    reduxLogin(userToken);
+  };
+  window.open(
+    config.urlToRetrieveTokenToLogin +
+      "?Code=" +
+      config.codeToGetTokenToLogin +
+      "&ReturnUrl=" +
+      window.location.protocol +
+      "//" +
+      window.location.hostname +
+      (window.location.hostname == "localhost" ? ":3000" : "") +
+      "/redirect.html",
+    "CNN_WindowName",
+    strWindowFeatures
+  );
+}

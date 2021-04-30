@@ -8,11 +8,13 @@
 @import "./components/categories.scss";
 @import "./components/itemHandler.scss";
 @import "./components/notifications.scss";
+@import "./components/related.scss";
 body {
   margin: 0px;
   padding: 0px;
   font-family: "Open Sans", sans-serif;
   background: $grisBajoBG;
+  box-sizing: border-box;
 }
 header {
   z-index: 10;

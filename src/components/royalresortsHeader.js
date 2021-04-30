@@ -8,6 +8,9 @@ function RoyalHeader() {
         <a className="wrapperMenu_menu_title" href="#">
           Discover Royal Resorts
         </a>
+        <div class="icon">
+          <div className="triangle-up"></div>
+        </div>
         <ul className="">
           <li className="divider">Resorts</li>
           <li>
@@ -81,6 +84,9 @@ function RoyalHeader() {
         <a className="wrapperMenu_menu_title" href="#">
           Service & Amenities
         </a>
+        <div class="icon">
+          <div className="triangle-up"></div>
+        </div>
         <ul>
           <li>
             <a

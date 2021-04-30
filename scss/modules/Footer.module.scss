@@ -1,4 +1,31 @@
 @import "../mixins";
-footer {
+
+.footer {
+  padding: 10px 0px;
   background-color: $verdeFooter;
+  img {
+    max-width: 100%;
+  }
+  &_title {
+    margin: 5px 0px;
+    color: white;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 1.6;
+    text-align: left;
+  }
+  ul {
+    margin: 0px;
+    padding: 0px;
+    li {
+      list-style: none;
+      padding: 0px 5px;
+      a {
+        text-decoration: none;
+        font-size: 15px;
+        color: rgb(255, 255, 255);
+      }
+    }
+  }
 }

@@ -16,6 +16,10 @@
       flex-direction: column;
       padding: 5px;
       box-sizing: border-box;
+
+      &.noLogged {
+        justify-content: center;
+      }
     }
     /*
     Diversas secciones que puede tener un componente section
@@ -29,6 +33,11 @@
       align-items: center;
       //   justify-content: center;
       position: relative;
+      &.noLogged {
+        @include tablet {
+          padding: 0px 20px;
+        }
+      }
       img {
         border-radius: 50%;
         -webkit-border-radius: 50%;

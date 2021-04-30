@@ -7,6 +7,7 @@ import Sections from "../components/sections";
 import GenericSection from "../components/genericsection";
 import ListItems from "../components/list_items";
 import Related from "../components/relatedproducts";
+
 import { getParamsFromUrl, getAllParamsFromUrl } from "../libs/helpers";
 
 function SResult({ items, QP }) {
@@ -20,18 +21,31 @@ function SResult({ items, QP }) {
   let getAllParams = getAllParamsFromUrl();
   if (getAllParamsFromUrl().get("i") != null) {
     let filter = getAllParamsFromUrl().get("i").toUpperCase();
+    let cat = getAllParamsFromUrl().get("cat");
+    //console.log(getAllParamsFromUrl().get("cat"));
     // console.log(getAllParamsFromUrl().get("i"));
     itemsFiltered = itemsObj.storeItems.map((item) => {
       let description = item.SItemDesc;
       let name = item.SItemName;
+      let subCat = item.Category.SCategoryCode;
       let encontrado = false;
+      let findByCat = false;
+      if (cat != "") {
+        findByCat = new RegExp("" + cat + "").test(subCat);
+        if (findByCat) {
+          console.log(item);
+        }
+      }
+
       let findByName = new RegExp("" + filter + "").test(name.toUpperCase());
       let findByDesc = new RegExp("" + filter + "").test(
         description.toUpperCase()
       );
-      //   console.log(findByName, findByDesc);
-      if (filter != "" && (findByName == true || findByDesc == true)) {
-        // arraySearched = [...arraySearched, item];
+
+      if (
+        filter != "" &&
+        (findByName == true || findByDesc == true || findByCat == true)
+      ) {
         return item;
       }
     });

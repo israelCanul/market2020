@@ -1,0 +1,10 @@
+{
+  "WebSection": "KSK",
+  "Lan": "En",
+  "urlAPI": "https://wqasweb.royalresorts.com/RoyalMarket",
+  "urlLogin": "https://wqasweb.royalresorts.com/LoginService/wsLoginService.asmx/WmGetTokenInformation",
+  "loginUser": "2leJvJJFkiQ=",
+  "loginPassword": "nlzufEFcsxzn5xsb6HFtGA==",
+  "urlToGetTokenToLogin": "https://wqasweb.royalresorts.com/RRLogin/frmLogin.aspx",
+  "codeToGetTokenToLogin": "RRKSK"
+}

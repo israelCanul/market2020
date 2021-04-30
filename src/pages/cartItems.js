@@ -9,6 +9,7 @@ import {
   setLoader,
 } from "../actions/cartActions";
 import Related from "../components/relatedproducts";
+import { RetrieveRandomObjByCat } from "../libs/helpers";
 import "../../scss/components/cart-items.scss";
 
 class CartItems extends React.Component {
@@ -17,7 +18,8 @@ class CartItems extends React.Component {
     this.state = {};
     this.getItemsCart = this.getItemsCart.bind(this);
     this.setItemsToGenesis = this.setItemsToGenesis.bind(this);
-    console.log(props.cart.loader);
+    this.getRelated = this.getRelated.bind(this);
+
     if (props.cart.loader == true) {
       document.querySelector("body").classList.add("loaderCart");
     } else {
@@ -42,11 +44,40 @@ class CartItems extends React.Component {
     };
     this.props.setCartToSession(objToSession);
   }
+  getRelated() {
+    let that = this;
+    if (this.props.cart) {
+      if (this.props.cart.itemsCart.length > 0) {
+        let itemSelected = this.props.cart.itemsCart[0].item;
+        let itemsRandomByCat = new Array();
+        if (itemSelected) {
+          itemsRandomByCat = RetrieveRandomObjByCat(
+            this.props.items,
+            itemSelected.ItemExt.Group.SGroupCode,
+            6
+          );
+          return itemsRandomByCat;
+        }
+      }
+    }
+    return [];
+  }
   getItemsCart() {
     let that = this;
     if (this.props.cart) {
       console.log(this.props.cart);
       if (this.props.cart.itemsCart.length > 0) {
+        let itemSelected = this.props.cart.itemsCart[0].item;
+        let itemsRandomByCat = new Array();
+        if (itemSelected) {
+          itemsRandomByCat = RetrieveRandomObjByCat(
+            this.props.items,
+            itemSelected.ItemExt.Group.SGroupCode,
+            6
+          );
+          console.log(itemsRandomByCat);
+        }
+
         return this.props.cart.itemsCart.map((item) => {
           return (
             <ItemCart
@@ -108,11 +139,11 @@ class CartItems extends React.Component {
                         </td>
                       </tr>
                       <tr>
-                        <td>
+                        <td style={{ color: "#ff4438" }}>
                           {this.props.site.configuration.discount}%{" "}
                           {getTexto("discount")}:
                         </td>
-                        <td>
+                        <td style={{ fontWeight: "bold" }}>
                           {`$ ${parseFloat(
                             parseFloat(this.props.cart.totalPrice) *
                               (parseFloat(0.01) *
@@ -124,10 +155,16 @@ class CartItems extends React.Component {
                         </td>
                       </tr>
                       <tr>
-                        <td style={{ fontWeight: "bold", color: "black" }}>
+                        <td
+                          className="total"
+                          style={{ fontWeight: "bold", color: "black" }}
+                        >
                           {getTexto("Total")}:
                         </td>
-                        <td style={{ fontWeight: "bold", color: "black" }}>
+                        <td
+                          className="total"
+                          style={{ fontWeight: "bold", color: "black" }}
+                        >
                           {`$ ${parseFloat(
                             parseFloat(this.props.cart.totalPrice) -
                               parseFloat(this.props.cart.totalPrice) *
@@ -197,14 +234,7 @@ class CartItems extends React.Component {
                   </div>
                 </div>
                 <div className=" descriptionSale_related">
-                  <Related
-                    inCart
-                    items={[
-                      this.props.items[0],
-                      this.props.items[1],
-                      this.props.items[2],
-                    ]}
-                  />
+                  <Related inCart items={this.getRelated()} />
                 </div>
               </div>
             </div>

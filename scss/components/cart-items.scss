@@ -25,11 +25,13 @@
       .title {
         border-bottom: 1px solid rgba(0, 0, 0, 0.4);
       }
+
       .subtotal {
         position: relative;
         float: left;
         width: 100%;
         display: none;
+        font-size: 14px;
         @include desktop {
           text-align: right;
           display: flex;
@@ -39,11 +41,16 @@
           }
         }
       }
+      .total {
+        font-size: 17px;
+      }
     }
     .descriptionSale {
       padding: 0px 0px;
       position: relative;
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
       &_total {
         padding: 10px 10px;
         box-sizing: border-box;
@@ -54,9 +61,11 @@
         .discount {
           color: $naranja;
         }
+
         .subtotal,
         .discount,
         .total {
+          font-size: 14px;
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -69,6 +78,9 @@
           strong {
             color: black;
           }
+        }
+        .total {
+          font-size: 17px;
         }
         .action {
           .btn {
@@ -101,9 +113,35 @@
         padding: 0px 0px;
         position: relative;
         box-sizing: border-box;
+        flex: 1;
+        display: flex;
+        .incartRelated {
+          display: flex;
+          flex-direction: column;
+          .related {
+            .title {
+              grid-column: auto / span 4;
+              text-align: center;
+              height: 35px;
+              h3 {
+                margin: 10px 0px 0px;
+              }
+              @include tablet {
+                text-align: left;
+                grid-column: 3 / span 12;
+              }
+            }
+            .item {
+              height: 120px;
+            }
+          }
+        }
         .incart {
           padding: 0px 10px 10px;
           box-sizing: border-box;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
         }
       }
     }

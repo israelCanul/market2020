@@ -16,48 +16,20 @@
       grid-template-columns: repeat(16, 1fr);
       grid-template-rows: repeat(10, auto);
     }
+    .noresults {
+      grid-row: auto/span 2;
+      grid-column: auto/span 16;
+      h3 {
+        text-align: center;
+        min-height: 200px;
+        line-height: 200px;
+      }
+    }
 
     &.row {
       grid-template-rows: repeat(1, 1fr);
     }
-    &.related {
-      row-gap: 0px;
-      background-color: white;
-      grid-template-rows: repeat(1, 1fr);
-      .title {
-        grid-column: auto / span 4;
-        text-align: center;
-        @include tablet {
-          text-align: left;
-          grid-column: 3 / span 12;
-        }
-      }
-      .item:first-child,
-      :not(.item) + .item {
-        @include tablet {
-          grid-column: 3 / span 4;
-        }
-      }
-      overflow: hidden;
 
-      &.incart {
-        grid-template-columns: repeat(4, 1fr);
-        .title {
-          grid-column: auto / span 4;
-          text-align: center;
-          @include tablet {
-            text-align: left;
-            grid-column: 1 / span 4;
-          }
-        }
-        .item:first-child,
-        :not(.item) + .item {
-          @include tablet {
-            grid-column: auto / span 4;
-          }
-        }
-      }
-    }
     .section {
       grid-column: auto/span 4;
       padding: 0px $padding;
@@ -78,6 +50,35 @@
       display: flex;
       flex-direction: column;
       align-items: stretch;
+      &.isRelated {
+        padding: 0px 0px;
+        border-bottom: 1px solid rgb(221, 221, 221);
+
+        .item_content {
+          border-radius: 0px;
+          flex-direction: row;
+          align-items: stretch;
+          padding: 5px 3px;
+          .image {
+            max-width: 100px;
+            margin-top: 0px;
+            img {
+              max-width: 100%;
+            }
+          }
+
+          .unit {
+            font-size: 14px;
+            // font-family: "OpenSans";
+            color: rgb(51, 51, 51);
+            line-height: 1.571;
+            text-align: left;
+          }
+          .action {
+            margin: 0px;
+          }
+        }
+      }
       &_content {
         background: white;
         min-width: 30px;
@@ -130,6 +131,9 @@
             padding: 8px 20px;
             background: $naranja;
             border: 1px solid $naranjaBold;
+          }
+          .linkAdd {
+            color: $verdeSitio;
           }
         }
         .details {

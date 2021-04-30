@@ -56,4 +56,8 @@ export let text = {
   Confirmation: "Confirmation",
   "Item updated in cart": "Item updated in cart",
   "Item added to cart": "item added to cart",
+  "In order to give you a better experience please":
+    "In order to give you a better experience please",
+  "(with your member account)": "(with your member account)",
+  "Retrieve it here": "Retrieve it here",
 };

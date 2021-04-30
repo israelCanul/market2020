@@ -39,52 +39,47 @@ function ShoppingHistory(props) {
       }
     }
   }
-  if (props.state.categories) {
-    let newCat = [...props.state.categories];
-    let arrayCat = [];
-    while (arrayCat.length <= 3) {
-      let number = _.random(0, Object.keys(newCat).length);
-      let newArray = newCat.slice(number, number + 1);
-      if (newArray.length > 0) {
-        if (
-          _.findIndex(arrayCat, function (o) {
-            return o.SCategoryCode == newArray[0].SCategoryCode;
-          }) == -1
-        ) {
-          arrayCat.push(...newArray);
-        }
+
+  if (props.site) {
+    if (props.site.configuration) {
+      if (props.site.configuration.contenido) {
+        return (
+          <div className="section">
+            <div className="section_content">
+              <div
+                className="img-link"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <a
+                  style={{ width: "100%", textAlign: "center" }}
+                  href={
+                    props.site.configuration.contenido.imgBelowSlideNoLogged.url
+                  }
+                >
+                  <LazyLoadImage
+                    style={{ width: "auto", maxHeight: "290px" }}
+                    src={
+                      props.site.configuration.contenido.imgBelowSlideNoLogged
+                        .img
+                    }
+                    alt="Image BelowSlide No Logged"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        );
       }
     }
-    //   let renderCats = "";
-    let renderCats = arrayCat.map((cate, id) => {
-      return (
-        <Link
-          key={id}
-          onClick={(e) => {
-            backToTop();
-          }}
-          to={`/categories/${cate.SCategoryDesc.toLowerCase().replaceAll(
-            " ",
-            "-"
-          )}/${cate.LsGroup[0].SGroupDesc.toLowerCase().replaceAll(" ", "-")}`}
-        >
-          <div className="category">{cate.SCategoryDesc}</div>
-        </Link>
-      );
-    });
-    return (
-      <div className="section">
-        <div className="section_content">
-          <div className="information">
-            <h3>{getTexto("Categories of the day")}</h3>
-          </div>
-          <div className="categories">{renderCats}</div>
-          {/* <div className="action_link">
-              <a href="#">{getTexto("View More")}</a>
-            </div> */}
-        </div>
-      </div>
-    );
   }
+  return (
+    <div className="section">
+      <div className="section_content"></div>
+    </div>
+  );
 }
 export default ShoppingHistory;

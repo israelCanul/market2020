@@ -6,6 +6,8 @@ import Slide from "../components/slide";
 import Sections from "../components/sections";
 import GenericSection from "../components/genericsection";
 import ListItems from "../components/list_items";
+import { connect } from "react-redux";
+import { SetUserFromGenesis, logoutUser } from "../actions/index";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -39,6 +41,7 @@ function App(props) {
                 <Slide slides={state.configuration.contenido.bannerHeader} />
               </div>
               <Sections
+                toLoginUser={SetUserFromGenesis}
                 site={site}
                 cart={cart}
                 state={state}
@@ -76,4 +79,13 @@ function App(props) {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart,
+    site: state.site,
+  };
+};
+
+export default connect(mapStateToProps, { SetUserFromGenesis, logoutUser })(
+  App
+);

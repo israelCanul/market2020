@@ -1,6 +1,7 @@
 import React from "react";
 import Item from "./Item";
 import PageNavigation from "./pageNavigation";
+import NoItems from "./list_items_no_items";
 
 export default function ListItems({
   category = null,
@@ -37,7 +38,7 @@ export default function ListItems({
         style={{ gridTemplateRows: `auto repeat(${countRows},auto)` }}
         className="list grid"
       >
-        {PageNavigation(renderItems)}
+        {renderItems.length > 0 ? PageNavigation(renderItems) : <NoItems />}
       </div>
     </div>
   );

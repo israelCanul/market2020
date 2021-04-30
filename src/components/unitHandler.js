@@ -6,7 +6,13 @@ import { fetchCartItems, setItemToCart } from "../actions/cartActions";
 import Notification from "./notifications";
 // import { NotificationManager } from "react-notifications";
 
-function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
+function HandlerItem({
+  setItemToCart,
+  item,
+  detail = null,
+  cartItem = null,
+  isRelated = null,
+}) {
   let [notificationAdd, setNotification] = useState(false);
   let [notificationUpdate, setNotificationUpdate] = useState(false);
   let cartSubtotal = cartItem
@@ -191,10 +197,8 @@ function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
       setItemToCart(itemObject);
       setNotification(true);
       setNotificationUpdate(true);
-      // NotificationManager.info(item.SItemName, "item updated in cart", 1000);
     }
   };
-
   return (
     <React.Fragment>
       {detail ? (
@@ -261,6 +265,26 @@ function HandlerItem({ setItemToCart, item, detail = null, cartItem = null }) {
           </div>
           <div className="total">
             $ {subtotal} {getCurrency()}
+          </div>
+        </React.Fragment>
+      ) : isRelated ? (
+        <React.Fragment>
+          <div className="unit">
+            <span style={{ textTransform: "capitalize" }}>
+              {item.SItemName.toLowerCase()}
+            </span>{" "}
+            <br />
+            <span>{item.ItemMeasure.toLowerCase()}</span> <br />
+            <strong>$ {parseFloat(item.DPrice).toFixed(2)} MXN</strong>
+            {!error ? (
+              <div className="action">
+                <a onClick={addToCart.bind(this)} href="" className="linkAdd">
+                  {getTexto("Add to cart")}
+                </a>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </React.Fragment>
       ) : (

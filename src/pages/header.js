@@ -24,6 +24,7 @@ function Header({
 }) {
   const [categories, setCat] = useState("");
   let renderCats = cat.map((item, index) => {
+    // ${item.SGroupDesc.toLowerCase().replaceAll(" ", "-")}
     return (
       <option key={item.SCategoryCode} value={index}>
         {item.SCategoryDesc.toLowerCase()}
@@ -34,13 +35,15 @@ function Header({
     <header className="header" id="Header">
       <div className="topmenu">
         <div className="topmenu_logo">
-          <img
-            width="207"
-            height="34"
-            className="animate__animated"
-            src="/img/logo_royal_resorts.png"
-            alt="Logo Royal Resorts"
-          />
+          <a href="https://www.royalresorts.com/">
+            <img
+              width="207"
+              height="34"
+              className="animate__animated"
+              src="/img/logo_royal_resorts.png"
+              alt="Logo Royal Resorts"
+            />
+          </a>
         </div>
         <div className="topmenu_side">
           <img

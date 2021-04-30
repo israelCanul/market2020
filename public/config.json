@@ -6,5 +6,6 @@
   "loginUser": "2leJvJJFkiQ=",
   "loginPassword": "nlzufEFcsxzn5xsb6HFtGA==",
   "urlToGetTokenToLogin": "https://wqasweb.royalresorts.com/RRLogin/frmLogin.aspx",
+  "urlToRetrieveTokenToLogin": "https://wqasweb.royalresorts.com/RRLogin/frmForgotPIN.aspx",
   "codeToGetTokenToLogin": "RRKSK"
 }

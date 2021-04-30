@@ -1,7 +1,6 @@
 {
   "hosting": {
-    "public": "public",
-    "site": "royalmarket.web.app",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -1,0 +1,64 @@
+.list {
+  &.grid {
+    &.related {
+      row-gap: 0px;
+      background-color: white;
+      grid-template-rows: 40px auto;
+      .title {
+        grid-column: auto / span 4;
+        text-align: center;
+        height: 35px;
+        h3 {
+          margin: 20px 0px 0px;
+        }
+        @include tablet {
+          text-align: left;
+          grid-column: 3 / span 12;
+        }
+      }
+      .showMore {
+        grid-column: auto/span 4;
+        text-align: center;
+        background-color: $grisBajoBG;
+        height: 32px;
+        a {
+          display: block;
+          padding: 5px;
+          color: $verdeSitio;
+          text-decoration: none;
+        }
+      }
+
+      .item:first-child,
+      :not(.item) + .item {
+        @include tablet {
+          grid-column: 3 / span 4;
+        }
+      }
+      overflow: hidden;
+
+      &.incart {
+        grid-template-columns: repeat(4, 1fr);
+        .title {
+          grid-column: auto / span 4;
+          text-align: center;
+          @include tablet {
+            text-align: left;
+            grid-column: 1 / span 4;
+          }
+        }
+        .item:first-child,
+        :not(.item) + .item {
+          @include tablet {
+            grid-column: auto / span 4;
+          }
+        }
+      }
+      .item {
+        img {
+          max-width: 150px;
+        }
+      }
+    }
+  }
+}
