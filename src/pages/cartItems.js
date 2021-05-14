@@ -25,6 +25,8 @@ class CartItems extends React.Component {
     } else {
       document.querySelector("body").classList.remove("loaderCart");
     }
+
+    // console.log(this.props.cart.itemsCart.length);
   }
   setItemsToGenesis(e) {
     e.preventDefault();
@@ -65,7 +67,6 @@ class CartItems extends React.Component {
   getItemsCart() {
     let that = this;
     if (this.props.cart) {
-      console.log(this.props.cart);
       if (this.props.cart.itemsCart.length > 0) {
         let itemSelected = this.props.cart.itemsCart[0].item;
         let itemsRandomByCat = new Array();
@@ -75,7 +76,6 @@ class CartItems extends React.Component {
             itemSelected.ItemExt.Group.SGroupCode,
             6
           );
-          console.log(itemsRandomByCat);
         }
 
         return this.props.cart.itemsCart.map((item) => {
@@ -234,7 +234,11 @@ class CartItems extends React.Component {
                   </div>
                 </div>
                 <div className=" descriptionSale_related">
-                  <Related inCart items={this.getRelated()} />
+                  {this.props.cart.itemsCart.length > 0 ? (
+                    <Related inCart items={this.getRelated()} />
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             </div>
@@ -260,9 +264,9 @@ class CartItems extends React.Component {
                 <div></div>
               </div>
             </div>
-            <div className="message">
-              {this.props.cart.errorMessage ? this.props.cart.errorMessage : ""}
-            </div>
+            {/* <div className="message"> */}
+            {/* {this.props.cart.errorMessage ? this.props.cart.errorMessage : ""} */}
+            {/* </div> */}
           </div>
         </div>
       </div>

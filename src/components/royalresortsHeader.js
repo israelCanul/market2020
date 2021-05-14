@@ -8,7 +8,7 @@ function RoyalHeader() {
         <a className="wrapperMenu_menu_title" href="#">
           Discover Royal Resorts
         </a>
-        <div class="icon">
+        <div className="icon">
           <div className="triangle-up"></div>
         </div>
         <ul className="">
@@ -84,14 +84,14 @@ function RoyalHeader() {
         <a className="wrapperMenu_menu_title" href="#">
           Service & Amenities
         </a>
-        <div class="icon">
+        <div className="icon">
           <div className="triangle-up"></div>
         </div>
         <ul>
           <li>
             <a
               href="https://app.royalresorts.com/forms/airport_transfers.aspx"
-              class="azul-fuerte-diseno-text"
+              className="azul-fuerte-diseno-text"
             >
               Airport Transfers
             </a>
@@ -99,7 +99,7 @@ function RoyalHeader() {
           <li>
             <a
               href="https://www.royalresorts.com/guest-services-and-amenities/refine-all-inclusive-package/"
-              class="azul-fuerte-diseno-text"
+              className="azul-fuerte-diseno-text"
             >
               All-Inclusive Package
             </a>
@@ -107,7 +107,7 @@ function RoyalHeader() {
           <li>
             <a
               href="https://www.royalresorts.com/guest-services-and-amenities/restaurants-in-cancun-playa-del-carmen/"
-              class="azul-fuerte-diseno-text"
+              className="azul-fuerte-diseno-text"
             >
               Restaurants &amp; Bars
             </a>
@@ -115,7 +115,7 @@ function RoyalHeader() {
           <li>
             <a
               href="https://www.royalresorts.com/guest-services-and-amenities/spa/"
-              class="azul-fuerte-diseno-text"
+              className="azul-fuerte-diseno-text"
             >
               Spa
             </a>
@@ -123,7 +123,7 @@ function RoyalHeader() {
           <li>
             <a
               href="https://www.royalresorts.com/guest-services-and-amenities/fitness-center/"
-              class="azul-fuerte-diseno-text"
+              className="azul-fuerte-diseno-text"
             >
               Fitness Center
             </a>
@@ -131,7 +131,7 @@ function RoyalHeader() {
           <li>
             <a
               href="https://www.royalresorts.com/guest-services-and-amenities/gift-shops/"
-              class="azul-fuerte-diseno-text"
+              className="azul-fuerte-diseno-text"
             >
               Gift Shops
             </a>
@@ -139,7 +139,7 @@ function RoyalHeader() {
           <li>
             <a
               href="https://www.royalresorts.com/guest-services-and-amenities/the-royal-market/"
-              class="azul-fuerte-diseno-text"
+              className="azul-fuerte-diseno-text"
             >
               The Royal Market
             </a>
@@ -147,7 +147,7 @@ function RoyalHeader() {
           <li>
             <a
               href="https://www.royalresorts.com/guest-services-and-amenities/weddings-and-special-events/"
-              class="azul-fuerte-diseno-text"
+              className="azul-fuerte-diseno-text"
             >
               Weddings &amp; Special Events
             </a>
@@ -155,7 +155,7 @@ function RoyalHeader() {
           <li>
             <a
               href="https://app.royalresorts.com/cybermall/specialGifts.aspx"
-              class="azul-fuerte-diseno-text"
+              className="azul-fuerte-diseno-text"
             >
               Gifts &amp; Certificate
             </a>
@@ -163,7 +163,7 @@ function RoyalHeader() {
           <li>
             <a
               href="https://www.royalresorts.com/guest-services-and-amenities/activities-sports/"
-              class="azul-fuerte-diseno-text"
+              className="azul-fuerte-diseno-text"
             >
               Activities &amp; Sports
             </a>
@@ -171,7 +171,7 @@ function RoyalHeader() {
           <li>
             <a
               href="https://www.royalresorts.com/guest-services-and-amenities/cancun-tours-water-sports/"
-              class="azul-fuerte-diseno-text"
+              className="azul-fuerte-diseno-text"
             >
               Cancun Tours &amp; Water Sports
             </a>

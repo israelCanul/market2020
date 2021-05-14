@@ -5,6 +5,7 @@ import {
   DELETECARTITEM,
   SETITEMTOSESSION,
   OPENLOADER,
+  RESETCARTITEM,
 } from "../actions/cartActions";
 const INITIAL_STATE = { itemsCart: [], isShowed: false, loader: false };
 
@@ -82,6 +83,27 @@ export default function (state = INITIAL_STATE, action) {
         itemsCart: newArray,
         itemsCount: cant,
         totalPrice: price,
+      };
+      break;
+    case RESETCARTITEM:
+      // let newArray = [];
+      // let cant = 0;
+      // let price = parseFloat(0.0).toFixed(1);
+      // state.itemsCart.map((item) => {
+      //   if (item.item.SItemCode != codeItem) {
+      //     newArray.push(item);
+      //     cant = cant + 1;
+      //     price +=
+      //       parseFloat(item.totalItems) *
+      //       parseFloat(item.item.DPrice).toFixed(1);
+      //   }
+      // });
+      localStorage.setItem("cart", window.btoa(JSON.stringify([])));
+      newState = {
+        ...state,
+        itemsCart: [],
+        itemsCount: cant,
+        totalPrice: parseFloat(0.0).toFixed(1),
       };
       break;
     case FETCHCART:

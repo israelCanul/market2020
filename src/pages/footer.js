@@ -101,7 +101,7 @@ export default function Footer() {
         </div>
         <div className="section">
           {/* second column [INICIO] */}
-          <h3 class="footer_title">SERVICE &amp; AMENITIES</h3>
+          <h3 className="footer_title">SERVICE &amp; AMENITIES</h3>
           <ul id="menu-services-amenities" className="menu">
             <li
               id="menu-item-16201"

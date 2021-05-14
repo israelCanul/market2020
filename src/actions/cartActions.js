@@ -4,6 +4,7 @@ export const DELETECARTITEM = "DELETECARTITEM";
 export const SETITEMTOSESSION = "SETITEMTOSESSION";
 export const SETLOADCART = "SETLOADCART";
 export const OPENLOADER = "OPENLOADER";
+export const RESETCARTITEM = "RESETCARTITEM";
 import axios from "axios";
 import qs from "qs";
 export function fetchCartItems(ini) {
@@ -22,6 +23,12 @@ export function deleteItemToCart(ItemCode) {
   return {
     type: DELETECARTITEM,
     payload: ItemCode,
+  };
+}
+export function resetToCart() {
+  return {
+    type: RESETCARTITEM,
+    payload: [],
   };
 }
 export function setLoadingCart(ItemCode) {
@@ -44,25 +51,42 @@ export function setCartToSession(obj) {
     });
     let params = { jsonData: JSON.stringify(obj) };
     let paramForForm = JSON.stringify(obj);
-    console.log(JSON.stringify(obj));
+    let user = {};
+    // console.log(getState());
+    if (getState().site.user != undefined) {
+      user = JSON.stringify({
+        Email: getState().site.user.Email,
+        FullName: getState().site.user.fullName,
+        Name: getState().site.user.FName,
+        LastName: getState().site.user.LName1,
+      });
+    } else {
+      user = "";
+    }
 
     var form = document.createElement("form");
     document.body.appendChild(form);
     var element1 = document.createElement("input");
+    var element2 = document.createElement("input");
     form.method = "POST";
     form.action = `${getState().site.initialConfig.urlAPI}/${
       getState().site.initialConfig.WebSection
     }/Shopping/InformationPayV2`;
-    // wdev.rrgapps.com;
-    // form.action = `http://wdev.rrgapps.com/RoyalMarket/${
-    //   getState().site.initialConfig.WebSection
-    // }/Shopping/InformationPayV2`;
-    // form.action = "http://api.dominioprueba.com//index.php";
 
     element1.value = paramForForm;
     element1.name = "Data";
     element1.type = "hidden";
+    element2.value = user;
+    element2.name = "UserData";
+    element2.type = "hidden";
     form.appendChild(element1);
+    form.appendChild(element2);
+    dispatch({
+      type: RESETCARTITEM,
+      payload: [],
+    });
+    // console.log(paramForForm);
+    // console.log(user);
     form.submit();
 
     // axios
