@@ -50,21 +50,62 @@ function App(props) {
               <ListItems state={state} params={{}} />
               <GenericSection className="row">
                 <div className="section x12">
-                  <img
-                    className="img"
-                    src="/img/home/tracker_image.jpg"
-                    srcSet="img/home/tracker_image_500_x_167.jpg 767w, img/home/tracker_image_768_x_257.jpg 1200w, img/home/tracker_image.jpg 1900w"
-                    alt="Tracker Image"
-                  />
+                  {site.configuration.contenido.bannerBottom ? (
+                    <a href={site.configuration.contenido.bannerBottom.url}>
+                      <picture loading="lazy">
+                        {site.configuration.contenido.bannerBottom.imgM !=
+                        "" ? (
+                          <source
+                            media="(max-width: 767px)"
+                            srcset={`${site.configuration.contenido.bannerBottom.imgM}`}
+                          />
+                        ) : (
+                          ""
+                        )}
+                        <source
+                          media="(min-width: 767px)"
+                          srcset={`${site.configuration.contenido.bannerBottom.img}`}
+                        />
+                        <LazyLoadImage
+                          className="img"
+                          src={site.configuration.contenido.bannerBottom.img}
+                          alt="Big Image Banner Bottom"
+                        />
+                      </picture>
+                    </a>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div className="section x4">
                   {site.configuration.contenido.imgBeforeFooter ? (
                     <a href={site.configuration.contenido.imgBeforeFooter.url}>
-                      <LazyLoadImage
+                      {/* <LazyLoadImage
                         className="img"
                         src={site.configuration.contenido.imgBeforeFooter.img}
                         alt="Image Before Footer"
-                      />
+                      /> */}
+
+                      <picture loading="lazy">
+                        {site.configuration.contenido.imgBeforeFooter.imgM !=
+                        "" ? (
+                          <source
+                            media="(max-width: 767px)"
+                            srcset={`${site.configuration.contenido.imgBeforeFooter.imgM}`}
+                          />
+                        ) : (
+                          ""
+                        )}
+                        <source
+                          media="(min-width: 767px)"
+                          srcset={`${site.configuration.contenido.imgBeforeFooter.img}`}
+                        />
+                        <LazyLoadImage
+                          className="img"
+                          src={site.configuration.contenido.imgBeforeFooter.img}
+                          alt="Image Banner Bottom"
+                        />
+                      </picture>
                     </a>
                   ) : (
                     ""

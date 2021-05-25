@@ -60,14 +60,37 @@ function ShoppingHistory(props) {
                     props.site.configuration.contenido.imgBelowSlideNoLogged.url
                   }
                 >
-                  <LazyLoadImage
+                  <picture loading="lazy">
+                    {props.site.configuration.contenido.imgBelowSlideNoLogged
+                      .imgM != "" ? (
+                      <source
+                        media="(max-width: 767px)"
+                        srcset={`${props.site.configuration.contenido.imgBelowSlideNoLogged.imgM}`}
+                      />
+                    ) : (
+                      ""
+                    )}
+                    <source
+                      media="(min-width: 767px)"
+                      srcset={`${props.site.configuration.contenido.imgBelowSlideNoLogged.img}`}
+                    />
+                    <LazyLoadImage
+                      className="img"
+                      src={
+                        props.site.configuration.contenido.imgBelowSlideNoLogged
+                          .img
+                      }
+                      alt="Image Instead User History"
+                    />
+                  </picture>
+                  {/* <LazyLoadImage
                     style={{ width: "auto", maxHeight: "290px" }}
                     src={
                       props.site.configuration.contenido.imgBelowSlideNoLogged
                         .img
                     }
                     alt="Image BelowSlide No Logged"
-                  />
+                  /> */}
                 </a>
               </div>
             </div>

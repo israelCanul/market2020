@@ -111,11 +111,31 @@ export default function Sections({
                 style={{ width: "100%", textAlign: "center" }}
                 href={dataSite.contenido.imgBelowSlide.url}
               >
-                <LazyLoadImage
+                <picture loading="lazy">
+                  {dataSite.contenido.imgBelowSlide.imgM != "" ? (
+                    <source
+                      media="(max-width: 767px)"
+                      srcset={`${dataSite.contenido.imgBelowSlide.imgM}`}
+                    />
+                  ) : (
+                    ""
+                  )}
+                  <source
+                    media="(min-width: 767px)"
+                    srcset={`${dataSite.contenido.imgBelowSlide.img}`}
+                  />
+                  <LazyLoadImage
+                    className="img"
+                    src={dataSite.contenido.imgBelowSlide.img}
+                    alt="Image Below Slider"
+                  />
+                </picture>
+
+                {/* <LazyLoadImage
                   style={{ width: "auto", maxHeight: "290px" }}
                   src={dataSite.contenido.imgBelowSlide.img}
                   alt="Image BelowSlide"
-                />
+                /> */}
               </a>
             </div>
           </div>

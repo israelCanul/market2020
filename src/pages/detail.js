@@ -121,11 +121,34 @@ export default function Detail({ items, site }) {
                       <a
                         href={site.configuration.contenido.imgOnItemDetail.url}
                       >
-                        <LazyLoadImage
+                        <picture loading="lazy">
+                          {site.configuration.contenido.imgOnItemDetail.imgM !=
+                          "" ? (
+                            <source
+                              media="(max-width: 767px)"
+                              srcset={`${site.configuration.contenido.imgOnItemDetail.imgM}`}
+                            />
+                          ) : (
+                            ""
+                          )}
+                          <source
+                            media="(min-width: 767px)"
+                            srcset={`${site.configuration.contenido.imgOnItemDetail.img}`}
+                          />
+                          <LazyLoadImage
+                            className="img"
+                            src={
+                              site.configuration.contenido.imgOnItemDetail.img
+                            }
+                            alt="Banner On Detail"
+                          />
+                        </picture>
+
+                        {/* <LazyLoadImage
                           className="img"
                           src={site.configuration.contenido.imgOnItemDetail.img}
                           alt="Image Before Footer"
-                        />
+                        /> */}
                       </a>
                     </div>
                   </div>
