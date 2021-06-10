@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import getTexto from "../libs/messages";
+import { getLanguage, SetLanguage } from "../libs/language";
 import AvatarNoLogged from "../components/SessionAvatarNoLoggedHeader";
 import Avatar from "../components/SessionAvatarLoggedHeader";
 import Searcher from "../components/searcher";
@@ -8,6 +9,7 @@ import RoyalMenu from "../components/royalresortsHeader";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { SetUserFromGenesis, logoutUser } from "../actions/index";
+import { useHistory } from "react-router-dom";
 
 //estilos
 import "../../scss/modules/Header.module.scss";
@@ -21,7 +23,9 @@ function Header({
   SetUserFromGenesis,
   logoutUser,
   site,
+  setLang,
 }) {
+  // const [language, setLanguage] = useState(site.language);
   const [categories, setCat] = useState("");
   let renderCats = cat.map((item, index) => {
     // ${item.SGroupDesc.toLowerCase().replaceAll(" ", "-")}
@@ -31,6 +35,15 @@ function Header({
       </option>
     );
   });
+  let history = useHistory();
+  let setUrl = (itemsDesc = null) => {
+    history.replace("/reloading");
+    setTimeout(() => {
+      history.replace(itemsDesc);
+      setLang(getLanguage());
+    }, 100);
+  };
+
   return (
     <header className="header" id="Header">
       <div className="topmenu">
@@ -46,6 +59,35 @@ function Header({
           </a>
         </div>
         <div className="topmenu_side">
+          {getLanguage() == "en-US" ? (
+            <img
+              onClick={(e) => {
+                SetLanguage("es-MX", function () {
+                  setUrl(window.location.pathname);
+                });
+              }}
+              width="17"
+              height="11"
+              style={{ height: "15px", margin: "4px 9px" }}
+              className=""
+              src="/img/icons/es_flag.jpg"
+              alt="Es Flag"
+            />
+          ) : (
+            <img
+              onClick={(e) => {
+                SetLanguage("en-US", function () {
+                  setUrl(window.location.pathname);
+                });
+              }}
+              width="17"
+              height="11"
+              style={{ height: "15px", margin: "4px 9px" }}
+              className=""
+              src="/img/icons/en_flag.jpg"
+              alt="En Flag"
+            />
+          )}
           <img
             onClick={(e) => {
               if (

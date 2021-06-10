@@ -60,8 +60,13 @@ class App extends React.Component {
       storeItems: items.length == 0 ? datos : items,
       queryParams: "",
       config: config,
+      language: this.props.site.language,
     };
     this.setQParams = this.setQParams.bind(this);
+    this.setLanguage = this.setLanguage.bind(this);
+  }
+  setLanguage(lang) {
+    this.setState({ language: lang });
   }
   setQParams(newQuery) {
     this.setState({ queryParams: newQuery });
@@ -89,8 +94,10 @@ class App extends React.Component {
           <Router>
             <Suspense fallback={<IsLoading />}>
               <Header
+                language={this.state.language}
                 datos={this.state.storeItems}
                 setQP={this.setQParams}
+                setLang={this.setLanguage}
                 cat={this.state.getCat}
               />
               <Switch>

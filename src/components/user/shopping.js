@@ -65,14 +65,14 @@ function ShoppingHistory(props) {
                       .imgM != "" ? (
                       <source
                         media="(max-width: 767px)"
-                        srcset={`${props.site.configuration.contenido.imgBelowSlideNoLogged.imgM}`}
+                        srcSet={`${props.site.configuration.contenido.imgBelowSlideNoLogged.imgM}`}
                       />
                     ) : (
                       ""
                     )}
                     <source
                       media="(min-width: 767px)"
-                      srcset={`${props.site.configuration.contenido.imgBelowSlideNoLogged.img}`}
+                      srcSet={`${props.site.configuration.contenido.imgBelowSlideNoLogged.img}`}
                     />
                     <LazyLoadImage
                       className="img"

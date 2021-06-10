@@ -6,14 +6,19 @@ import {
   GETINICONFIG,
   SETUSERGENESIS,
   LOGOUTUSER,
+  GETLANGUAGE,
+  SETLANGUAGE,
 } from "../actions/index";
 
 import { getLanguage } from "../libs/language";
 import { setCookieForm, deleteCookieForm } from "../libs/cookieManager";
-const INITIAL_STATE = { user: undefined };
+const INITIAL_STATE = { user: undefined, language: getLanguage() };
 export default function (state = INITIAL_STATE, action) {
   let newState = state;
   switch (action.type) {
+    case SETLANGUAGE:
+      newState = { ...state, language: action.payload };
+      break;
     case "PRUEBA":
       newState = { ...state, valorPrueba: action.payload };
       break;

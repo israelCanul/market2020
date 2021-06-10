@@ -1,0 +1,317 @@
+[
+    {
+        "ICategoryID": 3,
+        "SCategoryCode": "010",
+        "SCategoryDesc": "ALCOHOLICS BEVERAGES",
+        "LsGroup": [
+            {
+                "IGroupID": 0,
+                "SGroupCode": "10020     ",
+                "SGroupDesc": "WINES"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "10010     ",
+                "SGroupDesc": "BEERS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "10030     ",
+                "SGroupDesc": "CHAMPAGNE \u0026 COÑAC"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "10040     ",
+                "SGroupDesc": "RUMS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "10050     ",
+                "SGroupDesc": "TEQUILAS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "10060     ",
+                "SGroupDesc": "VODKAS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "10080     ",
+                "SGroupDesc": "WHISKIES \u0026 SCOTCH"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "10090     ",
+                "SGroupDesc": "SPIRITS OF FLAVORS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "010100    ",
+                "SGroupDesc": "CREAMS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "010120    ",
+                "SGroupDesc": "GINS"
+            }
+        ]
+    },
+    {
+        "ICategoryID": 6,
+        "SCategoryCode": "120",
+        "SCategoryDesc": "CLEANING",
+        "LsGroup": [
+            {
+                "IGroupID": 0,
+                "SGroupCode": "120010    ",
+                "SGroupDesc": "CLEANNING"
+            }
+        ]
+    },
+    {
+        "ICategoryID": 21,
+        "SCategoryCode": "030",
+        "SCategoryDesc": "DAIRY AND MEATS",
+        "LsGroup": [
+            {
+                "IGroupID": 0,
+                "SGroupCode": "30010     ",
+                "SGroupDesc": "MILK"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "30020     ",
+                "SGroupDesc": "YOGURT"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "30030     ",
+                "SGroupDesc": "BUTTER \u0026 MARGARINE"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "30050     ",
+                "SGroupDesc": "CHEESE"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "30060     ",
+                "SGroupDesc": "CREAM"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "30070     ",
+                "SGroupDesc": "EGGS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "30090     ",
+                "SGroupDesc": "HAMS \u0026 DELICATESSEN"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "030110    ",
+                "SGroupDesc": "BACON \u0026 SAUSAGE"
+            }
+        ]
+    },
+    {
+        "ICategoryID": 35,
+        "SCategoryCode": "220",
+        "SCategoryDesc": "FROZEN",
+        "LsGroup": [
+            {
+                "IGroupID": 0,
+                "SGroupCode": "220080    ",
+                "SGroupDesc": "ICE CREAM"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "220040    ",
+                "SGroupDesc": "FROZEN FOOD"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "220070    ",
+                "SGroupDesc": "FROZEN FRUIT \u0026 VEGETABLE"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "220100    ",
+                "SGroupDesc": "ICE BAG"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "220060020 ",
+                "SGroupDesc": "WAFFLES \u0026 HOT CAKES"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "220       ",
+                "SGroupDesc": "MUFFIN \u0026 BAGEL"
+            }
+        ]
+    },
+    {
+        "ICategoryID": 26,
+        "SCategoryCode": "050",
+        "SCategoryDesc": "FRUIT AND VEGETABLES",
+        "LsGroup": [
+            {
+                "IGroupID": 0,
+                "SGroupCode": "50010     ",
+                "SGroupDesc": "FRESH"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "050010    ",
+                "SGroupDesc": "FRESH SELECTIONS"
+            }
+        ]
+    },
+    {
+        "ICategoryID": 8,
+        "SCategoryCode": "140",
+        "SCategoryDesc": "FUN IN THE SUN",
+        "LsGroup": [
+            {
+                "IGroupID": 0,
+                "SGroupCode": "140       ",
+                "SGroupDesc": "FUN IN THE SUN"
+            }
+        ]
+    },
+    {
+        "ICategoryID": 27,
+        "SCategoryCode": "060",
+        "SCategoryDesc": "GROCERIES",
+        "LsGroup": [
+            {
+                "IGroupID": 0,
+                "SGroupCode": "60050     ",
+                "SGroupDesc": "PASTA AND RICE"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "60060     ",
+                "SGroupDesc": "GROCERIES"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "60070     ",
+                "SGroupDesc": "SAUCES \u0026 CONDIMENTS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "60130     ",
+                "SGroupDesc": "CEREAL"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "60140     ",
+                "SGroupDesc": "COOKIES \u0026 CRACKERS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "060210    ",
+                "SGroupDesc": "CHOCOLATES \u0026 CANDIES"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "060230    ",
+                "SGroupDesc": "BREAD \u0026 TORTILLAS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "060290010 ",
+                "SGroupDesc": "DRESSINGS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "060090010 ",
+                "SGroupDesc": "SNACKS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "060120040 ",
+                "SGroupDesc": "BREAKFAST"
+            }
+        ]
+    },
+    {
+        "ICategoryID": 76,
+        "SCategoryCode": "0060",
+        "SCategoryDesc": "HEALTHY PRODUCTS",
+        "LsGroup": [
+            {
+                "IGroupID": 0,
+                "SGroupCode": "060060    ",
+                "SGroupDesc": "HEALTHY PRODUCTS"
+            }
+        ]
+    },
+    {
+        "ICategoryID": 14,
+        "SCategoryCode": "020",
+        "SCategoryDesc": "NON ALCOHOLIC DRINKS",
+        "LsGroup": [
+            {
+                "IGroupID": 0,
+                "SGroupCode": "20010     ",
+                "SGroupDesc": "SODA"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "20020     ",
+                "SGroupDesc": "JUICE"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "20030     ",
+                "SGroupDesc": "WATER"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "20050     ",
+                "SGroupDesc": "ENERGIZERS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "020040020 ",
+                "SGroupDesc": "COCKTAIL MIXERS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "020010030 ",
+                "SGroupDesc": "MINERAL WATER"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "020090    ",
+                "SGroupDesc": "COFFEE DRINKS"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "020070    ",
+                "SGroupDesc": "REHYDRATING"
+            },
+            {
+                "IGroupID": 0,
+                "SGroupCode": "020080    ",
+                "SGroupDesc": "TEA"
+            }
+        ]
+    },
+    {
+        "ICategoryID": 4,
+        "SCategoryCode": "100",
+        "SCategoryDesc": "PERSONAL CARE",
+        "LsGroup": [
+            {
+                "IGroupID": 0,
+                "SGroupCode": "100020050 ",
+                "SGroupDesc": "SKIN PROTECCION"
+            }
+        ]
+    }
+]

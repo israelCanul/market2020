@@ -39,7 +39,7 @@ export default function Sections({
                   alt="Image Avatar"
                 />
                 <span>
-                  Hi, <br />
+                  {getTexto("Hi")}, <br />
                   {site.user.fullName.toLowerCase()}
                 </span>
               </div>
@@ -115,14 +115,14 @@ export default function Sections({
                   {dataSite.contenido.imgBelowSlide.imgM != "" ? (
                     <source
                       media="(max-width: 767px)"
-                      srcset={`${dataSite.contenido.imgBelowSlide.imgM}`}
+                      srcSet={`${dataSite.contenido.imgBelowSlide.imgM}`}
                     />
                   ) : (
                     ""
                   )}
                   <source
                     media="(min-width: 767px)"
-                    srcset={`${dataSite.contenido.imgBelowSlide.img}`}
+                    srcSet={`${dataSite.contenido.imgBelowSlide.img}`}
                   />
                   <LazyLoadImage
                     className="img"
@@ -130,12 +130,6 @@ export default function Sections({
                     alt="Image Below Slider"
                   />
                 </picture>
-
-                {/* <LazyLoadImage
-                  style={{ width: "auto", maxHeight: "290px" }}
-                  src={dataSite.contenido.imgBelowSlide.img}
-                  alt="Image BelowSlide"
-                /> */}
               </a>
             </div>
           </div>

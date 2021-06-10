@@ -1,6 +1,9 @@
 import { setCookieForm, getCookieForm } from "./cookieManager";
-export function SetLanguage(idiom) {
+export function SetLanguage(idiom = "en-US", callback) {
   setCookieForm("Language", idiom);
+  setTimeout(() => {
+    callback();
+  }, 100);
 }
 export function getLanguage() {
   return getCookieForm("Language") == "" ? "en-US" : getCookieForm("Language");

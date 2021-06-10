@@ -57,14 +57,14 @@ function App(props) {
                         "" ? (
                           <source
                             media="(max-width: 767px)"
-                            srcset={`${site.configuration.contenido.bannerBottom.imgM}`}
+                            srcSet={`${site.configuration.contenido.bannerBottom.imgM}`}
                           />
                         ) : (
                           ""
                         )}
                         <source
                           media="(min-width: 767px)"
-                          srcset={`${site.configuration.contenido.bannerBottom.img}`}
+                          srcSet={`${site.configuration.contenido.bannerBottom.img}`}
                         />
                         <LazyLoadImage
                           className="img"
@@ -91,14 +91,14 @@ function App(props) {
                         "" ? (
                           <source
                             media="(max-width: 767px)"
-                            srcset={`${site.configuration.contenido.imgBeforeFooter.imgM}`}
+                            srcSet={`${site.configuration.contenido.imgBeforeFooter.imgM}`}
                           />
                         ) : (
                           ""
                         )}
                         <source
                           media="(min-width: 767px)"
-                          srcset={`${site.configuration.contenido.imgBeforeFooter.img}`}
+                          srcSet={`${site.configuration.contenido.imgBeforeFooter.img}`}
                         />
                         <LazyLoadImage
                           className="img"

@@ -26,7 +26,7 @@ export default function RelatedSection(props) {
                 setMore(true);
               }}
             >
-              <a href="#">Show More</a>
+              <a href="#">{getTexto("Show More")}</a>
             </div>
           ) : (
             <React.Fragment>

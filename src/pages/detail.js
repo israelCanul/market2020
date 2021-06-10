@@ -126,14 +126,14 @@ export default function Detail({ items, site }) {
                           "" ? (
                             <source
                               media="(max-width: 767px)"
-                              srcset={`${site.configuration.contenido.imgOnItemDetail.imgM}`}
+                              srcSet={`${site.configuration.contenido.imgOnItemDetail.imgM}`}
                             />
                           ) : (
                             ""
                           )}
                           <source
                             media="(min-width: 767px)"
-                            srcset={`${site.configuration.contenido.imgOnItemDetail.img}`}
+                            srcSet={`${site.configuration.contenido.imgOnItemDetail.img}`}
                           />
                           <LazyLoadImage
                             className="img"

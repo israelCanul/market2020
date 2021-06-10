@@ -7,7 +7,6 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import _ from "lodash";
 
 function Recommendations(props) {
-  console.log(props);
   if (props.site.user) {
     if (props.site.user.itemsHistory) {
       if (props.site.user.itemsHistory.length > 0) {

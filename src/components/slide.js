@@ -12,6 +12,7 @@ export default function Slide({
       <div key={id}>
         <img
           height="auto"
+          loading="lazy"
           alt="slide"
           src={slide.img}
           srcSet={slide.srcSet ? slide.srcSet : ""}

@@ -10,6 +10,8 @@ export const GETINICONFIG = "GETINICONFIG";
 export const FETCHCONFIGURATION = "FETCHCONFIGURATION";
 export const SETUSERGENESIS = "SETUSERGENESIS";
 export const LOGOUTUSER = "LOGOUTUSER";
+export const GETLANGUAGE = "GETLANGUAGE";
+export const SETLANGUAGE = "SETLANGUAGE";
 
 export function logoutUser() {
   return {
@@ -64,8 +66,8 @@ export function SetUserFromGenesis(user) {
                   ? xmlDoc.getElementsByTagName("pkPeopleID")[0].childNodes[0]
                       .nodeValue
                   : "";
-              let FName = xmlDoc.getElementsByTagName("FName")[0].childNodes[0]
-                .nodeValue;
+              let FName =
+                xmlDoc.getElementsByTagName("FName")[0].childNodes[0].nodeValue;
               let MName =
                 xmlDoc.getElementsByTagName("MName")[0].childNodes.length > 0
                   ? xmlDoc.getElementsByTagName("MName")[0].childNodes[0]
