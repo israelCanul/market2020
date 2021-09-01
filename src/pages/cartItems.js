@@ -25,20 +25,16 @@ class CartItems extends React.Component {
     } else {
       document.querySelector("body").classList.remove("loaderCart");
     }
-
-    // console.log(this.props.cart.itemsCart.length);
   }
   setItemsToGenesis(e) {
     e.preventDefault();
     let listItems = this.props.cart.itemsCart;
     let listaItemsToSession = [];
     listItems.map((item) => {
-      //console.log(parseFloat(item.totalItems).toFixed(1));
       listaItemsToSession.push({
         ...item.item,
         ITotalItems: parseFloat(item.totalItems),
       });
-      //console.dir(item);
     });
     let objToSession = {
       totalItems: this.props.cart.itemsCount,

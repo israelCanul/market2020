@@ -15,15 +15,12 @@ function SResult({ items, QP }) {
     storeItems: items,
   };
   let itemsFiltered = [];
-  //   console.log(QP);
 
   //pasamos los items del search
   let getAllParams = getAllParamsFromUrl();
   if (getAllParamsFromUrl().get("i") != null) {
     let filter = getAllParamsFromUrl().get("i").toUpperCase();
     let cat = getAllParamsFromUrl().get("cat");
-    //console.log(getAllParamsFromUrl().get("cat"));
-    // console.log(getAllParamsFromUrl().get("i"));
     itemsFiltered = itemsObj.storeItems.map((item) => {
       let description = item.SItemDesc;
       let name = item.SItemName;
@@ -33,7 +30,6 @@ function SResult({ items, QP }) {
       if (cat != "") {
         findByCat = new RegExp("" + cat + "").test(subCat);
         if (findByCat) {
-          console.log(item);
         }
       }
 
@@ -50,7 +46,6 @@ function SResult({ items, QP }) {
       }
     });
     itemsObj.storeItems = itemsFiltered.filter((i) => i != undefined);
-    // console.log(itemsObj.storeItems);
   }
 
   return (

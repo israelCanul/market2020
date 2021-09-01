@@ -1,11 +1,11 @@
 {
   "WebSection": "KSK",
-  "Lan": "En",
-  "urlAPI": "https://wqasweb.royalresorts.com/RoyalMarket",
+  "urlAPI": "https://app.royalresorts.com",
+  "urlAPIDev": "https://wqasweb.royalresorts.com/RoyalMarketWeb",
   "urlLogin": "https://wqasweb.royalresorts.com/LoginService/wsLoginService.asmx/WmGetTokenInformation",
   "loginUser": "2leJvJJFkiQ=",
   "loginPassword": "nlzufEFcsxzn5xsb6HFtGA==",
-  "urlToGetTokenToLogin": "https://wqasweb.royalresorts.com/RRLogin/frmLogin.aspx",
-  "urlToRetrieveTokenToLogin": "https://wqasweb.royalresorts.com/RRLogin/frmForgotPIN.aspx",
+  "urlToGetTokenToLogin": "https://login.rrgapps.com/sociallogin/frmlogin.aspx",
+  "urlToRetrieveTokenToLogin": "https://login.rrgapps.com/sociallogin/frmForgotPIN.aspx",
   "codeToGetTokenToLogin": "RRKSK"
 }

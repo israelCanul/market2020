@@ -1,10 +1,8 @@
 export function getCookieForm(cname, idiom = null) {
   var name = cname + "=";
   if (idiom != null) name = cname + "-" + idiom + "=";
-  // console.log(name);
   var decodedCookie = decodeURIComponent(document.cookie);
   var ca = decodedCookie.split(";");
-  // console.log(ca);
   for (var i = 0; i < ca.length; i++) {
     var c = ca[i];
     while (c.charAt(0) == " ") {
@@ -26,6 +24,5 @@ export function setCookieForm(cname, cvalue, idiom = null) {
 export function deleteCookieForm(cname, idiom = null) {
   var expires = "expires=Thu, 21 Aug 2014 20:00:00 UTC";
   if (idiom != null) cname = cname + "-" + idiom;
-  console.log(cname + "=;" + expires + ";path=/");
   document.cookie = cname + "=;" + expires + ";path=/";
 }

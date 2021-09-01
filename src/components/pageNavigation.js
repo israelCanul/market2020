@@ -39,6 +39,19 @@ export default function pageNavigation(items) {
     setPage(newPage);
   };
 
+  const backPage = () => {
+    let newPage = parseInt(page) - 1;
+    if (newPage >= 1) {
+      setBtnPage(newPage);
+    }
+  };
+  const nextPage = () => {
+    let newPage = parseInt(page) + 1;
+    if (newPage <= renderNumberPages) {
+      setBtnPage(newPage);
+    }
+  };
+
   //renderizado de botones segun la pagina actual
   const BtnsPageIndex = () => {
     return (
@@ -152,14 +165,16 @@ export default function pageNavigation(items) {
     return (
       <div className="pages">
         <img
-          className="firstImage arrows"
+          onClick={backPage.bind(this)}
+          className="firstImage arrows btn"
           src="/img/icons/next.png"
           alt="First Page Icon"
           title="First"
         />
         {BtnsPageIndex()}
         <img
-          className="lastImage  arrows"
+          onClick={nextPage.bind(this)}
+          className="lastImage  arrows btn"
           src="/img/icons/next.png"
           alt="Last Page Icon"
           title="Last"
@@ -169,7 +184,7 @@ export default function pageNavigation(items) {
   };
   return (
     <React.Fragment>
-      {pageSection()}
+      {/* {pageSection()} */}
       {itemsRenderedByPage}
       {pageSection()}
     </React.Fragment>

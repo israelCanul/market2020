@@ -50,7 +50,6 @@ export default function (state = INITIAL_STATE, action) {
       };
       break;
     case FETCHCONFIGURATION:
-      //console.log(action.payload.val());
       let config = action.payload;
       let lan = state.initialConfig.Lan;
       let textos;

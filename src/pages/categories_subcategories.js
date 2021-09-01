@@ -17,8 +17,19 @@ export default function Categories(props) {
     if (category.length > 0) {
       categorySelected.category = category[0].SCategoryCode;
       categorySelected.categoryDesc = category[0].SCategoryDesc;
+      if (params.subid) {
+        let subCategory = category[0].LsGroup.filter(
+          (s) =>
+            s.SGroupDesc.toLowerCase().replaceAll(" ", "-") === params.subid
+        );
+        if (subCategory.length > 0) {
+          categorySelected.subcategory = subCategory[0].SGroupCode;
+          categorySelected.subcategoryDesc = subCategory[0].SGroupDesc;
+        }
+      }
     }
   }
+
   return (
     <ThemeContext.Consumer>
       {(state) => (
@@ -27,13 +38,11 @@ export default function Categories(props) {
             <div className="main">
               <GenericSection className="categories">
                 <div className="menuCategory">
-                  <ListCategories
-                    cat={props.cat}
-                    catOnUrl={categorySelected.category}
-                  />
+                  <ListCategories cat={props.cat} />
                 </div>
                 <div className="path">
-                  <Link to="/">Home</Link> <i className="arrow right"></i>{" "}
+                  <Link to="/">Home</Link>
+                  <i className="arrow right"></i>
                   <Link
                     to={`/categories/${categorySelected.categoryDesc
                       .toLowerCase()
@@ -41,6 +50,16 @@ export default function Categories(props) {
                   >
                     {categorySelected.categoryDesc.toLowerCase()}
                   </Link>
+                  <i className="arrow right"></i>
+                  <a
+                    style={{ textTransform: "Capitalize" }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
+                    href=""
+                  >
+                    {categorySelected.subcategoryDesc.toLowerCase()}
+                  </a>
                 </div>
                 <ListItems state={state} params={categorySelected} category />
               </GenericSection>

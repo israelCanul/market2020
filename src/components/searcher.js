@@ -42,7 +42,6 @@ export default function Searcher({
         onClick={(e) => {
           e.preventDefault();
           setUrl(item.SItemDesc.toLowerCase());
-          console.log(item.SItemDesc.toLowerCase());
         }}
         key={item.IItemID}
         className={index == selected ? "active" : ""}
@@ -107,9 +106,8 @@ export default function Searcher({
         }
       }
       if (newSelected != null) {
-        refInput.current.value = dtFiltered[
-          newSelected
-        ].SItemDesc.toLowerCase();
+        refInput.current.value =
+          dtFiltered[newSelected].SItemDesc.toLowerCase();
       }
     }
     if (event.which == 13) {

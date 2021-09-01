@@ -123,11 +123,9 @@ export function SetUserFromGenesis(user) {
                 getState().site.initialConfig.WebSection
               }/Shopping/getItemRelated?iPeopleID=${pkPeopleID}`;
 
-              console.log(urlShoppingHistory);
               axios
                 .get(urlShoppingHistory)
                 .then((response) => {
-                  console.log(response);
                   let newUser = { ...UserObject, itemsHistory: response.data };
                   dispatch({
                     type: SETUSERGENESIS,
@@ -186,13 +184,13 @@ export function fetchConfiguration(site) {
       .ref("/configuration/" + site)
       .once("value")
       .then((snapshot) => {
+        console.log(snapshot.val());
         dispatch({
           type: FETCHCONFIGURATION,
           payload: snapshot.val(),
         });
       })
       .catch((e) => {
-        console.log(e);
         dispatch({
           type: FETCHCONFIGURATION,
           payload: null,

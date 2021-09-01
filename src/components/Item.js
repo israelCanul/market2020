@@ -13,6 +13,11 @@ export default function Item({
   const [number, setNumber] = useState(0);
   const [errorMinSale, setError] = useState("");
 
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
   return (
     <div className={`item ${isRelated ? "isRelated" : ""}`}>
       <div className="item_content">
@@ -37,13 +42,14 @@ export default function Item({
           ""
         )}
         {/* avoiding to show this sections when we are in recommendations section*/}
-        {!recommendations ? (
+        <UnitHandler isRelated={isRelated ? isRelated : null} item={item} />
+        {/* {!recommendations ? (
           <UnitHandler isRelated={isRelated ? isRelated : null} item={item} />
         ) : (
           ""
-        )}
+        )} */}
         {/* avoiding to show this sections when we are in related section*/}
-        {!isRelated ? (
+        {!isRelated && !recommendations ? (
           <div className="details">
             <Link to={`/products/${item.SItemCode}`}>
               {getTexto("View details")}

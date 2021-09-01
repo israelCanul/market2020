@@ -1,48 +1,59 @@
-const nombreCache = "apv-v1";
+const nombreCache = "apv-v9";
 const archivos = [
   "/",
   "/index.html",
   "app.js",
-  "/public/modules.js",
-  "/public/index.js",
-  "/public/0.js",
-  "/public/1.js",
-  "/public/2.js",
-  "/public/3.js",
-  "/public/4.js",
-  "/public/5.js",
-  "/public/6.js",
-  "/public/7.js",
-  "/public/8.js",
-  "/public/9.js",
-  "/public/10.js",
-  "/public/11.js",
-  "/public/12.js",
-  "/public/13.js",
+  "/js/modules.js",
+  "/index.js",
+  "/0.js",
+  "/1.js",
+  "/2.js",
+  "/3.js",
+  "/4.js",
+  "/5.js",
+  "/6.js",
+  "/7.js",
+  "/8.js",
+  "/9.js",
+  "/10.js",
+  "/11.js",
+  "/12.js",
+  "/13.js",
+  "/config.json",
+  "/items.json",
+  "/categories.json",
+  "/traslations.json",
   "/manifest.json",
-  "/sockjs-node/info?t=1623277616598",
 ];
 self.addEventListener("install", (e) => {
-  console.log("instalado el sw");
   e.waitUntil(
     caches.open(nombreCache).then((cache) => {
-      console.log("cacheado");
       cache.addAll(archivos);
     })
   );
 });
 self.addEventListener("activate", (e) => {
-  console.log("activado el sw");
-  console.log(e);
+  e.waitUntil(
+    // console.log(caches.keys())
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys
+          .filter((key) => key !== nombreCache)
+          .map((key) => caches.delete(key))
+      );
+    })
+  );
 });
 
 //evento fetch para descargar archivos
 self.addEventListener("fetch", (e) => {
-  // console.log("fetch..", e);
   e.respondWith(
     caches.match(e.request).then((respuestaCache) => {
-      console.log(respuestaCache);
-      return respuestaCache;
+      if (respuestaCache == undefined) {
+        return fetch(e.request);
+      } else {
+        return respuestaCache;
+      }
     })
   );
 });

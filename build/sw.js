@@ -1,4 +1,4 @@
-const nombreCache = "apv-v1";
+const nombreCache = "apv-v8";
 const archivos = [
   "/",
   "/index.html",
@@ -26,27 +26,34 @@ const archivos = [
   "/manifest.json",
 ];
 self.addEventListener("install", (e) => {
-  console.log("instalado el sw");
   e.waitUntil(
     caches.open(nombreCache).then((cache) => {
-      console.log("cacheado");
       cache.addAll(archivos);
     })
   );
 });
 self.addEventListener("activate", (e) => {
-  console.log("activado el sw");
-  console.log(e);
+  e.waitUntil(
+    // console.log(caches.keys())
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys
+          .filter((key) => key !== nombreCache)
+          .map((key) => caches.delete(key))
+      );
+    })
+  );
 });
 
 //evento fetch para descargar archivos
 self.addEventListener("fetch", (e) => {
   e.respondWith(
-    (async function () {
-      caches.match(e.request).then((respuestaCache) => {
+    caches.match(e.request).then((respuestaCache) => {
+      if (respuestaCache == undefined) {
+        return fetch(e.request);
+      } else {
         return respuestaCache;
-      });
-      return fetch(e.request);
-    })()
+      }
+    })
   );
 });

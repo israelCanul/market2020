@@ -7,6 +7,7 @@ import reducers from "./reducers";
 import App from "./App.js";
 import axios from "axios";
 import { setTextToTraslateTool } from "./libs/messages";
+import { getLanguageEndpoints } from "./libs/language";
 
 import { getCategories } from "./libs/api";
 
@@ -39,18 +40,26 @@ axios
     if (response.data) {
       let zero = "/traslations.json";
 
-      // let one =
-      //   response.data.urlAPI +
-      //   `/${response.data.WebSection}` +
-      //   "/Shopping/getCatalogItemsJson"; //webservices
-      let one = "/items.json";
-      // let two =
-      //   response.data.urlAPI +
-      //   `/${response.data.WebSection}` +
-      //   "/Shopping/getCategories"; //webservices
-      let two = "/categories.json";
-      const requestOne = axios.get(one);
-      const requestTwo = axios.get(two); //webservices
+      let one =
+        getLanguageEndpoints(
+          response.data.urlAPI,
+          response.data.urlAPIDev,
+          response.data.WebSection
+        ) + "/getCatalogItemsJson"; //webservices
+      let two =
+        getLanguageEndpoints(
+          response.data.urlAPI,
+          response.data.urlAPIDev,
+          response.data.WebSection
+        ) + "/getCategories"; //webservices
+      const requestOne = axios({
+        method: "get",
+        url: one,
+      });
+      const requestTwo = axios({
+        method: "get",
+        url: two,
+      }); //webservices
       const requestThree = axios.get(zero); //webservices
 
       axios
@@ -60,6 +69,7 @@ axios
           axios.spread((...responses) => {
             const responseOne = responses[0];
             const responseTwo = responses[1]; //webservices
+
             const responseThree = responses[2]; //webservices
             if (responseOne.data && responseTwo.data && responseThree.data) {
               //setear los textos al entorno local

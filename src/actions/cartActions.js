@@ -52,7 +52,6 @@ export function setCartToSession(obj) {
     let params = { jsonData: JSON.stringify(obj) };
     let paramForForm = JSON.stringify(obj);
     let user = {};
-    // console.log(getState());
     if (getState().site.user != undefined) {
       user = JSON.stringify({
         Email: getState().site.user.Email,
@@ -85,8 +84,6 @@ export function setCartToSession(obj) {
       type: RESETCARTITEM,
       payload: [],
     });
-    // console.log(paramForForm);
-    // console.log(user);
     form.submit();
 
     // axios
@@ -116,7 +113,6 @@ export function setCartToSession(obj) {
     //     }
     //   })
     //   .catch((err) => {
-    //     console.log(err);
     //     try {
     //       dispatch({
     //         type: SETITEMTOSESSION,

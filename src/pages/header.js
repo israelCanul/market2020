@@ -31,7 +31,9 @@ function Header({
     // ${item.SGroupDesc.toLowerCase().replaceAll(" ", "-")}
     return (
       <option key={item.SCategoryCode} value={index}>
+        {/* <Link to={`/categories/${item.SCategoryDesc.toLowerCase().replaceAll(" ", "-")}`}> */}
         {item.SCategoryDesc.toLowerCase()}
+        {/* </Link> */}
       </option>
     );
   });
@@ -63,7 +65,7 @@ function Header({
             <img
               onClick={(e) => {
                 SetLanguage("es-MX", function () {
-                  setUrl(window.location.pathname);
+                  //setUrl(window.location.pathname);
                 });
               }}
               width="17"
@@ -77,7 +79,7 @@ function Header({
             <img
               onClick={(e) => {
                 SetLanguage("en-US", function () {
-                  setUrl(window.location.pathname);
+                  //setUrl(window.location.pathname);
                 });
               }}
               width="17"
@@ -141,7 +143,14 @@ function Header({
               </div>
               <select
                 onChange={(e) => {
-                  setCat(cat[e.target.value]);
+                  //pushing the category section url to the react router DOM
+                  history.replace(
+                    "/categories/" +
+                      cat[
+                        e.target.value
+                      ].SCategoryDesc.toLowerCase().replaceAll(" ", "-")
+                  );
+                  // setCat(cat[e.target.value]);
                 }}
                 name=""
                 id="categories"

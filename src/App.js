@@ -32,6 +32,9 @@ const Detail = lazy(() => import(/* webpackPrefetch: true */ "./pages/detail"));
 const Search = lazy(() =>
   import(/* webpackPrefetch: true */ "./pages/searchResult")
 );
+const SubCategories = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/categories_subcategories")
+);
 const Categories = lazy(() =>
   import(/* webpackPrefetch: true */ "./pages/categories")
 );
@@ -57,7 +60,7 @@ class App extends React.Component {
     this.state = {
       getCat: categories,
       datos: [],
-      storeItems: items.length == 0 ? datos : items,
+      storeItems: items.length == 0 ? [] : items,
       queryParams: "",
       config: config,
       language: this.props.site.language,
@@ -75,7 +78,6 @@ class App extends React.Component {
     this.props.initConfig(this.state.config);
     this.props.fetchConfiguration(this.state.config.WebSection);
     this.props.fetchCartItems(this.state.config);
-    // console.log("user", getLanguage());
     if (getCookieForm("user", getLanguage()) != "") {
       this.props.SetUserFromGenesis(getCookieForm("user", getLanguage()));
     }
@@ -117,7 +119,7 @@ class App extends React.Component {
                   <CartItems items={this.state.storeItems} />
                 </Route>
                 <Route exact path={getURL("/products")}>
-                  <Categories cat={this.state.getCat} />
+                  {/* <Categories cat={this.state.getCat} /> */}
                 </Route>
                 <Route exact path={getURL("/products/:producto")}>
                   <Detail
@@ -126,17 +128,18 @@ class App extends React.Component {
                   />
                 </Route>
                 <Route exact path={getURL("/categories")}>
-                  <Categories cat={this.state.getCat} />
+                  <div>categorias</div>
+                  {/* <Categories cat={this.state.getCat} /> */}
                 </Route>
                 <Route exact path={getURL("/categories/:id")}>
                   <Categories cat={this.state.getCat} />
                 </Route>
                 <Route exact path={getURL("/categories/:id/:subid")}>
-                  <Categories cat={this.state.getCat} />
+                  <SubCategories cat={this.state.getCat} />
                 </Route>
+                <Route component={NotFound} />
               </Switch>
               <BacktoTop />
-              {/* <NotificationContainer /> */}
               <Footer />
             </Suspense>
           </Router>
@@ -147,6 +150,19 @@ class App extends React.Component {
     }
   }
 }
+const NotFound = () => {
+  return (
+    <div id="root">
+      <div className="App">
+        <div className="NotFound">
+          <p>
+            Not Found - <span>404</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
 const IsLoading = () => {
   return (
     <div className="loadingSite">
