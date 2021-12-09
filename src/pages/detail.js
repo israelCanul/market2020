@@ -40,7 +40,15 @@ export default function Detail({ items, site }) {
         gallery.push({ img: gal });
       });
     } else {
-      gallery = [{ img: itemSelected.SPahtImage }];
+      gallery = [
+        {
+          img:
+            itemSelected.SPahtImage !=
+            "http://royalresorts.mobi/rr2016/market/img/products/coca-cola-regular-lata-1-six-pack.jpg"
+              ? itemSelected.SPahtImage
+              : "/img/default.jpg",
+        },
+      ];
     }
   }
   return (

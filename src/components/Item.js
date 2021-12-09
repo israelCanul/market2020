@@ -25,7 +25,12 @@ export default function Item({
           {/* <img src={item.SPahtImage} alt="Item" /> */}
           <LazyLoadImage
             alt={item.SItemName}
-            src={item.SPahtImage} // use normal <img> attributes as props
+            src={
+              item.SPahtImage !=
+              "http://royalresorts.mobi/rr2016/market/img/products/coca-cola-regular-lata-1-six-pack.jpg"
+                ? item.SPahtImage
+                : "/img/default.jpg"
+            } // use normal <img> attributes as props
           />
         </div>
         {/* avoiding to show this sections when we are in related section*/}

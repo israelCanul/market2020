@@ -51,9 +51,10 @@ export default function (state = INITIAL_STATE, action) {
       break;
     case FETCHCONFIGURATION:
       let config = action.payload;
-      let lan = state.initialConfig.Lan;
+      let lan = getLanguage();
       let textos;
-      if (lan == "En") {
+
+      if (lan == "en-US") {
         config.contenido = config.contenido.en;
       } else {
         config.contenido = config.contenido.es;

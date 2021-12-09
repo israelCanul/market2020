@@ -68,7 +68,7 @@ export function setCartToSession(obj) {
     var element1 = document.createElement("input");
     var element2 = document.createElement("input");
     form.method = "POST";
-    form.action = `${getState().site.initialConfig.urlAPI}/${
+    form.action = `${getState().site.initialConfig.urlAPI}/RoyalMarket/${
       getState().site.initialConfig.WebSection
     }/Shopping/InformationPayV2`;
 

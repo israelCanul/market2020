@@ -13,7 +13,15 @@ const ItemCart = ({ data, deleteItem }) => {
     <div className="itemCart">
       <div className="itemCart_container">
         <div className="itemCart_image">
-          <img src={item.SPahtImage} alt={`Image of ${item.SItemName}`} />
+          <img
+            src={
+              item.SPahtImage !=
+              "http://royalresorts.mobi/rr2016/market/img/products/coca-cola-regular-lata-1-six-pack.jpg"
+                ? item.SPahtImage
+                : "/img/default.jpg"
+            }
+            alt={`Image of ${item.SItemName}`}
+          />
         </div>
         <div className="itemCart_description">
           <p style={{ textTransform: "capitalize" }}>

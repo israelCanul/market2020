@@ -22,7 +22,7 @@ export function getLanguageEndpoints(domain, devDomain, webSection = "KSK") {
         ? "/"
         : "ES/";
     urlEndpoint += webSection + "/";
-    urlEndpoint += "/Shopping";
+    urlEndpoint += "Shopping";
   } else {
     urlEndpoint += domain;
     urlEndpoint +=
@@ -33,7 +33,7 @@ export function getLanguageEndpoints(domain, devDomain, webSection = "KSK") {
         : "/es/";
     urlEndpoint += "RoyalMarket/";
     urlEndpoint += webSection + "/";
-    urlEndpoint += "/Shopping";
+    urlEndpoint += "Shopping";
   }
   return urlEndpoint;
 }

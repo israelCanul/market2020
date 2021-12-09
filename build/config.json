@@ -2,7 +2,7 @@
   "WebSection": "KSK",
   "urlAPI": "https://app.royalresorts.com",
   "urlAPIDev": "https://wqasweb.royalresorts.com/RoyalMarketWeb",
-  "urlLogin": "https://wqasweb.royalresorts.com/LoginService/wsLoginService.asmx/WmGetTokenInformation",
+  "urlLogin": "https://wprdinternet.servicesrr.com:444/LoginService/wsLoginService.asmx/WmGetTokenInformation",
   "loginUser": "2leJvJJFkiQ=",
   "loginPassword": "nlzufEFcsxzn5xsb6HFtGA==",
   "urlToGetTokenToLogin": "https://login.rrgapps.com/sociallogin/frmlogin.aspx",
