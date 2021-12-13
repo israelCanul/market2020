@@ -17,6 +17,9 @@ export default function Item({
     top: 0,
     behavior: "smooth",
   });
+  if (item === undefined) {
+    return <div style={{ backgroundColor: "white" }}>no hay</div>;
+  }
 
   return (
     <div className={`item ${isRelated ? "isRelated" : ""}`}>
