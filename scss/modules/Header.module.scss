@@ -1,5 +1,5 @@
 @import "../mixins";
-
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 header {
   // background-color: green;
   position: fixed;
@@ -85,32 +85,42 @@ header {
     &_menu {
       padding: 0px 0px;
       box-sizing: border-box;
-      flex: 1;
+      // flex: 1;
+      font-family: 'Lato', sans-serif;
       @include desktop {
       }
       a.wrapperMenu_menu_title {
         height: 50px;
-        color: white;
+        font-weight: bold;
+        color: rgb(0,70,127);
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 0px 20px;
         box-sizing: border-box;
         text-decoration: none;
-        background-color: #00467f;
+        background-color: #fff;
         &:hover {
-          background-color: #f76b46;
+          background-color: #fff;
         }
       }
       &.submenu {
         z-index: 1;
+        position: relative;
         &:hover {
           .icon {
             position: relative;
-            width: 100%;
+            width: auto;
             height: 5px;
+            
+            
+            
+            
           }
           .triangle-up {
+            // border-color: #00467f !important;
+            // color: #00467f !important;
+            border-bottom-color: white !important;
             width: 0;
             height: 0;
             border-left: 10px solid transparent;
@@ -122,27 +132,39 @@ header {
           }
           ul {
             background-color: white;
+            position: absolute;
             display: block;
             list-style: none;
+            padding: 0px 5px 10px;
+            box-sizing: border-box;
             border-radius: 5px;
             -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
             -ms-border-radius: 5px;
             -o-border-radius: 5px;
-            top: 10px;
+            top: 100%;
             box-shadow: 1px 1px 10px 6px rgba(0, 0, 0, 0.4);
             li {
               &.divider {
-                color: black;
+                font-weight: bold;
+                color: rgb(0,70,127);
                 padding: 5px 10px;
+                box-sizing: border-box;
               }
               a {
-                height: 30px;
-                color: black;
+                padding: 10px 0px 10px 20px;
+                box-sizing: border-box;
+                font-weight: 700;
+                font-size: 16px !important;
+                font-style: normal;
+                // line-height: 30px;
+                height: auto;
+                color: rgb(66,66,66);
                 display: flex;
+                // background-color:red;
                 justify-content: flex-start;
                 align-items: center;
-                padding: 0px 20px;
+                // padding: 0px 20px;
                 text-decoration: none;
                 transition: all 0.3s ease-in-out;
                 -webkit-transition: all 0.3s ease-in-out;

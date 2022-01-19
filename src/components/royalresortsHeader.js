@@ -15,7 +15,15 @@ function RoyalHeader() {
           <li className="divider">Resorts</li>
           <li>
             <a
-              href="https://www.royalresorts.com/discover-royal-resorts/the-royal-cancun/"
+              href="https://www.royalresorts.com/beachfront-resorts/royal-uno"
+              className="azul-fuerte-diseno-text"
+            >
+              Royal Uno
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.royalresorts.com/beachfront-resorts/the-royal-cancun"
               className="azul-fuerte-diseno-text"
             >
               The Royal Cancun
@@ -23,7 +31,7 @@ function RoyalHeader() {
           </li>
           <li>
             <a
-              href="https://www.royalresorts.com/discover-royal-resorts/the-royal-sands/"
+              href="https://www.royalresorts.com/beachfront-resorts/the-royal-sands"
               className="azul-fuerte-diseno-text"
             >
               The Royal Sands
@@ -31,15 +39,7 @@ function RoyalHeader() {
           </li>
           <li>
             <a
-              href="https://www.royalresorts.com/discover-royal-resorts/the-royal-caribbean/"
-              className="azul-fuerte-diseno-text"
-            >
-              The Royal Caribbean
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.royalresorts.com/discover-royal-resorts/the-royal-islander/"
+              href="https://www.royalresorts.com/beachfront-resorts/the-royal-islander"
               className="azul-fuerte-diseno-text"
             >
               The Royal Islander
@@ -47,29 +47,29 @@ function RoyalHeader() {
           </li>
           <li>
             <a
-              href="https://www.royalresorts.com/discover-royal-resorts/the-royal-haciendas/"
+              href="https://www.royalresorts.com/beachfront-resorts/grand-residences-riviera-cancun"
               className="azul-fuerte-diseno-text"
             >
-              The Royal Haciendas
+              Grand Residences Riviera Cancun
             </a>
           </li>
           <li>
             <a
-              href="https://www.royalresorts.com/discover-royal-resorts/grand-residences/"
+              href="https://www.royalresorts.com/beachfront-resorts/the-royal-haciendas"
               className="azul-fuerte-diseno-text"
             >
-              Grand Residences
+              The Royal Islander Haciendas
             </a>
           </li>
           <li>
             <a
-              href="http://www.royalresortscaribbean.com/"
+              href="https://www.royalresortscaribbean.com/"
               className="azul-fuerte-diseno-text"
             >
-              Caribbean Resorts
+              Caribbean Islands Resorts
             </a>
           </li>
-          <li className="divider">Member</li>
+          {/* <li className="divider">Member</li>
           <li>
             <a
               href="https://www.royalresorts.com/how-to-become-a-member/"
@@ -77,14 +77,14 @@ function RoyalHeader() {
             >
               Become a Member
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
-      <div className="wrapperMenu_menu submenu">
-        <a className="wrapperMenu_menu_title" href="#">
-          Service & Amenities
+      <div className="wrapperMenu_menu">
+        <a className="wrapperMenu_menu_title" href="https://www.royalresorts.com/weddings-and-special-events">
+        Weddings & Special Events
         </a>
-        <div className="icon">
+        {/* <div className="icon">
           <div className="triangle-up"></div>
         </div>
         <ul>
@@ -176,23 +176,23 @@ function RoyalHeader() {
               Cancun Tours &amp; Water Sports
             </a>
           </li>
-        </ul>
+        </ul> */}
       </div>
       <div className="wrapperMenu_menu">
-        <a className="wrapperMenu_menu_title" href="#">
-          Destinations{" "}
+        <a className="wrapperMenu_menu_title" href="https://www.royalresorts.com/all-inclusive">
+        All-Inclusive
         </a>
       </div>
       <div className="wrapperMenu_menu">
-        <a className="wrapperMenu_menu_title" href="#">
-          Blog
+        <a className="wrapperMenu_menu_title" href="https://www.royalresorts.com/special-offers">
+        Offers
         </a>
       </div>
-      <div className="wrapperMenu_menu">
+      {/* <div className="wrapperMenu_menu">
         <a className="wrapperMenu_menu_title" href="#">
           Vacation Specials
         </a>
-      </div>
+      </div> */}
     </div>
   );
 }
