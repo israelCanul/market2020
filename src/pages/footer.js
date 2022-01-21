@@ -16,7 +16,7 @@ export default function Footer() {
             />
           </div>
           <div className="section">
-            <h3 className="footer_title">RESORTS</h3>
+            <h3 className="footer_title">Resorts in Mexico</h3>
             <ul id="menu-resorts" className="menu">
               <li
                 id="menu-item-36817"
@@ -30,15 +30,15 @@ export default function Footer() {
                 id="menu-item-16270"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16270"
               >
-                <a href="https://www.royalresorts.com/discover-royal-resorts/the-royal-haciendas/">
-                  The Royal Haciendas
+                <a href="https://www.royalresorts.com/beachfront-resorts/the-royal-cancun">
+                  The Royal Cancun
                 </a>
               </li>
               <li
                 id="menu-item-16275"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16275"
               >
-                <a href="https://www.royalresorts.com/discover-royal-resorts/the-royal-sands/">
+                <a href="https://www.royalresorts.com/beachfront-resorts/the-royal-sands">
                   The Royal Sands
                 </a>
               </li>
@@ -46,281 +46,250 @@ export default function Footer() {
                 id="menu-item-16274"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16274"
               >
-                <a href="https://www.royalresorts.com/discover-royal-resorts/the-royal-cancun/">
-                  The Royal Cancun
+                <a href="https://www.royalresorts.com/beachfront-resorts/the-royal-islander">
+                  The Royal Islander
                 </a>
               </li>
               <li
                 id="menu-item-16272"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16272"
               >
-                <a href="https://www.royalresorts.com/discover-royal-resorts/the-royal-islander/">
-                  The Royal Islander
+                <a href="https://www.royalresorts.com/beachfront-resorts/grand-residences-riviera-cancun">
+                  Grand Residences Riviera Cancun
                 </a>
               </li>
               <li
                 id="menu-item-16273"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16273"
               >
-                <a href="https://www.royalresorts.com/discover-royal-resorts/grand-residences/">
-                  Grand Residences
-                </a>
-              </li>
-            </ul>
-            <h3 className="footer_title">HOW TO BECOME A MEMBER</h3>
-            <ul id="menu-how-to-become-a-member" className="menu">
-              <li
-                id="menu-item-16633"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16633"
-              >
-                <a href="https://www.royalresorts.com/how-to-become-a-member/">
-                  How to Become a Member
-                </a>
-              </li>
-              <li
-                id="menu-item-16772"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16772"
-              >
-                <a href="https://www.royalresorts.com/vacation-ownership-rights/">
-                  Membership Benefits
-                </a>
-              </li>
-              <li
-                id="menu-item-35579"
-                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-35579"
-              >
-                <a href="https://rrsignatureclub.com/">Signature Club</a>
-              </li>
-              <li
-                id="menu-item-35558"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-35558"
-              >
-                <a href="https://www.royalresorts.com/calendar/">
-                  Interval Calendar
+                <a href="https://www.royalresorts.com/beachfront-resorts/the-royal-haciendas">
+                  The Royal Haciendas
                 </a>
               </li>
             </ul>
           </div>
           <div className="section">
             {/* second column [INICIO] */}
-            <h3 className="footer_title">SERVICE &amp; AMENITIES</h3>
+            <h3 className="footer_title">Services & Amenities</h3>
             <ul id="menu-services-amenities" className="menu">
               <li
                 id="menu-item-16201"
                 className="menu-item menu-item-type-custom menu-item-object-custom menu-item-16201"
               >
-                <a href="https://www.thomasmoretravel.com/Transfers/Transfers/Search?lang=ing">
-                  Transportation
+                <a href="https://www.royalresorts.com/all-inclusive">
+                  All-Inclusive
                 </a>
               </li>
               <li
                 id="menu-item-16343"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16343"
               >
-                <a href="https://www.royalresorts.com/guest-services-and-amenities/refine-all-inclusive-package/">
-                  REFINE All-Inclusive Package
+                <a href="https://www.royalresorts.com/weddings-and-special-events">
+                  Weddings & Special Events
                 </a>
               </li>
               <li
                 id="menu-item-16351"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16351"
               >
-                <a href="https://www.royalresorts.com/guest-services-and-amenities/restaurants-in-cancun-playa-del-carmen/">
-                  Restaurants &amp; Bars
-                </a>
-              </li>
-              <li
-                id="menu-item-16344"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16344"
-              >
-                <a href="https://www.royalresorts.com/guest-services-and-amenities/spa/">
-                  Spa
-                </a>
-              </li>
-              <li
-                id="menu-item-16345"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16345"
-              >
-                <a href="https://www.royalresorts.com/guest-services-and-amenities/fitness-center/">
-                  Fitness Center
-                </a>
-              </li>
-              <li
-                id="menu-item-16346"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16346"
-              >
-                <a href="https://www.royalresorts.com/guest-services-and-amenities/gift-shops/">
-                  Gift Shops
-                </a>
-              </li>
-              <li
-                id="menu-item-16347"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16347"
-              >
-                <a href="https://www.royalresorts.com/guest-services-and-amenities/weddings-and-special-events/">
-                  Weddings and Special Events
-                </a>
-              </li>
-              <li
-                id="menu-item-16348"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16348"
-              >
-                <a href="https://www.royalresorts.com/guest-services-and-amenities/the-royal-market/">
-                  The Royal Market
-                </a>
-              </li>
-              <li
-                id="menu-item-16350"
-                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-16350"
-              >
-                <a href="http://www.royalresorts.com/app/cybermall/specialGifts.aspx">
-                  Gifts &amp; Certificate
-                </a>
-              </li>
-              <li
-                id="menu-item-16349"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16349"
-              >
-                <a href="https://www.royalresorts.com/guest-services-and-amenities/free-shuttle-in-cancun/">
-                  Inter-Resort Shuttle in Cancun
+                <a href="https://www.thomasmoretravel.com/Transfers/Transfers/Search">
+                  Airport Transportation
                 </a>
               </li>
             </ul>
-            {/* second column [Final] */}
-          </div>
-          <div className="section">
-            {/* Third Column [INICIO] */}
-            <h3 className="footer_title">CANCUN &amp; RIVIERA MAYA</h3>
-            <ul id="menu-cancun-riviera-maya" className="menu">
+            <h3 className="footer_title">Our Company</h3>
+            <ul id="menu-services-amenities" className="menu">
               <li
-                id="menu-item-16276"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16276"
+                id="menu-item-16201"
+                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-16201"
               >
-                <a href="https://www.royalresorts.com/destinations/cancun-destination-guide/">
-                  Cancun
-                </a>
-              </li>
-              <li
-                id="menu-item-16277"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16277"
-              >
-                <a href="https://www.royalresorts.com/destinations/riviera-maya-destination-guide/">
-                  Riviera Maya
-                </a>
-              </li>
-              <li
-                id="menu-item-16278"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16278"
-              >
-                <a href="https://www.royalresorts.com/destinations/yucatan-destination-guide/">
-                  Yucatan
-                </a>
-              </li>
-            </ul>
-            <h3 className="footer_title">QUICK LINKS</h3>
-            <ul id="menu-other-features" className="menu">
-              <li
-                id="menu-item-16335"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16335"
-              >
-                <a href="https://www.royalresorts.com/weather-and-webcams-in-cancun-and-riviera-maya/">
-                  Webcams
-                </a>
-              </li>
-              <li
-                id="menu-item-16191"
-                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-16191"
-              >
-                <a href="https://app.royalresorts.com/forms/airport_transfers.aspx">
-                  Airport Transfers
-                </a>
-              </li>
-              <li
-                id="menu-item-32041"
-                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-32041"
-              >
-                <a href="https://royalreservations.com/deals">Special Offers</a>
-              </li>
-              <li
-                id="menu-item-16192"
-                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-16192"
-              >
-                <a
-                  target="_blank"
-                  rel="noopener"
-                  href="https://webchat.visitroyalresorts.com/chat-sitio-royalresorts-en.html"
-                >
-                  Live Chat
-                </a>
-              </li>
-              <li
-                id="menu-item-16645"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16645"
-              >
-                <a href="https://www.royalresorts.com/family-friendly-resorts-cancun/contact-us/">
-                  Contact Us
-                </a>
-              </li>
-              <li
-                id="menu-item-16338"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16338"
-              >
-                <a href="https://www.royalresorts.com/family-friendly-resorts-cancun/faq/">
-                  FAQs
-                </a>
-              </li>
-            </ul>
-            <h3 className="footer_title">OUR COMPANY</h3>
-            <ul id="menu-our-company" className="menu">
-              <li
-                id="menu-item-36960"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36960"
-              >
-                <a href="https://www.royalresorts.com/family-friendly-resorts-cancun/about-royal-resorts/">
+                <a href="https://www.royalresorts.com/about-royal-resorts">
                   About Royal Resorts
                 </a>
               </li>
               <li
-                id="menu-item-36961"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36961"
+                id="menu-item-16343"
+                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16343"
               >
-                <a href="https://www.royalresorts.com/foundation/">
-                  Foundation
+                <a href="https://www.royalresorts.com/signature-club">
+                  Membership Benefits
                 </a>
               </li>
               <li
-                id="menu-item-36962"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36962"
+                id="menu-item-16351"
+                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16351"
               >
-                <a href="https://www.royalresorts.com/media-room/">
-                  Press Room
+                <a href="https://www.royalresorts.com/blog/">
+                  Royal Resorts Blog
                 </a>
               </li>
               <li
-                id="menu-item-36963"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36963"
+                id="menu-item-16351"
+                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16351"
               >
-                <a href="https://www.royalresorts.com/family-friendly-resorts-cancun/careers/">
-                  Careers
+                <a href="https://www.royalresorts.com/foundation">
+                  Royal Resorts Foundation
                 </a>
               </li>
               <li
-                id="menu-item-36964"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36964"
+                id="menu-item-16351"
+                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16351"
               >
-                <a href="https://www.royalresorts.com/privacy-policy/">
+                <a href="https://royalcarestandard.com/">Royal Care Standard</a>
+              </li>
+              <li
+                id="menu-item-16351"
+                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16351"
+              >
+                <a href="https://www.royalresorts.com/privacy-policy">
                   Privacy Policy
                 </a>
               </li>
-              <li
-                id="menu-item-36965"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36965"
-              >
-                <a href="https://www.royalresorts.com/sitemap/">Sitemap</a>
-              </li>
             </ul>
-            {/* Third Column [Final] */}
           </div>
+          <div className="section">
+            {/** Tercera columna */}
+            <h3 className="footer_title">
+              <a
+                className="footer_title"
+                href="https://www.royalresorts.com/special-offers"
+              >
+                Offers
+              </a>
+            </h3>
+            <h3 className="footer_title">
+              <a
+                className="footer_title"
+                href="https://www.royalresorts.com/best-deal-guaranteed"
+              >
+                Best Rate Guaranteed
+              </a>
+            </h3>
+            <h3 className="footer_title">
+              <a
+                className="footer_title"
+                href="https://www.royalresorts.com/beach-destinations"
+              >
+                Beach Destinations
+              </a>
+            </h3>
+            <h3 className="footer_title">
+              <a
+                className="footer_title"
+                href="https://www.royalresorts.com/my-royal/login"
+              >
+                My Royal
+              </a>
+            </h3>
+            <h3 className="footer_title">
+              <a
+                className="footer_title"
+                href="https://www.royalresorts.com/members-login"
+              >
+                Members
+              </a>
+            </h3>
+            <h3 className="footer_title">
+              <a className="footer_title" href="https://rrsignatureclub.com/">
+                Signature Club
+              </a>
+            </h3>
+          </div>
+        </GenericSection>
+        <GenericSection className="row">
+          {/* <div className="section">
+            <h3 className="footer_title">Our family</h3>
+            <div className="family">
+              <div
+                className="glide__slide glide__slide--active"
+                style={{
+                  width: "148.769px",
+                  marginLeft: "5px",
+                  marginRight: "5px",
+                }}
+              >
+                <a
+                  target="_blank"
+                  href="https://grandresidencesrivieracancun.com/"
+                >
+                  <img src="https://www.royalresorts.com/img/sprite.svg#sprite-logo-grandresidences" />
+                </a>
+              </div>
+              <div
+                className="glide__slide"
+                style={{
+                  width: "148.769px",
+                  marginLeft: "5px",
+                  marginRight: "5px",
+                }}
+              >
+                <a target="_blank" href="http://royalreservations.com/">
+                  <img src="https://www.royalresorts.com/img/sprite.svg#sprite-logo-grandresidences" />
+                </a>
+              </div>
+              <div
+                className="glide__slide"
+                style={{
+                  width: "148.769px",
+                  marginLeft: "5px",
+                  marginRight: "5px",
+                }}
+              >
+                <img src="https://www.royalresorts.com/img/sprite.svg#sprite-logo-grandresidences" />
+              </div>
+              <div
+                className="glide__slide"
+                style={{
+                  width: "148.769px",
+                  marginLeft: "5px",
+                  marginRight: "5px",
+                }}
+              >
+                <a
+                  target="_blank"
+                  href="https://royalmarket.royalresorts.com/ "
+                >
+                  <img src="https://www.royalresorts.com/img/sprite.svg#sprite-logo-grandresidences" />
+                </a>
+              </div>
+              <div
+                className="glide__slide"
+                style={{
+                  width: "148.769px",
+                  marginLeft: "5px",
+                  marginRight: "5px",
+                }}
+              >
+                <a target="_blank" href="http://thomasmoretravel.com/">
+                  <img src="https://www.royalresorts.com/img/sprite.svg#sprite-logo-grandresidences" />
+                </a>
+              </div>
+              <div
+                className="glide__slide"
+                style={{
+                  width: "148.769px",
+                  marginLeft: "5px",
+                  marginRight: "5px",
+                }}
+              >
+                <a target="_blank" href="https://rrsignatureclub.com/">
+                  <img src="https://www.royalresorts.com/img/sprite.svg#sprite-logo-grandresidences" />
+                </a>
+              </div>
+              <div
+                className="glide__slide glide__slide--clone"
+                style={{
+                  width: "148.769px",
+                  marginLeft: "5px",
+                  marginRight: "5px",
+                }}
+              >
+                <a target="_blank" href="https://royalunoresort.com/">
+                  <img src="https://www.royalresorts.com/img/sprite.svg#sprite-logo-grandresidences" />
+                </a>
+              </div>
+            </div>
+          </div> */}
         </GenericSection>
       </footer>
     );
@@ -335,13 +304,13 @@ export default function Footer() {
             />
           </div>
           <div className="section">
-            <h3 className="footer_title">RESORTS</h3>
+            <h3 className="footer_title">Resorts en México</h3>
             <ul id="menu-resorts" className="menu">
               <li
                 id="menu-item-36817"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36817"
               >
-                <a href="https://www.royalresorts.com/es/descubra-royal-resorts/royal-uno/">
+                <a href="https://www.royalresorts.com/es/hoteles-de-playa/royal-uno">
                   Royal Uno
                 </a>
               </li>
@@ -349,15 +318,15 @@ export default function Footer() {
                 id="menu-item-16270"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16270"
               >
-                <a href="https://www.royalresorts.com/es/descubra-royal-resorts/the-royal-haciendas/">
-                  The Royal Haciendas
+                <a href="https://www.royalresorts.com/es/hoteles-de-playa/the-royal-cancun">
+                  The Royal Cancun
                 </a>
               </li>
               <li
                 id="menu-item-16275"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16275"
               >
-                <a href="https://www.royalresorts.com/es/descubra-royal-resorts/the-royal-sands/">
+                <a href="https://www.royalresorts.com/es/hoteles-de-playa/the-royal-sands">
                   The Royal Sands
                 </a>
               </li>
@@ -365,275 +334,157 @@ export default function Footer() {
                 id="menu-item-16274"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16274"
               >
-                <a href="https://www.royalresorts.com/es/descubra-royal-resorts/the-royal-cancun/">
-                  The Royal Cancun
+                <a href="https://www.royalresorts.com/es/hoteles-de-playa/the-royal-islander">
+                  The Royal Islander
                 </a>
               </li>
               <li
                 id="menu-item-16272"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16272"
               >
-                <a href="https://www.royalresorts.com/es/descubra-royal-resorts/the-royal-islander/">
-                  The Royal Islander
+                <a href="https://www.royalresorts.com/es/hoteles-de-playa/grand-residences-riviera-cancun">
+                  Grand Residences Riviera Cancun
                 </a>
               </li>
               <li
                 id="menu-item-16273"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16273"
               >
-                <a href="https://www.royalresorts.com/es/descubra-royal-resorts/grand-residences/">
-                  Grand Residences
-                </a>
-              </li>
-            </ul>
-            <h3 className="footer_title">COMO VOLVERSE SOCIO</h3>
-            <ul id="menu-how-to-become-a-member" className="menu">
-              <li
-                id="menu-item-16633"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16633"
-              >
-                <a href="https://www.royalresorts.com/es/como-volverse-socio/">
-                  Cómo volverse socio
-                </a>
-              </li>
-              <li
-                id="menu-item-16772"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16772"
-              >
-                <a href="https://www.royalresorts.com/es/derechos-vacacionales-de-nuestros-socios/">
-                  Beneficios de la Membresía
-                </a>
-              </li>
-              <li
-                id="menu-item-35579"
-                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-35579"
-              >
-                <a href="https://rrsignatureclub.com/">Signature Club</a>
-              </li>
-              <li
-                id="menu-item-35558"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-35558"
-              >
-                <a href="https://www.royalresorts.com/es/resorts-familiares-en-cancun/descargas/">
-                  Intervalo Semanal
+                <a href="https://www.royalresorts.com/es/hoteles-de-playa/the-royal-haciendas">
+                  The Royal Haciendas
                 </a>
               </li>
             </ul>
           </div>
           <div className="section">
             {/* second column [INICIO] */}
-            <h3 className="footer_title">SERVICIOS Y AMENIDADES</h3>
+            <h3 className="footer_title">Servicios y Amenidades</h3>
             <ul id="menu-services-amenities" className="menu">
               <li
                 id="menu-item-16201"
                 className="menu-item menu-item-type-custom menu-item-object-custom menu-item-16201"
               >
-                <a href="https://www.thomasmoretravel.com/Transfers/Transfers/Search?lang=es">
-                  Transportación
+                <a href="https://www.royalresorts.com/es/todo-incluido">
+                  Todo Incluido
                 </a>
               </li>
               <li
                 id="menu-item-16343"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16343"
               >
-                <a href="https://www.royalresorts.com/es/amenidades-y-servicios-a-huespedes/paquete-refine-todo-incluido/">
-                  Paquete REFINE Todo Incluído
+                <a href="https://www.royalresorts.com/es/bodas-y-eventos-especiales">
+                  Bodas y Eventos
                 </a>
               </li>
               <li
                 id="menu-item-16351"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16351"
               >
-                <a href="https://www.royalresorts.com/es/amenidades-y-servicios-a-huespedes/restaurantes-y-bares/">
-                  Restaurantes y Bares
-                </a>
-              </li>
-              <li
-                id="menu-item-16344"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16344"
-              >
-                <a href="https://www.royalresorts.com/es/amenidades-y-servicios-a-huespedes/spa/">
-                  Spa
-                </a>
-              </li>
-              <li
-                id="menu-item-16345"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16345"
-              >
-                <a href="https://www.royalresorts.com/es/amenidades-y-servicios-a-huespedes/gimnasio/">
-                  Gimnasio
-                </a>
-              </li>
-              <li
-                id="menu-item-16346"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16346"
-              >
-                <a href="https://www.royalresorts.com/es/amenidades-y-servicios-a-huespedes/tienda-de-regalos/">
-                  Tienda de Regalos
-                </a>
-              </li>
-              <li
-                id="menu-item-16347"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16347"
-              >
-                <a href="https://www.royalresorts.com/es/amenidades-y-servicios-a-huespedes/bodas-y-eventos-especiales/">
-                  Bodas y Eventos Especiales
-                </a>
-              </li>
-              <li
-                id="menu-item-16348"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16348"
-              >
-                <a href="https://www.royalresorts.com/es/amenidades-y-servicios-a-huespedes/the-royal-market/">
-                  The Royal Market
-                </a>
-              </li>
-              <li
-                id="menu-item-16350"
-                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-16350"
-              >
-                <a href="https://app.royalresorts.com/es/cybermall/giftCertificates.aspx">
-                  Certificados de Regalos
-                </a>
-              </li>
-              <li
-                id="menu-item-16349"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16349"
-              >
-                <a href="https://www.royalresorts.com/es/amenidades-y-servicios-a-huespedes/transporte-gratuito-en-cancun/">
-                  Transporte Gratuito en Cancún
+                <a href="https://www.thomasmoretravel.com/Transfers/Transfers/Search">
+                  Transportación al aeropuerto
                 </a>
               </li>
             </ul>
-            {/* second column [Final] */}
-          </div>
-          <div className="section">
-            {/* Third Column [INICIO] */}
-            <h3 className="footer_title">CANCUN &amp; RIVIERA MAYA</h3>
-            <ul id="menu-cancun-riviera-maya" className="menu">
+            <h3 className="footer_title">Nuestra Compañía</h3>
+            <ul id="menu-services-amenities" className="menu">
               <li
-                id="menu-item-16276"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16276"
+                id="menu-item-16201"
+                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-16201"
               >
-                <a href="https://www.royalresorts.com/es/destinos/guia-de-destino-cancun/">
-                  Cancún
-                </a>
-              </li>
-              <li
-                id="menu-item-16277"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16277"
-              >
-                <a href="https://www.royalresorts.com/es/destinos/guia-de-destino-riviera-maya/">
-                  Riviera Maya
-                </a>
-              </li>
-              <li
-                id="menu-item-16278"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16278"
-              >
-                <a href="https://www.royalresorts.com/es/destinos/guia-de-destino-yucatan/">
-                  Yucatán
-                </a>
-              </li>
-            </ul>
-            <h3 className="footer_title">ENLACES RÁPIDOS</h3>
-            <ul id="menu-other-features" className="menu">
-              <li
-                id="menu-item-16335"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16335"
-              >
-                <a href="https://www.royalresorts.com/es/clima-y-webcams-en-cancun-y-la-riviera-maya/">
-                  Webcams
-                </a>
-              </li>
-              <li
-                id="menu-item-16191"
-                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-16191"
-              >
-                <a href="https://app.royalresorts.com/forms/airport_transfers.aspx">
-                  Transportación
-                </a>
-              </li>
-              <li
-                id="menu-item-32041"
-                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-32041"
-              >
-                <a href="https://royalreservations.com/es/ofertas">
-                  Ofertas Especiales
-                </a>
-              </li>
-              <li
-                id="menu-item-16192"
-                className="menu-item menu-item-type-custom menu-item-object-custom menu-item-16192"
-              >
-                <a
-                  target="_blank"
-                  href="https://webchat.visitroyalresorts.com/chat-sitio-royalresorts-es.html"
-                >
-                  Chat en Vivo
-                </a>
-              </li>
-              <li
-                id="menu-item-16645"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16645"
-              >
-                <a href="https://www.royalresorts.com/es/resorts-familiares-en-cancun/contacte-royal-resorts/">
-                  Contacte a Royal Resorts
-                </a>
-              </li>
-              <li
-                id="menu-item-16338"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16338"
-              >
-                <a href="https://www.royalresorts.com/es/resorts-familiares-en-cancun/preguntas-frecuentes/">
-                  Preguntas Frecuentes
-                </a>
-              </li>
-            </ul>
-            <h3 className="footer_title">NUESTRA COMPAÑÍAY</h3>
-            <ul id="menu-our-company" className="menu">
-              <li
-                id="menu-item-36960"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36960"
-              >
-                <a href="https://www.royalresorts.com/es/resorts-familiares-en-cancun/acerca-de-royal-resorts/">
+                <a href="https://www.royalresorts.com/es/acerca-de-royal-resorts">
                   Acerca de Royal Resorts
                 </a>
               </li>
               <li
-                id="menu-item-36961"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36961"
+                id="menu-item-16343"
+                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16343"
               >
-                <a href="https://www.royalresorts.com/es/fundacion/">
-                  Fundación
+                <a href="https://www.royalresorts.com/es/signature-club">
+                  Beneficios de la membresía
                 </a>
               </li>
               <li
-                id="menu-item-36963"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36963"
+                id="menu-item-16351"
+                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16351"
               >
-                <a href="https://www.royalresorts.com/es/cuarto-de-prensa/">
-                  Cuarto de Prensa
+                <a href="https://www.royalresorts.com/blog/es/">Blog</a>
+              </li>
+              <li
+                id="menu-item-16351"
+                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16351"
+              >
+                <a href="https://www.royalresorts.com/es/fundacion">
+                  Fundación Royal Resorts
                 </a>
               </li>
               <li
-                id="menu-item-36964"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36964"
+                id="menu-item-16351"
+                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16351"
               >
-                <a href="https://www.royalresorts.com/es/politica-de-privacidad-2/">
+                <a href="https://royalcarestandard.com/es">
+                  Royal Care Standard
+                </a>
+              </li>
+              <li
+                id="menu-item-16351"
+                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-16351"
+              >
+                <a href="https://www.royalresorts.com/es/politica-de-privacidad">
                   Política de Privacidad
                 </a>
               </li>
-              <li
-                id="menu-item-36965"
-                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-36965"
-              >
-                <a href="https://www.royalresorts.com/es/mapa-del-sitio/">
-                  Mapa del Sitio
-                </a>
-              </li>
             </ul>
-            {/* Third Column [Final] */}
+          </div>
+          <div className="section">
+            {/** Tercera columna */}
+            <h3 className="footer_title">
+              <a
+                className="footer_title"
+                href="https://www.royalresorts.com/es/ofertas-especiales"
+              >
+                Ofertas
+              </a>
+            </h3>
+            <h3 className="footer_title">
+              <a
+                className="footer_title"
+                href="https://www.royalresorts.com/es/mejor-oferta-garantizada"
+              >
+                Mejor precio garantizado
+              </a>
+            </h3>
+            <h3 className="footer_title">
+              <a
+                className="footer_title"
+                href="https://www.royalresorts.com/es/destinos-de-playa"
+              >
+                Destinos de Playa
+              </a>
+            </h3>
+            <h3 className="footer_title">
+              <a
+                className="footer_title"
+                href="https://www.royalresorts.com/es/my-royal/inicio-de-sesion"
+              >
+                My Royal
+              </a>
+            </h3>
+            <h3 className="footer_title">
+              <a
+                className="footer_title"
+                href="https://www.royalresorts.com/es/socios-login"
+              >
+                Socios
+              </a>
+            </h3>
+            <h3 className="footer_title">
+              <a
+                className="footer_title"
+                href="https://rrsignatureclub.com/es/"
+              >
+                Signature Club
+              </a>
+            </h3>
           </div>
         </GenericSection>
       </footer>
