@@ -140,7 +140,7 @@ class App extends React.Component {
                 <Route component={NotFound} />
               </Switch>
               <BacktoTop />
-              <Footer />
+              <Footer language={getLanguage()} />
             </Suspense>
           </Router>
         </ThemeContext.Provider>
