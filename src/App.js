@@ -51,7 +51,8 @@ const HistorialShopping = lazy(() =>
   import(/* webpackPrefetch: true */ "./pages/shoppingHistory")
 );
 const Header = lazy(() => import(/* webpackPrefetch: true */ "./pages/header"));
-const Footer = lazy(() => import(/* webpackPrefetch: true */ "./pages/footer"));
+// const Footer = lazy(() => import(/* webpackPrefetch: true */ "./pages/footer"));
+import { RoyalFooter } from "rrhelpers";
 
 class App extends React.Component {
   constructor(props) {
@@ -96,7 +97,7 @@ class App extends React.Component {
           <Router>
             <Suspense fallback={<IsLoading />}>
               <Header
-                language={this.state.language}
+                language={getLanguage()}
                 datos={this.state.storeItems}
                 setQP={this.setQParams}
                 setLang={this.setLanguage}
@@ -140,7 +141,11 @@ class App extends React.Component {
                 <Route component={NotFound} />
               </Switch>
               <BacktoTop />
-              <Footer language={getLanguage()} />
+
+              <RoyalFooter
+                style={{ backgroundColor: "#579c02" }}
+                language={getLanguage()}
+              />
             </Suspense>
           </Router>
         </ThemeContext.Provider>
