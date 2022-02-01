@@ -22,6 +22,9 @@ header {
 #root {
   margin-top: $headerpush;
   z-index: 1;
+  @include mobile {
+    margin-top: #{$headerpush + 50px};
+  }
 }
 body.menuroyalOpen {
   #root {
