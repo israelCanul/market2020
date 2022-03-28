@@ -12,6 +12,7 @@ import { RetrieveRandomObjByCat } from "../libs/helpers";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import _ from "lodash";
 import "../../scss/components/itemDetail.scss";
+import { Helmet } from "react-helmet";
 
 export default function Detail({ items, site }) {
   let params = useParams();
@@ -63,6 +64,20 @@ export default function Detail({ items, site }) {
     >
       {itemSelected ? (
         <div id="root">
+          <Helmet>
+            ‍
+            <title>
+              Royal Market -{" "}
+              {itemSelected.SItemName != ""
+                ? itemSelected.SItemName.toLowerCase()
+                : itemSelected.SItemDesc.toLowerCase()}
+            </title>
+            ‍
+            <meta
+              name="description"
+              content={itemSelected.SItemDesc.toLowerCase()}
+            />
+          </Helmet>
           <div className="App">
             <div className="main itemDetail">
               <div className="main_container">

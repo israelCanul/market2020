@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { SetUserFromGenesis, logoutUser } from "../actions/index";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Helmet } from "react-helmet";
 
 function App(props) {
   let { site, cart } = props;
@@ -17,6 +18,10 @@ function App(props) {
     <ThemeContext.Consumer>
       {(state) => (
         <div id="root">
+          <Helmet>
+            ‍<title>Royal Market - Royal Resorts</title>‍
+            <meta name="description" content="All products in a single place" />
+          </Helmet>
           <div className="App">
             <div className="pleca">
               <img

@@ -12,6 +12,7 @@ import Related from "../components/relatedproducts";
 import { RetrieveRandomObjByCat } from "../libs/helpers";
 import "../../scss/components/cart-items.scss";
 
+import { Helmet } from "react-helmet";
 class CartItems extends React.Component {
   constructor(props) {
     super(props);
@@ -89,6 +90,13 @@ class CartItems extends React.Component {
   render() {
     return (
       <div id="root">
+        <Helmet>
+          ‍<title>Royal Market - Cart Items</title>‍
+          <meta
+            name="description"
+            content="All products in a single place - Cart Items Page"
+          />
+        </Helmet>
         <div className="App">
           <div className="main cartItems">
             <div className="main_container">
