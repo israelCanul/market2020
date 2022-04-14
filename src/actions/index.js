@@ -1,6 +1,5 @@
-import { getAuth, getDBConection } from "../libs/firebaseApi";
+import { getDBConection } from "../libs/firebaseApi";
 import axios from "axios";
-import txml from "txml";
 import _ from "lodash";
 
 export const FETCHIMGGALLERY = "FETCHIMGGALLERY";

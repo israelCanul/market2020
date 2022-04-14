@@ -1,10 +1,10 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useParams,
-  useRouteMatch,
+  // useParams,
+  // useRouteMatch,
 } from "react-router-dom";
 import { connect } from "react-redux";
 import ThemeContext from "./context/itemsContext";
@@ -14,17 +14,16 @@ import {
   SetUserFromGenesis,
 } from "./actions/index";
 import { fetchCartItems } from "./actions/cartActions";
-// import { NotificationContainer } from "react-notifications";
 
 import { getLanguage } from "./libs/language";
 import { getCookieForm } from "./libs/cookieManager";
 import getURL from "./libs/Routes";
 
 import "../scss/App.scss";
-// import "react-notifications/lib/notifications.css";
+
 
 //hot loader
-import { hot } from "react-hot-loader";
+// import { hot } from "react-hot-loader";
 
 //lazy imports
 const Home = lazy(() => import(/* webpackPrefetch: true */ "./pages/home"));
@@ -44,9 +43,9 @@ const BacktoTop = lazy(() =>
 const CartItems = lazy(() =>
   import(/* webpackPrefetch: true */ "./pages/cartItems")
 );
-const Notifications = lazy(() =>
-  import(/* webpackPrefetch: true */ "./components/notifications")
-);
+// const Notifications = lazy(() =>
+//   import(/* webpackPrefetch: true */ "./components/notifications")
+// );
 const HistorialShopping = lazy(() =>
   import(/* webpackPrefetch: true */ "./pages/shoppingHistory")
 );
@@ -120,7 +119,7 @@ class App extends React.Component {
                   <CartItems items={this.state.storeItems} />
                 </Route>
                 <Route exact path={getURL("/products")}>
-                  {/* <Categories cat={this.state.getCat} /> */}
+                  <Categories cat={this.state.getCat} />
                 </Route>
                 <Route exact path={getURL("/products/:producto")}>
                   <Detail
@@ -181,11 +180,11 @@ const mapStateToProps = (state) => {
     cart: state.cart,
   };
 };
-export default hot(module)(
+export default /*hot(module)(*/
   connect(mapStateToProps, {
     initConfig,
     fetchCartItems,
     fetchConfiguration,
     SetUserFromGenesis,
-  })(App)
-);
+  })(App);
+//);

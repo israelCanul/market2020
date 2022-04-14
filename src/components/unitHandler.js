@@ -4,7 +4,7 @@ import getTexto from "../libs/messages";
 import { getCurrency } from "../libs/language";
 import { fetchCartItems, setItemToCart } from "../actions/cartActions";
 import Notification from "./notifications";
-// import { NotificationManager } from "react-notifications";
+
 
 function HandlerItem({
   setItemToCart,

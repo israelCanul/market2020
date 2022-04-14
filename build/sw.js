@@ -1,4 +1,4 @@
-const nombreCache = "apv-v8";
+const nombreCache = "apv-v9";
 const archivos = [
   "/",
   "/index.html",
@@ -6,22 +6,7 @@ const archivos = [
   "/js/modules.js",
   "/index.js",
   "/0.js",
-  "/1.js",
-  "/2.js",
-  "/3.js",
-  "/4.js",
-  "/5.js",
-  "/6.js",
-  "/7.js",
-  "/8.js",
-  "/9.js",
-  "/10.js",
-  "/11.js",
-  "/12.js",
-  "/13.js",
   "/config.json",
-  "/items.json",
-  "/categories.json",
   "/traslations.json",
   "/manifest.json",
 ];

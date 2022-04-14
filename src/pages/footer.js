@@ -1,6 +1,5 @@
 import React from "react";
 import GenericSection from "../components/genericsection";
-import { getLanguage } from "../libs/language";
 
 import "../../scss/modules/Footer.module.scss";
 

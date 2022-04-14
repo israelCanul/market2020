@@ -6,10 +6,9 @@ import Avatar from "../components/SessionAvatarLoggedHeader";
 import Searcher from "../components/searcher";
 import Menu from "../components/menumarket";
 // import RoyalMenu from "../components/royalresortsHeader";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { SetUserFromGenesis, logoutUser } from "../actions/index";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 import { RoyalHeader } from "rrhelpers";
 
 //estilos

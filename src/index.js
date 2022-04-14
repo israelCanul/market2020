@@ -9,7 +9,7 @@ import axios from "axios";
 import { setTextToTraslateTool } from "./libs/messages";
 import { getLanguageEndpoints } from "./libs/language";
 
-import { getCategories } from "./libs/api";
+// import { getCategories } from "./libs/api";
 
 const asyncDispatchMiddleware = (store) => (next) => (action) => {
   let syncActivityFinished = false;

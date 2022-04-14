@@ -1,5 +1,5 @@
 import firebase from "firebase/app";
-// import "firebase/auth";
+
 import "firebase/database";
 
 const firebaseConfig = {
@@ -14,11 +14,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
-// var auth = firebase.auth().signInAnonymously();
 
-// export function getAuth() {
-//   return auth;
-// }
 export function getDBConection() {
   return db;
 }

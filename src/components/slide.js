@@ -1,6 +1,7 @@
 import React from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Carousel } from "react-responsive-carousel";
+
+
 
 export default function Slide({
   slides = [],
