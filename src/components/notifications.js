@@ -2,7 +2,6 @@ import React from "react";
 import Lottie from "react-lottie";
 import getTexto from "../libs/messages";
 import * as animationData from "./animations/set_to_cart.json";
-import Item from "./Item";
 
 class Notifications extends React.Component {
   constructor(props) {

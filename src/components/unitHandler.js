@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense, lazy } from "react";
 import { connect } from "react-redux";
 import getTexto from "../libs/messages";
 import { getCurrency } from "../libs/language";
 import { fetchCartItems, setItemToCart } from "../actions/cartActions";
-import Notification from "./notifications";
 
+const Notification = lazy(() =>
+  import(/* webpackPrefetch: true */ "./notifications")
+);
 
 function HandlerItem({
   setItemToCart,
@@ -317,11 +319,13 @@ function HandlerItem({
         </React.Fragment>
       )}{" "}
       {notificationAdd == true ? (
-        <Notification
-          isUpdate={notificationUpdate}
-          item={item}
-          toClose={setNotification}
-        />
+        <Suspense fallback={"Loading"}>
+          <Notification
+            isUpdate={notificationUpdate}
+            item={item}
+            toClose={setNotification}
+          />
+        </Suspense>
       ) : (
         ""
       )}
