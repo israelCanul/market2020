@@ -7,10 +7,14 @@
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#ff4438" />
     <link rel="apple-touch-icon" href="/img/icons/icon-192x192.png" />
+    <link rel="preload" href="/js/modules.js" as="script">
+    <link rel="preload" href="/6.js" as="script">
+    <link rel="preload" href="/7.js" as="script">
+    <link rel="preload" href="/index.js" as="script">
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
       rel="stylesheet"
-    />
+      />
 
     <style>
       .loadingSite {
@@ -71,12 +75,10 @@
         }
       }
     </style>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-3434843-1"
-    ></script>
+      src="https://www.googletagmanager.com/gtag/js?id=UA-3434843-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -96,8 +98,8 @@
     </div>
     <input type="hidden" id="output" />
     <noscript> You need to enable JavaScript to run this app. </noscript>
-    <script src="/js/modules.js" defer ></script>
+    <script src="/js/modules.js" defer></script>
     <script src="/index.js" defer></script>
-     <script src="/app.js"></script>
+    <script src="/app.js"></script>
   </body>
 </html>

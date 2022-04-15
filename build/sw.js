@@ -1,4 +1,4 @@
-const nombreCache = "apv-v9";
+const nombreCache = "apv-v10";
 const archivos = [
   "/",
   "/index.html",
@@ -9,6 +9,7 @@ const archivos = [
   "/config.json",
   "/traslations.json",
   "/manifest.json",
+  "/img/logo_market.png",
 ];
 self.addEventListener("install", (e) => {
   e.waitUntil(

@@ -1,15 +1,17 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import reducers from "./reducers";
-import App from "./App.js";
+// import App from "./App.js";
 import axios from "axios";
 import { setTextToTraslateTool } from "./libs/messages";
 import { getLanguageEndpoints } from "./libs/language";
 
 // import { getCategories } from "./libs/api";
+
+const App = lazy(() => import(/* webpackPrefetch: true */ "./App.js"));
 
 const asyncDispatchMiddleware = (store) => (next) => (action) => {
   let syncActivityFinished = false;
@@ -79,12 +81,20 @@ axios
               // if (responseOne.data) {
               ReactDOM.render(
                 <Provider store={createStoreWithMiddleware(reducers)}>
-                  <App
-                    config={response.data}
-                    categories={responseTwo.data} //Webservices
-                    // categories={getCategories()}
-                    items={responseOne.data}
-                  />
+                  <Suspense
+                    fallback={
+                      <div class="loadingSite">
+                        <img src="/img/logo_market.png" alt="Logo market" />
+                      </div>
+                    }
+                  >
+                    <App
+                      config={response.data}
+                      categories={responseTwo.data} //Webservices
+                      // categories={getCategories()}
+                      items={responseOne.data}
+                    />
+                  </Suspense>
                 </Provider>,
                 document.getElementById("App")
               );
