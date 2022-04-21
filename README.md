@@ -4,7 +4,7 @@ I made this project for the Royal Market Store.
 
 ## Technologies used for this project
 
-For this project i used different libraries in order to achieved the objective of the test. like:
+For this project i used different libraries in order to achieved the meets.
 
 - React
 - Axios
