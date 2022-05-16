@@ -7,6 +7,7 @@ import {
   deleteItemToCart,
   setCartToSession,
   setLoader,
+  setItemToCart
 } from "../actions/cartActions";
 import Related from "../components/relatedproducts";
 import { RetrieveRandomObjByCat } from "../libs/helpers";
@@ -16,10 +17,11 @@ import { Helmet } from "react-helmet";
 class CartItems extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {bagQuestion : false};
     this.getItemsCart = this.getItemsCart.bind(this);
     this.setItemsToGenesis = this.setItemsToGenesis.bind(this);
     this.getRelated = this.getRelated.bind(this);
+    this.askAboutABag = this.askAboutABag.bind(this);
 
     if (props.cart.loader == true) {
       document.querySelector("body").classList.add("loaderCart");
@@ -27,8 +29,9 @@ class CartItems extends React.Component {
       document.querySelector("body").classList.remove("loaderCart");
     }
   }
-  setItemsToGenesis(e) {
-    e.preventDefault();
+  setItemsToGenesisWithOut(){
+    this.props.setLoader(false);
+    this.setState({bagQuestion : false})
     let listItems = this.props.cart.itemsCart;
     let listaItemsToSession = [];
     listItems.map((item) => {
@@ -41,7 +44,43 @@ class CartItems extends React.Component {
       totalItems: this.props.cart.itemsCount,
       ListItems: listaItemsToSession,
     };
+    
     this.props.setCartToSession(objToSession);
+  }
+  setItemsToGenesis(){
+    this.props.setLoader(false);
+    //we add a bag as new item before to send to Genesis
+    let bag = this.props.items.find(el => parseInt(el.IItemID) === 52828);
+
+    let itemObject = {
+      totalItems: parseFloat(1),
+      item: bag ,
+      onList: true,
+    };
+    this.props.setItemToCart(itemObject);
+    //
+    let that = this;
+    
+    setTimeout(() => that.setItemsToGenesisWithOut() ,300);
+    
+  }
+  
+  askAboutABag(e){
+    e.preventDefault();
+    let bag = this.props.items.find(el => parseInt(el.IItemID) === 52828);
+    this.setState({bag: bag});
+    // let itemObject = {
+    //   totalItems: parseFloat(1),
+    //   item: bag ,
+    //   onList: true,
+    // };
+    this.setState({bagQuestion : true})
+    this.props.setLoader(true);
+       
+    
+    // if(bag !== null){
+    //   this.props.setItemToCart(itemObject);
+    // }
   }
   getRelated() {
     let that = this;
@@ -88,6 +127,9 @@ class CartItems extends React.Component {
     }
   }
   render() {
+    {
+      if(this.state.bag) console.log(this.state.bag);
+    }
     return (
       <div id="root">
         <Helmet>
@@ -227,14 +269,12 @@ class CartItems extends React.Component {
                   <div className="action">
                     <a
                       href="#"
-                      onClick={this.setItemsToGenesis}
+                      onClick={this.askAboutABag}
                       className="btn"
                     >
                       {getTexto("Proceed to checkout")}
                     </a>
-                    {/* <a className="link" href="#">
-                      {getTexto("Schedule delivery to villa")}
-                    </a> */}
+                    
                   </div>
                 </div>
                 <div className=" descriptionSale_related">
@@ -250,7 +290,7 @@ class CartItems extends React.Component {
         </div>
         <div
           className={`modalwrapper ${
-            this.props.cart.loader == true ? "loaderCart" : ""
+            this.props.cart.loader == true && this.state.bagQuestion !== true  ? "loaderCart" : ""
           }`}
         >
           <div
@@ -273,6 +313,42 @@ class CartItems extends React.Component {
             {/* </div> */}
           </div>
         </div>
+
+
+        {/* modal to ask about a extra ecologic bag */}
+        <div
+          className={`modalwrapper ${
+            this.props.cart.loader == true && this.state.bagQuestion === true ? "loaderCart" : ""
+          }`}
+        >
+          <div
+            className="background"
+            onClick={(e) => {
+              this.props.setLoader(false);
+            }}
+          ></div>
+          <div className="content">
+            <div className="doYouWantAbag">
+              <p>
+                {getTexto("Would you like a resuable shopping bag for only")} {this.state.bag ? parseFloat(this.state.bag.DPrice).toFixed(2): ""} {getCurrency() + "?"}
+              </p>
+              <a
+                href="#"
+                onClick={ e =>{e.preventDefault(); this.setItemsToGenesis()}}
+                className="btn"
+              >
+                {getTexto("Yes please and continue ?")}
+              </a>
+              <a
+                href="#"
+                onClick={e =>{e.preventDefault();this.setItemsToGenesisWithOut();}}
+                className="btn"
+              >
+                {getTexto("No, Proceed to checkout")}
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -287,4 +363,5 @@ export default connect(mapStateToProps, {
   deleteItemToCart,
   setCartToSession,
   setLoader,
+  setItemToCart
 })(CartItems);

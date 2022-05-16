@@ -15,6 +15,8 @@ function HandlerItem({
   cartItem = null,
   isRelated = null,
 }) {
+  let initialSell = item.MinSell; // set the initial item's value
+  item.MinSell = 1; // we overwrite the minSellVariable
   let [notificationAdd, setNotification] = useState(false);
   let [notificationUpdate, setNotificationUpdate] = useState(false);
   let cartSubtotal = cartItem
@@ -38,12 +40,15 @@ function HandlerItem({
         ? parseFloat(cartItem.totalItems).toFixed(1)
         : cartItem.totalItems
       : item.YnAllowFractionalSale
-      ? parseFloat(item.MinSell).toFixed(1)
-      : parseInt(item.MinSell)
+      ? parseFloat(initialSell).toFixed(1)
+      : parseInt(initialSell)
   );
   useEffect(() => {
     getSubTotal();
-  });
+  }); 
+ 
+
+
   let [error, setError] = useState(false);
   let addRemoveUnit = (operation) => {
     let addNumber, removeNumber;

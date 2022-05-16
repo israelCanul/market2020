@@ -51,6 +51,6 @@
     "react-responsive-carousel": "^3.2.18",
     "react-router-dom": "^5.2.0",
     "redux-thunk": "^2.3.0",
-    "rrhelpers": "^1.2.2"
+    "rrhelpers": "^1.2.3"
   }
 }

@@ -112,3 +112,39 @@ export function openModalForRetrieveUser(config, reduxLogin) {
     strWindowFeatures
   );
 }
+
+export function getRichText(str){
+  let result = "";
+  let key = "";
+  for (let i = 0; i < str.length; i++) {
+      let char = str[i];
+      if(char === "*" && str[i + 1] === "*" && key === ""){
+          result = result + "<strong>";
+          key = "*";
+          i++;
+          continue;
+      }else if(char === "*" && str[i + 1] === "*" && key === "*" ){
+          result = result + "</strong>";
+          key = "";
+          i++;
+          continue;
+      }
+
+      if(char === "_" && str[i + 1] === "_" && key === ""){
+          result = result + "<span style=\"text-decoration: underline\">";
+          key = "_";
+          i++;
+          continue;
+      }else if(char === "_" && str[i + 1] === "_" && key === "_"){
+          result = result + "</span>";
+          key = "";
+          i++;
+          continue;
+      }
+      result = result + char;
+  }
+
+      
+  return result;
+}
+

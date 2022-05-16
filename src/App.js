@@ -23,7 +23,7 @@ import "../scss/App.scss";
 
 
 //hot loader
-// import { hot } from "react-hot-loader";
+import { hot } from "react-hot-loader";
 
 //lazy imports
 const Home = lazy(() => import(/* webpackPrefetch: true */ "./pages/home"));
@@ -180,11 +180,11 @@ const mapStateToProps = (state) => {
     cart: state.cart,
   };
 };
-export default /*hot(module)(*/
+export default hot(module)(
   connect(mapStateToProps, {
     initConfig,
     fetchCartItems,
     fetchConfiguration,
     SetUserFromGenesis,
-  })(App);
-//);
+  })(App)
+);

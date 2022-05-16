@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import ThemeContext from "../context/itemsContext";
+
 import DocumentTitle from "react-document-title";
 import GenericSection from "../components/genericsection";
 import Slide from "../components/slide";
@@ -8,7 +8,7 @@ import getTexto from "../libs/messages";
 import UnitHandler from "../components/unitHandler";
 import Related from "../components/relatedproducts";
 import { getCurrency } from "../libs/language";
-import { RetrieveRandomObjByCat } from "../libs/helpers";
+import { RetrieveRandomObjByCat,getRichText } from "../libs/helpers";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import _ from "lodash";
 import "../../scss/components/itemDetail.scss";
@@ -89,10 +89,8 @@ export default function Detail({ items, site }) {
                   </div>
                   <div className="section x4">
                     <div className="details">
-                      <h3>
-                        {itemSelected.SItemName != ""
-                          ? itemSelected.SItemName.toLowerCase()
-                          : itemSelected.SItemDesc.toLowerCase()}
+                      <h3 dangerouslySetInnerHTML={{ __html:  itemSelected.SItemName != "" ? getRichText(itemSelected.SItemName.toLowerCase()): getRichText(itemSelected.SItemDesc.toLowerCase()) }}>
+                        
                       </h3>
                       <span>({itemSelected.ItemMeasure.toLowerCase()})</span>
                       <hr />
@@ -127,12 +125,10 @@ export default function Detail({ items, site }) {
                         </tbody>
                       </table>
                       <hr />
-                      <p>
+                      <p style={{margin:"0px", padding:"0px", paddingBottom:"10px"}}>
                         <strong>{getTexto("About this Item")}:</strong>
-                        <br />
-                        {itemSelected.sLongDescription != ""
-                          ? itemSelected.sLongDescription
-                          : itemSelected.SItemDesc.toLowerCase()}
+                      </p>
+                      <p style={{margin:"0px", padding:"0px"}} dangerouslySetInnerHTML={{ __html: itemSelected.sLongDescription != "" ? getRichText(itemSelected.sLongDescription) : getRichText(itemSelected.SItemDesc.toLowerCase()) }}>  
                       </p>
                     </div>
                   </div>
